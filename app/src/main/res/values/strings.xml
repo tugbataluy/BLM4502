@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">AddictionRecovery</string>
-    <string name="welcome_speech">Bağımlılıklarla ilgili birçok şey öğreneceğiniz yolculuğunuza hoş geldiniz. Yolculuğa başlamak için giriş yapın.</string>
+    <string name="welcome_speech">Bağımlılıklarla ilgili birçok şey öğreneceğiniz yolculuğunuza hoş geldiniz. Yolculuğa başlamak için kaydırın ve giriş yapın.</string>
 </resources>
