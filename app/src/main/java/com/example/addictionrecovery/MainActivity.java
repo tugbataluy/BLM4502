@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.mainpage);
         // from tugbataluy
         //second try
+        initialize();
+
+    }
+
+    public  void initialize(){
         forwardView= (ImageView) findViewById(R.id.forward);
         welcomeSpeech= (TextView) findViewById(R.id.welcome_text);
         forwardView.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 startLoginPage();
             }
         });
-
     }
 
     public class OnSwipeTouchListener implements View.OnTouchListener {

@@ -11,4 +11,8 @@
         <item name="android:textColor">#50623A</item>
 
     </style>
+    <style name="loginPageButtons">
+        <item name="android:background">@color/login_buttons</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
