@@ -15,10 +15,92 @@
       android:minHeight="?attr/actionBarSize"
       app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
       app:title="Anasayfa"
-      app:titleTextAppearance="@style/title_style"/>
+      app:titleTextAppearance="@style/title_style"
+      >
+    <ImageView
+        android:id="@+id/navigation_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@raw/menu"
+        android:layout_gravity="end"
+        android:paddingEnd="15dp"
+        android:paddingRight="15dp"
+        />
+  </androidx.appcompat.widget.Toolbar>
 
 
+  <TextView
+      android:id="@+id/general_addiction_btn"
+      android:layout_width="300dp"
+      android:layout_height="80dp"
+      android:background="@drawable/homepage_buttons"
+      android:drawableLeft="@raw/prison"
+      android:drawablePadding="30dp"
+      android:gravity="fill_vertical"
+      android:paddingLeft="30dp"
+      android:text="Bağımlılık"
+      android:layout_marginHorizontal="50dp"
+      android:layout_marginTop="125dp"
+      android:textColor="#000000"
+      android:textSize="18sp"
+      android:textStyle="normal"
+      android:clickable="true"/>
 
+  <TextView
+      android:id="@+id/drug_addiction_btn"
+      android:layout_width="300dp"
+      android:layout_height="80dp"
+      android:background="@drawable/homepage_buttons"
+      android:backgroundTint="@color/substance_addiction_bg"
+      android:drawableLeft="@raw/overdose"
+      android:drawablePadding="30dp"
+      android:gravity="fill_vertical"
+      android:paddingLeft="30dp"
+      android:text="Madde Bağımlılığı"
+      android:layout_marginHorizontal="50dp"
+      android:layout_marginTop="240dp"
+      android:textColor="#000000"
+      android:textSize="18sp"
+      android:textStyle="normal"
+      android:clickable="true"/>
+
+  <TextView
+      android:id="@+id/tech_addiction_btn"
+      android:layout_width="300dp"
+      android:layout_height="80dp"
+      android:background="@drawable/homepage_buttons"
+      android:backgroundTint="@color/tech_addiction_bg"
+      android:drawableLeft="@raw/smartphone"
+      android:drawablePadding="20dp"
+
+      android:gravity="fill_vertical"
+      android:paddingLeft="30dp"
+      android:text="Teknoloji Bağımlılığı"
+      android:layout_marginHorizontal="50dp"
+      android:layout_marginTop="355dp"
+      android:textColor="#000000"
+      android:textSize="18sp"
+      android:textStyle="normal"
+      android:clickable="true"/>
+
+  <TextView
+      android:id="@+id/alcohol_addiction_btn"
+      android:layout_width="300dp"
+      android:layout_height="80dp"
+      android:background="@drawable/homepage_buttons"
+      android:backgroundTint="@color/alcohol_addicton_bg"
+      android:drawableLeft="@raw/addiction"
+      android:drawablePadding="20dp"
+
+      android:gravity="fill_vertical"
+      android:paddingLeft="30dp"
+      android:text="Alkol Bağımlılığı"
+      android:layout_marginHorizontal="50dp"
+      android:layout_marginTop="470dp"
+      android:textSize="18sp"
+      android:textStyle="normal"
+      android:textColor="#000000"
+      android:clickable="true"/>
 
 
 
