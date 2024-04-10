@@ -34,7 +34,7 @@
       android:layout_width="300dp"
       android:layout_height="80dp"
       android:background="@drawable/homepage_buttons"
-      android:drawableLeft="@raw/prison"
+      android:drawableLeft="@raw/cage"
       android:drawablePadding="30dp"
       android:gravity="fill_vertical"
       android:paddingLeft="30dp"
