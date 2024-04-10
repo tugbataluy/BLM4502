@@ -31,6 +31,8 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // next page
+                Intent intent =new Intent( LoginPage.this, WelcomePage.class);
+                startActivity(intent);
             }
 
         });

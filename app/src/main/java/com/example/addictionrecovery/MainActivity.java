@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public class OnSwipeTouchListener implements View.OnTouchListener {
+    public static class OnSwipeTouchListener implements View.OnTouchListener {
 
         private final GestureDetector gestureDetector;
 

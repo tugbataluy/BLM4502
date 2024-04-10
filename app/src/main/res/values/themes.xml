@@ -3,6 +3,7 @@
     <style name="Base.Theme.AddictionRecovery" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorBackgroundFloating"> @color/toolbar_background </item>
     </style>
 
     <style name="Theme.AddictionRecovery" parent="Base.Theme.AddictionRecovery" />
@@ -15,4 +16,14 @@
         <item name="android:background">@color/login_buttons</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="title_style">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#FBF3D5</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowRadius">8</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

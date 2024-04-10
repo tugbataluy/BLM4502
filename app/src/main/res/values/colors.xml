@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="login_buttons">#50623A</color>
+    <color name="toolbar_background">#EFBC9B</color>
 </resources>
