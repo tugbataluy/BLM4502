@@ -2,4 +2,6 @@
     <string name="app_name">AddictionRecovery</string>
     <string name="welcome_speech">Bağımlılıklarla ilgili birçok şey öğreneceğiniz yolculuğunuza hoş geldiniz. Yolculuğa başlamak için kaydırın ve giriş yapın.</string>
     <string name="welcome_speech2">Uygulamamıza hoş geldiniz. Anasayfaya geçmek için kaydırabilir ya da ok simgesine tıklayabilirsiniz.</string>
+    <string name="nav_open">Nav_bar_opened</string>
+    <string name="nav_close">Nav_bar_closed</string>
 </resources>
