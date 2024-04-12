@@ -4,8 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="login_buttons">#50623A</color>
     <color name="toolbar_background">#EFBC9B</color>
+    <color name="app_pages_bg">#FBF3D5</color>
     <color name="general_addiction_bg">#BBE2EC</color>
     <color name="substance_addiction_bg">#9AD0C2</color>
     <color name="tech_addiction_bg">#9290C3</color>
     <color name="alcohol_addicton_bg">#B47B84</color>
+    <color name="general_addiction_title_bg">#40A2E3</color>
+    <color name="general_addiction_title_color">#11009E</color>
 </resources>

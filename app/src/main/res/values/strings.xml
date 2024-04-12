@@ -4,4 +4,22 @@
     <string name="welcome_speech2">Uygulamamıza hoş geldiniz. Anasayfaya geçmek için kaydırabilir ya da ok simgesine tıklayabilirsiniz.</string>
     <string name="nav_open">Nav_bar_opened</string>
     <string name="nav_close">Nav_bar_closed</string>
+    <string name="general_addiction_title1">Bağımlılık Nedir?</string>
+    <string name="general_addiction_content1">Bağımlılık; kişinin kullandığı bir madde, alkol, nesne veya yaptığı bir davranış (eylem) üzerinde kontrolünü kaybetmesidir.</string>
+    <string name="general_addiction_title2">Bağımlılık Nasıl Oluşur?</string>
+    <string name="general_addiction_content2">Bağımlılığa neden olan faktörler incelendiğinde bağımlılığın nedeni olarak tek bir etkenden söz etmek güçtür. Bağımlılık için birçok etken söz konusu olabilir. Psikolojik ve biyolojik etkenler bağımlılık sürecini etkilemektedir. Kişi ilk olarak merak ve korku duygusu ile kullanımı denemek isteyebilir.</string>
+    <string name="general_addiction_subtitle1">Bağımlılık Belirtileri</string>
+    <!--GENEL BAĞIMLILIK BELİRTİLERİ-->
+    <string-array name="general_symptoms">
+        <item name="general_addiction_symptoms1">"Sosyal, örneğin spesifik bağımlılığın olumsuz karşılanmadığı kişilerle görüşmek, ortamlarda bulunmak."</item>
+        <item name="general_addiction_symptoms2">"Sağlıkla ilgili sorunlar, örneğin uykusuzluk ya da hafıza kaybı."</item>
+        <item name="general_addiction_symptoms3">"Strese karşı daha fazla hassas olmak ve daha şiddetli tepki göstermek."</item>
+        <item name="general_addiction_symptoms4">"Üzgünlük, endişe ve depresyonda gözle görülür artış."</item>
+        <item name="general_addiction_symptoms5">"Belirli bir maddeden uzak durmak ya da belirli bir davranışı yapmayı bırakmakta zorlanmak."</item>
+        <item name="general_addiction_symptoms6">"Düşük benlik saygısı, sosyal anksiyetenin neden olduğu geri çekilme veya izolasyon."</item>
+    </string-array>
+
+
+
+
 </resources>

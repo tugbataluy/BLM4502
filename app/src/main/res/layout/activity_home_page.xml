@@ -12,28 +12,10 @@
       android:id="@+id/homepage_layout"
       android:layout_width="match_parent"
       android:layout_height="match_parent">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <include
+        layout="@layout/page_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/toolbar_background"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Anasayfa"
-        app:titleTextAppearance="@style/title_style"
-        >
-      <ImageView
-          android:id="@+id/navigation_icon"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@raw/menu"
-          android:layout_gravity="end"
-          android:paddingEnd="15dp"
-          android:paddingRight="15dp"
-          />
-    </androidx.appcompat.widget.Toolbar>
-
-
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/general_addiction_btn"
@@ -110,16 +92,7 @@
 
 
   </RelativeLayout>
-  <com.google.android.material.navigation.NavigationView
-      android:id="@+id/nav_view"
-      android:layout_width="250dp"
-      android:layout_height="580dp"
-      android:layout_marginTop="65dp"
-     android:layout_marginLeft="150dp"
-      app:menu="@menu/drawer_menu"
-      android:backgroundTint="#FBF3D5"
-      app:itemTextColor="#9B4444"
-      />
+  <include layout="@layout/nav_view"/>
 
 
 
