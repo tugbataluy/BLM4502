@@ -11,4 +11,6 @@
     <color name="alcohol_addicton_bg">#B47B84</color>
     <color name="general_addiction_title_bg">#40A2E3</color>
     <color name="general_addiction_title_color">#11009E</color>
+    <color name="general_addiction_test_bg">#ACE2E1</color>
+    <color name="general_addiction_test_text">#378CE7</color>
 </resources>

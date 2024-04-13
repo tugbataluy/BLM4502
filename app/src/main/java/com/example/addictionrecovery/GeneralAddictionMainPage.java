@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -29,8 +30,12 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     GridView symptomsView;
     GridView symptomsView2;
 
+    GridView testView;
+
     String[] symptoms;
     String[] symptoms2;
+
+    String[] testTitles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,8 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         relativeLayout=(RelativeLayout)findViewById(R.id.general_addiction_layout);
         symptoms=getResources().getStringArray(R.array.general_symptoms);
         symptoms2= Arrays.copyOfRange(symptoms,3,6);
+        testTitles=getResources().getStringArray(R.array.general_addiction_test_titles);
+
         // Birinci parça
         ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.grid_item,symptoms);
         symptomsView=(GridView)findViewById(R.id.gridView);
@@ -46,6 +53,21 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         symptomsView2=(GridView) findViewById(R.id.gridView2);
         ArrayAdapter<String> arrayAdapter2= new ArrayAdapter<>(this,R.layout.grid_item,symptoms2);
         symptomsView2.setAdapter(arrayAdapter2);
+
+        //Testler
+
+        testView=(GridView)findViewById(R.id.gridView3);
+        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<>(this,R.layout.test_grid,testTitles);
+        testView.setAdapter(arrayAdapter3);
+
+        //Testlere tıklama yeteneği verme
+        testView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Tıklanan öğenin sırasını bastır
+                System.out.println("Tıklanan öğenin sırası: " + position);
+            }
+        });
 
         tb=(Toolbar) findViewById(R.id.title_template);
         tb.setTitle("Bağımlılık");

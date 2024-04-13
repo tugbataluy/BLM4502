@@ -31,5 +31,11 @@
         <item name="android:textColor">@color/general_addiction_title_color</item>
 
     </style>
+    <style name="general_addiction_test_grid_style">
+        <item name="android:textColor">@color/general_addiction_test_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
 
 </resources>
