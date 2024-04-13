@@ -8,7 +8,7 @@
     android:id="@+id/my_drawer_layout"
     android:background="#FBF3D5">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -114,8 +114,37 @@
             android:layout_marginTop="1320dp"
             android:layout_marginBottom="20dp"
             />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1465dp"
+            android:src="@raw/ilginc_ga"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"/>
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1500dp"
+            android:background="@drawable/warning_bg"
+            android:text="@string/warning_ga"
+            android:textAppearance="@style/general_addiction_content_style1"
+            android:drawableEnd="@raw/mandatory"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:layout_marginBottom="15dp"/>
+        <GridView
+            android:id="@+id/gridView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="2dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:layout_marginTop="1700dp"/>
     </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -126,6 +155,7 @@
             />
     </RelativeLayout>
     <include
-        layout="@layout/nav_view"/>
+        layout="@layout/nav_view"
+        android:visibility="invisible"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

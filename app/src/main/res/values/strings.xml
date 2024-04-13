@@ -18,6 +18,7 @@
         <item name="general_addiction_symptoms5">"Belirli bir maddeden uzak durmak ya da belirli bir davranışı yapmayı bırakmakta zorlanmak."</item>
         <item name="general_addiction_symptoms6">"Düşük benlik saygısı, sosyal anksiyetenin neden olduğu geri çekilme veya izolasyon."</item>
     </string-array>
+    <string name="warning_ga">"Küçük bir hatırlatma: Testler size yol göstermek ve bilgi edinmeniz için oluşturulmuş olup kendi kendinize teşhis koymanız sizi yanıltabilir. Eğer kendinizi iyi hissetmiyorsanız bir sağlık kuruluşu ile iletişime geçiniz."</string>
 
 
 
