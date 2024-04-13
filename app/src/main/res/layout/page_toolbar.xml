@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/toolbar_background"
     android:minHeight="?attr/actionBarSize"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
 
     app:title="Anasayfa"
     app:titleTextAppearance="@style/title_style">

@@ -145,7 +145,7 @@
             android:layout_marginTop="1700dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="85dp"/>
     </RelativeLayout>
     </ScrollView>
     <RelativeLayout
@@ -155,6 +155,10 @@
             android:id="@+id/title_template"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            />
+        <include layout="@layout/bottom_nav"
+            android:id="@+id/bottom_temp"
+
             />
     </RelativeLayout>
     <include

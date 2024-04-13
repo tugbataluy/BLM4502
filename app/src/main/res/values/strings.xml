@@ -19,6 +19,10 @@
         <item name="general_addiction_symptoms6">"Düşük benlik saygısı, sosyal anksiyetenin neden olduğu geri çekilme veya izolasyon."</item>
     </string-array>
     <string name="warning_ga">"Küçük bir hatırlatma: Testler size yol göstermek ve bilgi edinmeniz için oluşturulmuş olup kendi kendinize teşhis koymanız sizi yanıltabilir. Eğer kendinizi iyi hissetmiyorsanız bir sağlık kuruluşu ile iletişime geçiniz."</string>
+    <string name="alt_toolbar_anasayfa">Anasayfa</string>
+    <string name="bottom_sorular">Sorular</string>
+    <string name="bottom_videolar">Videolar</string>
+    <string name="bottom_destek">Destek</string>
     <string-array name="general_addiction_test_titles">
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için dokun.</item>

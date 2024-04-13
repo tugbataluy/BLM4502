@@ -13,4 +13,5 @@
     <color name="general_addiction_title_color">#11009E</color>
     <color name="general_addiction_test_bg">#ACE2E1</color>
     <color name="general_addiction_test_text">#378CE7</color>
+    <color name="alt_toolbar_icon_color">#9B4444</color>
 </resources>
