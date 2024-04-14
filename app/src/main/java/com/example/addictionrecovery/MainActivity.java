@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import java.io.Console;
 
-public class MainActivity extends AppCompatActivity {
+// tugba_oguz branch updated
 
+public class MainActivity extends AppCompatActivity {
 
     private ImageView forwardView;
     private TextView welcomeSpeech;
