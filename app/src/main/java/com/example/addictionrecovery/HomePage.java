@@ -56,15 +56,19 @@ public class HomePage extends AppCompatActivity {
                 case R.id.general_addiction_btn:
                     Intent intent= new Intent(HomePage.this, GeneralAddictionMainPage.class);
                     startActivity(intent);
+                    break;
                 case R.id.drug_addiction_btn:
                     //pass
+                    break;
                 case R.id.tech_addiction_btn:
                     //pass
+                    break;
                 case R.id.alcohol_addiction_btn:
                     //pass
+                    break;
                 default:
                     System.out.println("Nothing Clicked");
-
+                    break;
 
             }
         }

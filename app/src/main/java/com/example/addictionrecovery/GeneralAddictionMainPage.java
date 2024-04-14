@@ -3,6 +3,7 @@ package com.example.addictionrecovery;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,6 +28,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ImageView navIcon;
+    TextView homeIcon,questionIcon,videoIcon,helpIcon;
     Toolbar tb;
     GridView symptomsView;
     GridView symptomsView2;
@@ -69,12 +72,58 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
 
-        tb=(Toolbar) findViewById(R.id.title_template);
-        tb.setTitle("Bağımlılık");
+
+
+        setToolbarTitle();
         drawerInitialization();
         relativeLayoutClickerEnable();
+        navBottomArrangements();
     }
 
+    public void navBottomArrangements(){
+        homeIcon=(TextView)findViewById(R.id.home_icon);
+        questionIcon=(TextView) findViewById(R.id.questions_icon);
+        videoIcon=(TextView) findViewById(R.id.videos_icon);
+        helpIcon=(TextView) findViewById(R.id.help_icon);
+
+        homeIcon.setOnClickListener(new BottomBarListener());
+        questionIcon.setOnClickListener(new BottomBarListener());
+        videoIcon.setOnClickListener(new BottomBarListener());
+        helpIcon.setOnClickListener(new BottomBarListener());
+
+
+    }
+
+    public class BottomBarListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+               case R.id.home_icon:
+                   Intent intent= new Intent(GeneralAddictionMainPage.this,GeneralAddictionMainPage.class);
+                   startActivity(intent);
+                   break;
+               case R.id.questions_icon:
+                    Intent intent2= new Intent(GeneralAddictionMainPage.this,GeneralAddictionQuestionsPage.class);
+                    startActivity(intent2);
+                    break;
+               case R.id.videos_icon:
+                   //pass
+                   break;
+               case R.id.help_icon:
+                   //pass
+                   break;
+               default:
+                    System.out.println("Any nav selected");
+                   break;
+            }
+        }
+    }
+
+    public void setToolbarTitle(){
+        tb=(Toolbar) findViewById(R.id.title_template);
+        tb.setTitle("Bağımlılık");
+    }
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);

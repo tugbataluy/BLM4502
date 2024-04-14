@@ -23,13 +23,13 @@
     <string name="bottom_sorular">Sorular</string>
     <string name="bottom_videolar">Videolar</string>
     <string name="bottom_destek">Destek</string>
+    <string name="question_page_content">Cevabını merak ettiğiniz sorunun kutucuğuna dokunarak cevaba ulaşabilirsiniz.</string>
     <string-array name="general_addiction_test_titles">
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için dokun.</item>
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için dokun.</item>
 
     </string-array>
-
 
 
 </resources>
