@@ -18,8 +18,19 @@
         android:id="@+id/general_addiction_layout"
         >
 
+        <ImageView
+            android:id="@+id/back_to_mainpage_icon"
+            android:layout_width="72dp"
+            android:layout_height="54dp"
+            android:layout_alignStart="@id/first_pic"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="140dp"
+            android:src="@drawable/back_arrow_red"
+            android:clickable="true"
+            />
 
         <ImageView
+            android:id="@+id/first_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@raw/addiction_depressed"

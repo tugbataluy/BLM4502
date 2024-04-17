@@ -24,7 +24,7 @@ public class HomePage extends AppCompatActivity {
     NavigationView navigationView;
     ImageView navIcon;
     TextView generalAddiction, substanceAddiction, techAddiction,alcoholAddiction;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
+
 
     FirebaseAuth auth;
 
@@ -70,8 +70,7 @@ public class HomePage extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
         drawerLayout = findViewById(R.id.my_drawer_layout);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
 
         navIcon = findViewById(R.id.navigation_icon);
         navIcon.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +85,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         // Çıkış yap butonuna tıklama işlemi atanıyor
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -96,6 +95,30 @@ public class HomePage extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });*/
+
+        //Switch case daha kolay olur diye switch case e çevirdim
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.kullanici_profili_option:
+                        break;
+                    case R.id.neyi_amacliyoruz_option:
+                        break;
+                    case R.id.ayarlar_option:
+                        break;
+                    case R.id.cikis_yap_option:
+                        logout();
+                        break;
+                    default:
+                        return true;
+
+
+                }
+                return  false;
+
             }
         });
     }
@@ -132,6 +155,7 @@ public class HomePage extends AppCompatActivity {
                     break;
                 default:
                     System.out.println("Nothing Clicked");
+                    break;
             }
         }
     }

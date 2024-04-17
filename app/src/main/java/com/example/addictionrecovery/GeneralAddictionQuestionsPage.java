@@ -1,5 +1,6 @@
 package com.example.addictionrecovery;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,14 +19,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class GeneralAddictionQuestionsPage extends AppCompatActivity {
 
     Toolbar tb;
     NavigationView navigationView;
-    DrawerLayout drawerLayout;
+
+    FirebaseAuth auth;
     RelativeLayout relativeLayout;
-    ActionBarDrawerToggle actionBarDrawerToggle;
+
     ImageView navIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
     GridView questionsGrid;
@@ -35,11 +38,11 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_addiction_questions_page);
+
+        auth=FirebaseAuth.getInstance();
         relativeLayout=findViewById(R.id.general_addiction_questions_layout);
-        tb=(Toolbar) findViewById(R.id.toolbar);
 
-
-        tb.setTitle("Bağımlılık");
+        toolBarArrangement();
         drawerInitialization();
         relativeLayoutClickerEnable();
         setQuestionsGrid();
@@ -47,6 +50,10 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
     }
 
 
+    public void toolBarArrangement(){
+        tb=(Toolbar) findViewById(R.id.toolbar);
+        tb.setTitle("Bağımlılık");
+    }
     public void setQuestionsGrid(){
         answers=getResources().getStringArray(R.array.general_addiction_question_answers);
         questions=getResources().getStringArray(R.array.general_addiction_question_list);
@@ -120,9 +127,7 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
-        drawerLayout= (DrawerLayout) findViewById(R.id.my_drawer_layout_ga_questions);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
 
         navIcon=(ImageView) findViewById(R.id.navigation_icon);
         navIcon.setOnClickListener( new View.OnClickListener(){
@@ -137,6 +142,36 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
                 }
             }
         });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.kullanici_profili_option:
+                        break;
+                    case R.id.neyi_amacliyoruz_option:
+                        break;
+                    case R.id.ayarlar_option:
+                        break;
+                    case R.id.cikis_yap_option:
+                        logout();
+                        break;
+                    default:
+                        return true;
+
+
+                }
+                return  false;
+
+            }
+        });
+    }
+
+    public void logout(){
+        auth.signOut();
+        Intent intent= new Intent(GeneralAddictionQuestionsPage.this, LoginPage.class);
+        startActivity(intent);
+        finish();
     }
 
     public void relativeLayoutClickerEnable(){
@@ -152,11 +187,5 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 }
