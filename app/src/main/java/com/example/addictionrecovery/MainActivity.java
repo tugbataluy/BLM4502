@@ -100,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
     public void startLoginPage(){
         Intent intent = new Intent(MainActivity.this, LoginPage.class);
         startActivity(intent);
