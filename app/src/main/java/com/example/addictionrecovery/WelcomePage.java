@@ -20,6 +20,7 @@ public class WelcomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
         welcomeMessage=(TextView)findViewById(R.id.welcome_text);
         welcomeImage= (ImageView) findViewById(R.id.nature);
         forwardArrow= (ImageView) findViewById(R.id.forward);

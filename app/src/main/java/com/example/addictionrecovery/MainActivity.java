@@ -15,8 +15,9 @@ import android.widget.TextView;
 
 import java.io.Console;
 
-public class MainActivity extends AppCompatActivity {
+// tugba_oguz branch updated
 
+public class MainActivity extends AppCompatActivity {
 
     private ImageView forwardView;
     private TextView welcomeSpeech;
@@ -99,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
     public void startLoginPage(){
         Intent intent = new Intent(MainActivity.this, LoginPage.class);
         startActivity(intent);

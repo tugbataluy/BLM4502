@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2FFE9">
+    android:background="#F2FFE9"
+    tools:context=".RegisterPage">
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="match_parent"
@@ -55,6 +58,7 @@
         android:hint="Şifre"
         android:textSize="18sp"
         />
+
     <EditText
         android:id="@+id/password_recap_edit"
         android:layout_width="245dp"
@@ -68,28 +72,33 @@
         android:textSize="18sp"
 
         />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/kayit_ol_register"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/login_buttons"
-
         android:text="Kayıt Ol"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
-
         android:layout_alignParentTop="true"
         android:layout_marginTop="570dp"/>
+
     <ImageView
         android:id="@+id/back_home_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/back_arrow"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="50dp"
         android:layout_marginLeft="30dp"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:paddingBottom="50dp"
+        android:src="@drawable/back_arrow"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
 
