@@ -50,17 +50,14 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         relativeLayout=(RelativeLayout)findViewById(R.id.general_addiction_layout);
         symptoms=getResources().getStringArray(R.array.general_symptoms);
-        symptoms2= Arrays.copyOfRange(symptoms,3,6);
+
         testTitles=getResources().getStringArray(R.array.general_addiction_test_titles);
 
-        // Birinci parça
+        // Semptomlar
         ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.grid_item,symptoms);
         symptomsView=(GridView)findViewById(R.id.gridView);
         symptomsView.setAdapter(arrayAdapter);
-       //2.parça
-        symptomsView2=(GridView) findViewById(R.id.gridView2);
-        ArrayAdapter<String> arrayAdapter2= new ArrayAdapter<>(this,R.layout.grid_item,symptoms2);
-        symptomsView2.setAdapter(arrayAdapter2);
+
 
         //Testler
 
