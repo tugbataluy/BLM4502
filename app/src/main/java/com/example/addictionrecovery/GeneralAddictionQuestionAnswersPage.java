@@ -21,7 +21,7 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
     Toolbar tb;
     NavigationView navigationView;
 
-    ImageView navIcon;
+    ImageView navIcon,backArrow;
     TextView homeIcon,questionIcon,videoIcon, helpIcon, questionTitle,questionAnswer;
     RelativeLayout relativeLayout;
 
@@ -51,6 +51,15 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
         questionTitle.setText(question);
         questionAnswer.setText(answer);
 
+        backArrow=(ImageView)findViewById(R.id.back_arrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
         drawerInitialization();

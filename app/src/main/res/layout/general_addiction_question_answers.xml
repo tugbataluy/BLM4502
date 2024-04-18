@@ -36,6 +36,7 @@
                 />
 
             <ImageView
+                android:id="@+id/back_arrow"
                 android:layout_width="48dp"
                 android:layout_height="60dp"
                 android:layout_alignBottom="@id/answer_view"
