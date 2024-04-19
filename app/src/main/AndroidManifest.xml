@@ -27,8 +27,6 @@
             android:name=".HomePage"
             android:exported="false" />
 
-
-
         <activity
             android:name=".WelcomePage"
             android:exported="false" />
