@@ -117,7 +117,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                case R.id.home_icon:
-                   Intent intent= new Intent(GeneralAddictionMainPage.this,GeneralAddictionMainPage.class);
+                   Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
                    startActivity(intent);
                    finish();
                    break;

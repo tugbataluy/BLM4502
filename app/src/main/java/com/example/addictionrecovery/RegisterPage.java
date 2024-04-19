@@ -15,10 +15,17 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterPage extends AppCompatActivity {
     EditText userName, userEmail, userPassword, userPasswordRepeat;
@@ -26,6 +33,8 @@ public class RegisterPage extends AppCompatActivity {
     ImageView goBackToLogin;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
+    FirebaseFirestore db ;
+    CollectionReference colRef;
     /*@Override
     public void onStart() {
         super.onStart();
@@ -35,6 +44,32 @@ public class RegisterPage extends AppCompatActivity {
             startActivity(intent);
         }
     }*/
+
+
+    // Kullanıcı bilgilerini database'e gönderme fonksiyonu
+    public void addToDatabase(String uid) {
+        // Create a new user with a first and last name
+        Map<String, Object> user = new HashMap<String, Object>();
+        user.put("Name", userName.getText().toString());
+        user.put("Email", userEmail.getText().toString());
+        user.put("OwnerId", uid);
+
+        // Add a new document with a generated ID
+        colRef.add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("addToDatabase", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("addToDatabase", "Error adding document", e);
+                    }
+                });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,19 +90,23 @@ public class RegisterPage extends AppCompatActivity {
 
         userRegister.setOnClickListener( new SetOnClickListenerRegister());
         goBackToLogin.setOnClickListener( new SetOnClickListenerRegister1());
+
+        db = FirebaseFirestore.getInstance();
+        colRef = db.collection("users");
     }
 
     public class SetOnClickListenerRegister implements View.OnClickListener{
         @Override
         public void onClick(View v) {
             progressBar.setVisibility(View.VISIBLE);
-            String fulName,email,password,passRep;
-            fulName=String.valueOf(userName.getText());
+            String fullName,email,password,passRep;
+
+            fullName=String.valueOf(userName.getText());
             email=String.valueOf(userEmail.getText());
             password=String.valueOf(userPassword.getText());
             passRep=String.valueOf(userPasswordRepeat.getText());
 
-            if(TextUtils.isEmpty(fulName)){
+            if(TextUtils.isEmpty(fullName)){
                 Toast.makeText(RegisterPage.this,"Enter fullname",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
@@ -96,6 +135,7 @@ public class RegisterPage extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
+                                addToDatabase(mAuth.getUid());
                                 // If sign in success, display a message to the user.
                                 Toast.makeText(RegisterPage.this, "Account created.",
                                         Toast.LENGTH_SHORT).show();

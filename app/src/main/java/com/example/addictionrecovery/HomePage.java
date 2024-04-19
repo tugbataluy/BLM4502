@@ -24,8 +24,6 @@ public class HomePage extends AppCompatActivity {
     NavigationView navigationView;
     ImageView navIcon;
     TextView generalAddiction, substanceAddiction, techAddiction,alcoholAddiction;
-
-
     FirebaseAuth auth;
 
     @Override
@@ -71,7 +69,6 @@ public class HomePage extends AppCompatActivity {
         navigationView.setVisibility(View.INVISIBLE);
         drawerLayout = findViewById(R.id.my_drawer_layout);
 
-
         navIcon = findViewById(R.id.navigation_icon);
         navIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +111,8 @@ public class HomePage extends AppCompatActivity {
                         break;
                     default:
                         return true;
-
-
                 }
                 return  false;
-
             }
         });
     }
