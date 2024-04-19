@@ -35,16 +35,6 @@ public class RegisterPage extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseFirestore db ;
     CollectionReference colRef;
-    /*@Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(RegisterPage.this, LoginPage.class);
-            startActivity(intent);
-        }
-    }*/
-
 
     // Kullanıcı bilgilerini database'e gönderme fonksiyonu
     public void addToDatabase(String uid) {
@@ -106,6 +96,7 @@ public class RegisterPage extends AppCompatActivity {
             password=String.valueOf(userPassword.getText());
             passRep=String.valueOf(userPasswordRepeat.getText());
 
+
             if(TextUtils.isEmpty(fullName)){
                 Toast.makeText(RegisterPage.this,"Enter fullname",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
@@ -126,6 +117,12 @@ public class RegisterPage extends AppCompatActivity {
 
             if(TextUtils.isEmpty(passRep)){
                 Toast.makeText(RegisterPage.this,"Repeat password",Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                return;
+            }
+
+            if(!password.equals(passRep)){
+                Toast.makeText(RegisterPage.this,"Passwords are not the same",Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
                 return;
             }

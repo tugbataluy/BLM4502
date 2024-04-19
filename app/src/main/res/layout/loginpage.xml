@@ -39,22 +39,24 @@
         android:layout_marginLeft="58dp"
         android:background="@drawable/login_elems"
         android:drawableStart="@drawable/email"
+        android:inputType="textEmailAddress"
+
         />
 
     <EditText
         android:id="@+id/sifre_edit"
         android:layout_width="245dp"
         android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="20dp"
-        android:textSize="18sp"
         android:layout_alignParentTop="true"
-        android:hint="  Şifre"
-        android:layout_marginTop="412dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="58dp"
+        android:layout_marginTop="412dp"
         android:background="@drawable/login_elems"
         android:drawableStart="@drawable/password"
-        />
+        android:hint="  Şifre"
+        android:paddingLeft="20dp"
+        android:inputType="textPassword"
+        android:textSize="18sp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
