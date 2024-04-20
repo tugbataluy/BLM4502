@@ -124,7 +124,8 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
                     finish();
                     break;
                case R.id.videos_icon:
-                   //pass
+                   Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
+                   startActivity(intent3);
                    break;
                case R.id.help_icon:
                    //pass

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="general_addiction_video_titles">
+        <item>"Bağımlılık Üzerine - NA Bilim"</item>
+        <item>"Bağımlılık Nedir? Dr. Gabor Mate"</item>
+        <item>"Bağımlı Mısınız? Peki Neden?" | "Hayatın İçinden"</item>
+        <item>"Bağımlılık nedir ? / Bağımlılık nasıl oluşur ? / Beyin-Ödül sistemi"</item>
+    </string-array>
+
+    <string-array name="general_addiction_video_ids">
+        <item>"F40cI_NHw9Y"</item>
+        <item>"nfs1wd9BvxI"</item>
+        <item>"VDcnteWfgW0"</item>
+        <item>"P6glgoqr7K8"</item>
+    </string-array>
+</resources>

@@ -92,9 +92,11 @@
             android:layout_height="150dp"
             android:src="@raw/banner"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="975dp"
+            android:layout_alignTop="@id/belirti"
+            android:layout_marginTop="-140dp"
             android:paddingBottom="15dp"/>
         <ImageView
+            android:id="@+id/belirti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@raw/subtitle1_ga"
@@ -123,6 +125,7 @@
             android:layout_centerHorizontal="true"
             android:padding="5dp"/>
         <TextView
+            android:id="@+id/warning"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1500dp"
@@ -135,18 +138,19 @@
             android:padding="15dp"
             android:layout_marginBottom="15dp"/>
         <GridView
+            android:layout_alignTop="@id/warning"
             android:id="@+id/gridView3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:numColumns="3"
             android:verticalSpacing="5dp"
             android:horizontalSpacing="2dp"
             android:stretchMode="columnWidth"
             android:gravity="center"
-            android:layout_marginTop="1700dp"
+            android:layout_marginTop="250dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_marginBottom="85dp"/>
+            android:layout_marginBottom="0dp"/>
     </RelativeLayout>
     </ScrollView>
     <RelativeLayout
