@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".HomePage"
     android:id="@+id/my_drawer_layout"
-    android:background="#FBF3D5">
+    android:background="#FBF3D5"
+    android:orientation="vertical">
   <RelativeLayout
       android:id="@+id/homepage_layout"
       android:layout_width="match_parent"

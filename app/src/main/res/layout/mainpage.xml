@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:id="@+id/welcome_page"
     android:clipToOutline="true"
-    android:background="#F2FFE9">
+    android:background="#F2FFE9"
+    android:orientation="vertical">
     <ImageView
 
         android:src="@raw/amico"

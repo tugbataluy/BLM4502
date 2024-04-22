@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".GeneralAddictionMainPage"
     android:id="@+id/my_drawer_layout"
-    android:background="#FBF3D5">
+    android:background="#FBF3D5"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="wrap_content"

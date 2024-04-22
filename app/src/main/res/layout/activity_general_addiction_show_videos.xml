@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GeneralAddictionShowVideos"
-    android:background="#FBF3D5">
+    android:background="#FBF3D5"
+    android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
