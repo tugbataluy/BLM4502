@@ -7,6 +7,7 @@
     tools:context=".GeneralAddictionShowVideos"
     android:background="#FBF3D5"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,9 +33,24 @@
         android:layout_height="250dp"
         android:layout_marginTop="75dp"
         android:layout_centerHorizontal="true"
+        
         />
 
+
+
+
+
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/full_screen_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
