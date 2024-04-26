@@ -32,7 +32,7 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
 
     GridView gridView;
 
-    String [] titles, ids;
+    String [] titles, ids, descriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +53,7 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
         titles= getResources().getStringArray(R.array.general_addiction_video_titles);
 
         ids=getResources().getStringArray(R.array.general_addiction_video_ids);
+        descriptions=getResources().getStringArray(R.array.general_addiction_video_descriptions);
         gridView=(GridView) findViewById(R.id.video_list);
         ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.video_list_item,titles);
         gridView.setAdapter(adapter);
@@ -67,10 +68,14 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Intent intent = new Intent( GeneralAddictionVideosPage.this,GeneralAddictionShowVideos.class);
             Bundle extras = new Bundle();
-            extras.putString("VIDEO_TITLE",titles[position]);
-            extras.putString("VIDEO_ID",ids[position]);
+
+            extras.putInt("VIDEO_POS",position);
+            extras.putStringArray("VIDEO_LIST",titles);
+            extras.putStringArray("VIDEO_IDS",ids);
+            extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
             intent.putExtras(extras);
             startActivity(intent);
+            finish();
         }
     }
     public void toolBarArrangement(){

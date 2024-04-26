@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,6 +31,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -40,17 +46,20 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
     FirebaseAuth auth;
     RelativeLayout relativeLayout;
 
-    ImageView navIcon;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon, titleView;
+    ImageView navIcon,backIcon;
+    TextView homeIcon,questionIcon,videoIcon, helpIcon, titleView, descriptionView;
     YouTubePlayerView youTubePlayerView;
     FrameLayout fullscreenViewContainer;
 
 
+    GridView recommendedGrid;
     YouTubePlayer youTubePlayer;
 
     String title, videoId;
 
+    String [] videoTitles, videoIds,descriptions;
 
+    int skippingPos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +79,8 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
+        setRecommendedVideos();
+        backToVideoList();
     }
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);
@@ -78,15 +89,99 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
 
     public void getExtrasFromIntent(){
         Bundle extras= getIntent().getExtras();
-        title= extras.getString("VIDEO_TITLE");
-        videoId= extras.getString("VIDEO_ID");
+
+        skippingPos=extras.getInt("VIDEO_POS");
+        videoTitles=extras.getStringArray("VIDEO_LIST");
+        videoIds=extras.getStringArray("VIDEO_IDS");
+        descriptions=extras.getStringArray("VIDEO_DESCRIPTIONS");
 
         titleView=(TextView) findViewById(R.id.video_title_view);
-        titleView.setText(title);
+        titleView.setText(videoTitles[skippingPos]);
+
+        descriptionView=(TextView) findViewById(R.id.short_description);
+        descriptionView.setText(descriptions[skippingPos]);
+
     }
+
+
+    public void setRecommendedVideos(){
+
+
+        recommendedGrid=(GridView)findViewById(R.id.recommended_grid);
+
+        List<Integer> secilenIndeksler = new ArrayList<>();
+        List<String> secilenBasliklar= new ArrayList<>();
+        Random random = new Random();
+
+        while (secilenIndeksler.size() < 3) {
+            int rastgeleIndex = random.nextInt(videoIds.length);
+            if (rastgeleIndex != skippingPos && !secilenIndeksler.contains(rastgeleIndex)) {
+                secilenIndeksler.add(rastgeleIndex);
+                secilenBasliklar.add(videoTitles[rastgeleIndex]);
+            }
+        }
+
+        ArrayAdapter adapter= new ArrayAdapter<>(GeneralAddictionShowVideos.this,R.layout.general_addiction_recommended_videos_grid,secilenBasliklar);
+        recommendedGrid.setAdapter(adapter);
+        recommendedGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+
+                    case 0:
+                        //System.out.println("1");
+                        Intent intent = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
+                        Bundle extras = new Bundle();
+                        extras.putInt("VIDEO_POS", secilenIndeksler.get(0));
+                        extras.putStringArray("VIDEO_LIST",videoTitles);
+                        extras.putStringArray("VIDEO_IDS",videoIds);
+                        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+                        intent.putExtras(extras);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case 1:
+                        //System.out.println("2");
+                        Intent intent2 = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
+                        Bundle extras2 = new Bundle();
+                        extras2.putInt("VIDEO_POS", secilenIndeksler.get(1));
+                        extras2.putStringArray("VIDEO_LIST",videoTitles);
+                        extras2.putStringArray("VIDEO_IDS",videoIds);
+                        extras2.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+                        intent2.putExtras(extras2);
+                        startActivity(intent2);
+                        finish();
+                        break;
+                    case 2:
+                        //System.out.println("3");
+                        Intent intent3 = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
+                        Bundle extras3 = new Bundle();
+                        extras3.putInt("VIDEO_POS", secilenIndeksler.get(2));
+                        extras3.putStringArray("VIDEO_LIST",videoTitles);
+                        extras3.putStringArray("VIDEO_IDS",videoIds);
+                        extras3.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+                        intent3.putExtras(extras3);
+                        startActivity(intent3);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        // Seçilen indeksleri yazdırma
+        System.out.println("Seçilen indeksler:");
+        for (int indeks : secilenIndeksler) {
+            System.out.println(indeks);
+        }
+
+    }
+
 
     public void videoArrangements(){
         final boolean[] isFullscreen = {false};
+
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_video_player);
         fullscreenViewContainer =(FrameLayout) findViewById(R.id.full_screen_view_container) ;
 
@@ -96,7 +191,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
                 GeneralAddictionShowVideos.this.youTubePlayer = youTubePlayer;
-                youTubePlayer.cueVideo(videoId, 0f);
+                youTubePlayer.cueVideo(videoIds[skippingPos], 0f);
 
 
             }
@@ -108,18 +203,11 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
                 isFullscreen[0] = true;
 
                 // the video will continue playing in fullscreenView
-                youTubePlayerView.setVisibility(View.GONE);
-                tb.setVisibility(View.GONE);
-                navigationView.setVisibility(View.GONE);
-                bottom.setVisibility(View.GONE);
-                titleView.setVisibility(View.GONE);
-
-
 
 
                 fullscreenViewContainer.setVisibility(View.VISIBLE);
 
-
+                toggleInvisible();
                 fullscreenViewContainer.addView(fullscreenview);
                 //fullscreenViewContainer.setRotation(90);
                 ViewUtils.rotateAndScaleView(fullscreenViewContainer,GeneralAddictionShowVideos.this);
@@ -139,12 +227,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
                 fullscreenViewContainer.removeAllViews();
                 //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-                youTubePlayerView.setVisibility(View.VISIBLE);
-                tb.setVisibility(View.VISIBLE);
-                navigationView.setVisibility(View.INVISIBLE);
-                bottom.setVisibility(View.VISIBLE);
-                titleView.setVisibility(View.VISIBLE);
-                navBottomArrangements();
+                toggleVisible();
 
             }
 
@@ -158,6 +241,39 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
 
 
 
+    }
+    public void  toggleInvisible(){
+        youTubePlayerView.setVisibility(View.GONE);
+        tb.setVisibility(View.GONE);
+        navigationView.setVisibility(View.GONE);
+        bottom.setVisibility(View.GONE);
+        titleView.setVisibility(View.GONE);
+        recommendedGrid.setVisibility(View.GONE);
+        descriptionView.setVisibility(View.GONE);
+        backIcon.setVisibility(View.GONE);
+    }
+
+    public void toggleVisible(){
+        youTubePlayerView.setVisibility(View.VISIBLE);
+        tb.setVisibility(View.VISIBLE);
+        navigationView.setVisibility(View.INVISIBLE);
+        bottom.setVisibility(View.VISIBLE);
+        titleView.setVisibility(View.VISIBLE);
+        recommendedGrid.setVisibility(View.VISIBLE);
+        descriptionView.setVisibility(View.VISIBLE);
+        backIcon.setVisibility(View.VISIBLE);
+    }
+
+    public void backToVideoList(){
+        backIcon=(ImageView)findViewById(R.id.back_to_video_list_btn);
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(GeneralAddictionShowVideos.this,GeneralAddictionVideosPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public static  class ViewUtils {
@@ -218,7 +334,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
+                    Intent intent2= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionQuestionsPage.class);
                     startActivity(intent2);
                     break;
                 case R.id.videos_icon:
