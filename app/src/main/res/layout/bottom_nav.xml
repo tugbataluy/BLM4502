@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:id="@+id/bottom_nav_id"
+    android:background="@color/toolbar_background"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:layout_alignParentBottom="true"
+    >
+
+    <TextView
+
+        android:id="@+id/home_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:drawableTop="@drawable/home"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="@string/alt_toolbar_anasayfa"
+        android:textColor="@color/alt_toolbar_icon_color"
+        android:textSize="12sp" />
+    <ImageView
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/line"
+        android:rotation="90"
+
+        />
+    <TextView
+        android:id="@+id/questions_icon"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/question_mark"
+        android:text="@string/bottom_sorular"
+        android:textColor="@color/alt_toolbar_icon_color"
+        android:textSize="12sp"
+        android:gravity="center"
+
+        />
+    <ImageView
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/line"
+        android:rotation="90"
+
+        />
+
+    <TextView
+        android:id="@+id/videos_icon"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/videos"
+        android:text="@string/bottom_videolar"
+        android:textColor="@color/alt_toolbar_icon_color"
+        android:textSize="12sp"
+        android:gravity="center"
+        />
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/line"
+        android:rotation="90"
+
+        />
+    <TextView
+        android:id="@+id/help_icon"
+        android:paddingTop="10dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/destek"
+        android:text="@string/bottom_destek"
+        android:textColor="@color/alt_toolbar_icon_color"
+        android:textSize="12sp"
+        android:gravity="center"
+
+        />
+
+
+
+</androidx.appcompat.widget.Toolbar>

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:id="@+id/welcome_page"
     android:clipToOutline="true"
-    android:background="#F2FFE9">
+    android:background="#F2FFE9"
+    android:orientation="vertical">
     <ImageView
 
         android:src="@raw/amico"
@@ -13,7 +14,7 @@
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="150dp"
         >
 
     </ImageView>
@@ -27,9 +28,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="376dp"
+        android:layout_marginTop="400dp"
         android:layout_marginRight="25dp"
-        android:lineSpacingExtra="4sp"
+        android:lineSpacingExtra="6sp"
 
         android:gravity="center_horizontal|top"
         android:text="@string/welcome_speech"
@@ -43,7 +44,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="335dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="626dp"
+        android:layout_marginTop="600dp"
         android:clickable="true"
 
         />
