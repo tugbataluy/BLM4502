@@ -137,9 +137,13 @@ public class HomePage extends AppCompatActivity {
                 case R.id.general_addiction_btn:
                     Intent intent = new Intent(HomePage.this, GeneralAddictionMainPage.class);
                     startActivity(intent);
+                    finish();
                     break;
                 case R.id.drug_addiction_btn:
                     //pass
+                    Intent intent2=new Intent(HomePage.this, SubstanceAddictionMainPage.class);
+                    startActivity(intent2);
+                    finish();
                     break;
                 case R.id.tech_addiction_btn:
                     //pass
