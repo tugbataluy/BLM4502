@@ -40,7 +40,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     GridView testView;
 
     String[] symptoms;
-    String[] symptoms2;
+
 
     String[] testTitles;
     @Override
