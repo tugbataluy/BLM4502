@@ -94,8 +94,7 @@ public class LoginPage extends AppCompatActivity {
                                 userPassword.setText("");
                             }
                         }
-                    });
-        }
+                    });        }
     }
 
     public class SetOnClickListenerRegister implements View.OnClickListener{

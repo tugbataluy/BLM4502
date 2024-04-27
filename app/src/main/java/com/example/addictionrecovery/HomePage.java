@@ -74,8 +74,6 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (navigationView.getVisibility() == View.INVISIBLE) {
-                    Intent intent = new Intent(HomePage.this, drawer_menu.class);
-                    startActivity(intent);
                     navigationView.setVisibility(View.VISIBLE);
                 } else {
                     navigationView.setVisibility(View.INVISIBLE);
