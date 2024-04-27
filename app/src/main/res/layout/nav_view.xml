@@ -7,6 +7,7 @@
     android:layout_marginTop="65dp"
     android:layout_marginLeft="150dp"
     app:menu="@menu/drawer_menu"
+    app:headerLayout="@layout/drawer_header"
     android:backgroundTint="#FBF3D5"
     app:itemTextColor="#9B4444">
 
