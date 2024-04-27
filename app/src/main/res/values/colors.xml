@@ -5,13 +5,26 @@
     <color name="login_buttons">#50623A</color>
     <color name="toolbar_background">#EFBC9B</color>
     <color name="app_pages_bg">#FBF3D5</color>
+    <color name="alt_toolbar_icon_color">#9B4444</color>
+
     <color name="general_addiction_bg">#BBE2EC</color>
     <color name="substance_addiction_bg">#9AD0C2</color>
     <color name="tech_addiction_bg">#9290C3</color>
     <color name="alcohol_addicton_bg">#B47B84</color>
+
     <color name="general_addiction_title_bg">#40A2E3</color>
     <color name="general_addiction_title_color">#11009E</color>
     <color name="general_addiction_test_bg">#ACE2E1</color>
     <color name="general_addiction_test_text">#378CE7</color>
-    <color name="alt_toolbar_icon_color">#9B4444</color>
+
+    <color name="subs_addiction_content_title_bg">#77AAAB</color>
+    <color name="subs_addiction_content_text_bg">#D7FCFD</color>
+    <color name="subs_addiction_homepage_txt_color">#003638</color>
+    <color name="subs_addiction_symptoms_bg">#7F9F80</color>
+    <color name="subs_addiction_test_bg">#BEF0CB</color>
+    <color name="subs_addiction_test_text_color">#66726A</color>
+    <color name="subs_addiction_questions_title_color">#AFC7B6</color>
+
+
+
 </resources>
