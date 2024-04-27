@@ -82,13 +82,14 @@ public class LoginPage extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginPage.this, "Login Successful.",
                                         Toast.LENGTH_SHORT).show();
+                                Log.e("LoginPage", "Kullanıcı girişi başarılı oldu " );
                                 Intent intent = new Intent(LoginPage.this, WelcomePage.class);
                                 startActivity(intent);
                                 //finish();
                             } else {
                                 Toast.makeText(LoginPage.this, "Authentication failed: incorrect email or password " ,
                                         Toast.LENGTH_SHORT).show();
-                                Log.e("LoginPage", "Kullanıcı girişi başarısız oldu: " );
+                                Log.e("LoginPage", "Kullanıcı girişi başarısız oldu" );
                                 userEmail.setText("");
                                 userPassword.setText("");
                             }

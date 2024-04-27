@@ -45,11 +45,12 @@ public class RegisterPage extends AppCompatActivity {
         user.put("OwnerId", uid);
 
         // Add a new document with a generated ID
-        colRef.add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection("users").document(uid)
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("addToDatabase", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onSuccess(Void aVoid) {
+                        Log.d("addToDatabase", "DocumentSnapshot added" );
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
