@@ -1,10 +1,8 @@
 package com.example.addictionrecovery;
 
-import androidx.annotation.NonNull;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,26 +11,21 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
-
-
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Arrays;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class GeneralAddictionMainPage extends AppCompatActivity {
-
+    public ActionBarDrawerToggle actionBarDrawerToggle;
 
     RelativeLayout relativeLayout;
-
-    FirebaseAuth auth;
+    DrawerLayout drawerLayout;
     NavigationView navigationView;
-    ImageView navIcon,backIcon;
-    TextView homeIcon,questionIcon,videoIcon,helpIcon;
+    ImageView navIcon;
     Toolbar tb;
     GridView symptomsView;
     GridView symptomsView2;
@@ -47,17 +40,19 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_addiction_main_page);
-        auth = FirebaseAuth.getInstance();
         relativeLayout=(RelativeLayout)findViewById(R.id.general_addiction_layout);
         symptoms=getResources().getStringArray(R.array.general_symptoms);
-
+        symptoms2= Arrays.copyOfRange(symptoms,3,6);
         testTitles=getResources().getStringArray(R.array.general_addiction_test_titles);
 
-        // Semptomlar
+        // Birinci parça
         ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.grid_item,symptoms);
         symptomsView=(GridView)findViewById(R.id.gridView);
         symptomsView.setAdapter(arrayAdapter);
-
+       //2.parça
+        symptomsView2=(GridView) findViewById(R.id.gridView2);
+        ArrayAdapter<String> arrayAdapter2= new ArrayAdapter<>(this,R.layout.grid_item,symptoms2);
+        symptomsView2.setAdapter(arrayAdapter2);
 
         //Testler
 
@@ -74,82 +69,20 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
 
-
-        backButtonInitialization();
-        setToolbarTitle();
-        drawerInitialization();
-        relativeLayoutClickerEnable();
-        navBottomArrangements();
-    }
-
-
-    public void backButtonInitialization (){
-        backIcon=(ImageView)findViewById(R.id.back_to_mainpage_icon);
-        backIcon.setOnClickListener( new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GeneralAddictionMainPage.this, HomePage.class);
-                startActivity(intent);
-            }
-        });
-    }
-    public void navBottomArrangements(){
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
-
-        homeIcon.setOnClickListener(new BottomBarListener());
-        questionIcon.setOnClickListener(new BottomBarListener());
-        videoIcon.setOnClickListener(new BottomBarListener());
-        helpIcon.setOnClickListener(new BottomBarListener());
-
-
-    }
-
-    public class BottomBarListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-               case R.id.home_icon:
-                   Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
-                   startActivity(intent);
-                   finish();
-                   break;
-               case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionMainPage.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-                    finish();
-                    break;
-               case R.id.videos_icon:
-                   Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
-                   startActivity(intent3);
-                   finish();
-                   break;
-               case R.id.help_icon:
-                   //pass
-                   Intent intent4= new Intent(GeneralAddictionMainPage.this,GeneralAddictionSupportPage.class);
-                   startActivity(intent4);
-                   finish();
-                   break;
-               default:
-                    System.out.println("Any nav selected");
-                   break;
-            }
-        }
-    }
-
-    public void setToolbarTitle(){
         tb=(Toolbar) findViewById(R.id.title_template);
         tb.setTitle("Bağımlılık");
+        drawerInitialization();
+        relativeLayoutClickerEnable();
     }
+
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
-        navIcon=(ImageView) findViewById(R.id.navigation_icon);
+        drawerLayout= (DrawerLayout) findViewById(R.id.my_drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
+        navIcon=(ImageView) findViewById(R.id.navigation_icon);
         navIcon.setOnClickListener( new View.OnClickListener(){
 
             @Override
@@ -162,39 +95,6 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
                 }
             }
         });
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.kullanici_profili_option:
-                        break;
-                    case R.id.neyi_amacliyoruz_option:
-                        break;
-                    case R.id.ayarlar_option:
-                        break;
-                    case R.id.cikis_yap_option:
-                        logout();
-                        break;
-                    default:
-                        return true;
-
-
-                }
-                return  false;
-
-            }
-        });
-
-    }
-
-    public void logout(){
-        auth.signOut();
-
-        // Giriş sayfasına yönlendir
-        Intent intent = new Intent(GeneralAddictionMainPage.this, LoginPage.class);
-        startActivity(intent);
-        finish(); // Bu aktiviteyi kapat
     }
 
     public void relativeLayoutClickerEnable(){
@@ -207,5 +107,11 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
