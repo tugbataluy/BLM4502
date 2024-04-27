@@ -24,14 +24,14 @@
             android:gravity="center"
             android:background="@drawable/warning_bg"
             android:padding="15dp"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="14sp"/>
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_video_player"
         android:layout_alignTop="@id/video_title_view"
-        android:layout_width="350dp"
+        android:layout_width="375dp"
         android:layout_height="250dp"
         android:layout_marginTop="75dp"
         android:layout_centerHorizontal="true"
@@ -43,7 +43,7 @@
             android:layout_height="48dp"
             android:src="@drawable/back_arrow_red"
             android:layout_alignTop="@id/youtube_video_player"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="310dp"
             android:layout_marginLeft="30dp"
 
             />
@@ -57,7 +57,7 @@
             android:padding="3dp"
             android:gravity="left"
             android:layout_marginLeft="75dp"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="300dp"
             android:textColor="@color/black"
 
             android:text="LOREM"/>
@@ -71,8 +71,8 @@
             android:horizontalSpacing="5dp"
             android:stretchMode="columnWidth"
             android:layout_alignTop="@id/short_description"
-            android:layout_marginTop="85dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginTop="105dp"
+            android:layout_marginBottom="20dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             />

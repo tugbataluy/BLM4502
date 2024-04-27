@@ -11,50 +11,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AddictionRecovery"
-        tools:targetApi="31"
-        >
+        tools:targetApi="31">
+        <activity
+            android:name=".GeneralAddictionSupportPage"
+            android:exported="false" />
         <activity
             android:name=".GeneralAddictionShowVideos"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionVideosPage"
-            android:screenOrientation="portrait"
             android:exported="false"
             android:label="@string/title_activity_general_addiction_videos_page"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AddictionRecovery" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".GeneralAddictionQuestionAnswersPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".GeneralAddictionQuestionsPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".GeneralAddictionMainPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".HomePage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".WelcomePage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".RegisterPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".LoginPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

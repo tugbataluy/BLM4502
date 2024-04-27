@@ -126,9 +126,13 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
                case R.id.videos_icon:
                    Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
                    startActivity(intent3);
+                   finish();
                    break;
                case R.id.help_icon:
                    //pass
+                   Intent intent4= new Intent(GeneralAddictionMainPage.this,GeneralAddictionSupportPage.class);
+                   startActivity(intent4);
+                   finish();
                    break;
                default:
                     System.out.println("Any nav selected");
