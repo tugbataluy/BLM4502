@@ -1,70 +1,86 @@
 package com.example.addictionrecovery;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
+public class GeneralAddictionVideosPage extends AppCompatActivity {
+
     Toolbar tb;
     NavigationView navigationView;
 
-    ImageView navIcon,backArrow;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon, questionTitle,questionAnswer;
+    FirebaseAuth auth;
     RelativeLayout relativeLayout;
 
-    FirebaseAuth auth;
+    ImageView navIcon;
+    TextView homeIcon,questionIcon,videoIcon, helpIcon;
+
+    GridView gridView;
+
+    String [] titles, ids, descriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_addiction_question_answers);
-
+        setContentView(R.layout.activity_general_addiction_videos_page);
         auth=FirebaseAuth.getInstance();
-        relativeLayout=findViewById(R.id.my_relative_layout);
-
-        tb=(Toolbar) findViewById(R.id.title_template);
-        tb.setTitle("Bağımlılık");
-
-        Bundle extras = getIntent().getExtras();
-        String question = extras.getString("QUESTION");
-        String answer = extras.getString("ANSWER");
+        relativeLayout=(RelativeLayout) findViewById(R.id.general_addiction_videos_layout);
 
 
-        System.out.println(question);
-        System.out.println(answer);
-        questionTitle=(TextView)findViewById(R.id.question_title);
-        questionAnswer=(TextView) findViewById(R.id.answer_view);
-
-        questionTitle.setText(question);
-        questionAnswer.setText(answer);
-
-        backArrow=(ImageView)findViewById(R.id.back_arrow);
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-
+        toolBarArrangement();
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
+        setGridView();
+    }
+
+
+    public void setGridView(){
+        titles= getResources().getStringArray(R.array.general_addiction_video_titles);
+
+        ids=getResources().getStringArray(R.array.general_addiction_video_ids);
+        descriptions=getResources().getStringArray(R.array.general_addiction_video_descriptions);
+        gridView=(GridView) findViewById(R.id.video_list);
+        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.video_list_item,titles);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener( new VideoClickListener());
+
+
+    }
+
+    public class VideoClickListener implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent( GeneralAddictionVideosPage.this,GeneralAddictionShowVideos.class);
+            Bundle extras = new Bundle();
+
+            extras.putInt("VIDEO_POS",position);
+            extras.putStringArray("VIDEO_LIST",titles);
+            extras.putStringArray("VIDEO_IDS",ids);
+            extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+            intent.putExtras(extras);
+            startActivity(intent);
+            finish();
+        }
+    }
+    public void toolBarArrangement(){
+        tb=(Toolbar) findViewById(R.id.toolbar);
+        tb.setTitle("Bağımlılık");
     }
 
     public void navBottomArrangements(){
@@ -73,29 +89,29 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
         videoIcon=(TextView) findViewById(R.id.videos_icon);
         helpIcon=(TextView) findViewById(R.id.help_icon);
 
-        homeIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        questionIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        videoIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        helpIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
+        homeIcon.setOnClickListener(new GeneralAddictionVideosPage.BottomBarListener());
+        questionIcon.setOnClickListener(new GeneralAddictionVideosPage.BottomBarListener());
+        videoIcon.setOnClickListener(new GeneralAddictionVideosPage.BottomBarListener());
+        helpIcon.setOnClickListener(new GeneralAddictionVideosPage.BottomBarListener());
 
 
     }
+
     public class BottomBarListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.home_icon:
-                    Intent intent= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionMainPage.class);
+                    Intent intent= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionMainPage.class);
                     startActivity(intent);
                     break;
                 case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
+                    Intent intent2= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionQuestionsPage.class);
                     startActivity(intent2);
                     break;
                 case R.id.videos_icon:
-                    Intent intent3= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionVideosPage.class);
-                    startActivity(intent3);
+                    //pass
                     break;
                 case R.id.help_icon:
                     //pass
@@ -106,10 +122,10 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
             }
         }
     }
+
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
-
 
 
         navIcon=(ImageView) findViewById(R.id.navigation_icon);
@@ -152,7 +168,7 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
 
     public void logout(){
         auth.signOut();
-        Intent intent= new Intent(GeneralAddictionQuestionAnswersPage.this,LoginPage.class);
+        Intent intent= new Intent(GeneralAddictionVideosPage.this, LoginPage.class);
         startActivity(intent);
         finish();
     }
@@ -168,10 +184,4 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
 }

@@ -39,8 +39,11 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_addiction_questions_page);
 
+
         auth=FirebaseAuth.getInstance();
         relativeLayout=findViewById(R.id.general_addiction_questions_layout);
+
+
 
         toolBarArrangement();
         drawerInitialization();
@@ -92,7 +95,8 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
                     startActivity(intent2);
                     break;
                 case R.id.videos_icon:
-                    //pass
+                    Intent intent3= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionVideosPage.class);
+                    startActivity(intent3);
                     break;
                 case R.id.help_icon:
                     //pass
