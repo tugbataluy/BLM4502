@@ -41,6 +41,7 @@
         android:background="@drawable/login_elems"
         android:drawableStart="@drawable/email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
 
         />
 
@@ -57,7 +58,8 @@
         android:hint="  Şifre"
         android:paddingLeft="20dp"
         android:inputType="textPassword"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -74,7 +76,8 @@
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="495dp"/>
+        android:layout_marginTop="495dp"
+        android:textColor="#F2FFE9"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -92,6 +95,7 @@
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="570dp"/>
+        android:layout_marginTop="570dp"
+        android:textColor="#F2FFE9"/>
 
 </RelativeLayout>

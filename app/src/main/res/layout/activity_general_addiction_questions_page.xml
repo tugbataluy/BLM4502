@@ -26,7 +26,8 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"/>
 
         <GridView
             android:id="@+id/general_addiction_questions_grid"

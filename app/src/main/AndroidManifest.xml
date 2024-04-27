@@ -12,48 +12,57 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AddictionRecovery"
         tools:targetApi="31">
-
+        <activity
+            android:name=".GeneralAddictionSupportPage"
+            android:exported="false" />
+        <activity
+            android:name=".GeneralAddictionShowVideos"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GeneralAddictionVideosPage"
+            android:exported="false"
+            android:label="@string/title_activity_general_addiction_videos_page"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AddictionRecovery" />
         <activity
             android:name=".GeneralAddictionQuestionAnswersPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionQuestionsPage"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionMainPage"
-            android:exported="false" />
-
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomePage"
-            android:exported="false" />
-
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".WelcomePage"
-            android:exported="false" />
-
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RegisterPage"
-            android:exported="false" />
-        <activity
-            android:name=".drawer_menu"
-            android:exported="false" />
-
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginPage"
-            android:exported="false" >
-
-        </activity>
-
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
