@@ -130,39 +130,15 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
 
                     case 0:
                         //System.out.println("1");
-                        Intent intent = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
-                        Bundle extras = new Bundle();
-                        extras.putInt("VIDEO_POS", secilenIndeksler.get(0));
-                        extras.putStringArray("VIDEO_LIST",videoTitles);
-                        extras.putStringArray("VIDEO_IDS",videoIds);
-                        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
-                        intent.putExtras(extras);
-                        startActivity(intent);
-                        finish();
+                        recommendedVideoStarter(secilenIndeksler.get(0));
                         break;
                     case 1:
                         //System.out.println("2");
-                        Intent intent2 = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
-                        Bundle extras2 = new Bundle();
-                        extras2.putInt("VIDEO_POS", secilenIndeksler.get(1));
-                        extras2.putStringArray("VIDEO_LIST",videoTitles);
-                        extras2.putStringArray("VIDEO_IDS",videoIds);
-                        extras2.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
-                        intent2.putExtras(extras2);
-                        startActivity(intent2);
-                        finish();
+                        recommendedVideoStarter(secilenIndeksler.get(1));
                         break;
                     case 2:
                         //System.out.println("3");
-                        Intent intent3 = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
-                        Bundle extras3 = new Bundle();
-                        extras3.putInt("VIDEO_POS", secilenIndeksler.get(2));
-                        extras3.putStringArray("VIDEO_LIST",videoTitles);
-                        extras3.putStringArray("VIDEO_IDS",videoIds);
-                        extras3.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
-                        intent3.putExtras(extras3);
-                        startActivity(intent3);
-                        finish();
+                        recommendedVideoStarter(secilenIndeksler.get(2));
                         break;
                     default:
                         break;
@@ -178,7 +154,17 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
 
     }
 
-
+    public void recommendedVideoStarter(int position){
+        Intent intent = new Intent( GeneralAddictionShowVideos.this,GeneralAddictionShowVideos.class);
+        Bundle extras = new Bundle();
+        extras.putInt("VIDEO_POS", position);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
+    }
     public void videoArrangements(){
         final boolean[] isFullscreen = {false};
 
