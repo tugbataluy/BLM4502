@@ -142,6 +142,7 @@
             android:clickable="true"
             android:src="@drawable/arrow_next" />
 
+
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
