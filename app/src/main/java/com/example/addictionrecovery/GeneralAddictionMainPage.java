@@ -40,7 +40,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     GridView testView;
 
     String[] symptoms;
-    String[] symptoms2;
+
 
     String[] testTitles;
     @Override
@@ -168,6 +168,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
+
                         break;
                     case R.id.neyi_amacliyoruz_option:
                         break;
