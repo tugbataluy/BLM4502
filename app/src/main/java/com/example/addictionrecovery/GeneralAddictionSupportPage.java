@@ -140,11 +140,18 @@ public class GeneralAddictionSupportPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
+                        Intent intent= new Intent( GeneralAddictionSupportPage.this,user_profile.class);
+                        startActivity(intent);
                         break;
                     case R.id.neyi_amacliyoruz_option:
+                        Intent intent2= new Intent( GeneralAddictionSupportPage.this,Purpose.class);
+                        startActivity(intent2);
                         break;
-                    case R.id.ayarlar_option:
+                    case R.id.geri_bildirim_option:
+                        Intent intent3 = new Intent(GeneralAddictionSupportPage.this, Feedback.class);
+                        startActivity(intent3);
                         break;
+
                     case R.id.cikis_yap_option:
                         logout();
                         break;

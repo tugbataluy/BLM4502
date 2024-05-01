@@ -108,8 +108,7 @@ public class HomePage extends AppCompatActivity {
                         Intent j = new Intent(HomePage.this, Purpose.class);
                         startActivity(j);
                         break;
-                    case R.id.ayarlar_option:
-                        break;
+
                     case R.id.geri_bildirim_option:
                         Intent intent = new Intent(HomePage.this, Feedback.class);
                         startActivity(intent);

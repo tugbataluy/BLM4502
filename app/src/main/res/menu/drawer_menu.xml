@@ -8,8 +8,7 @@
         android:id="@+id/neyi_amacliyoruz_option"/>
     <item android:title="Geri Bildirim"
         android:id="@+id/geri_bildirim_option"/>
-    <item android:title="Ayarlar"
-        android:id="@+id/ayarlar_option"/>
+
     <item android:title="Çıkış Yap"
         android:id="@+id/cikis_yap_option"/>
 
