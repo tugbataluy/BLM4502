@@ -16,6 +16,30 @@
             android:name=".drawer_menu"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Feedback"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".user_profile"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".UpdateName"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".UpdateMail"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".UpdatePassword"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Purpose"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".SubstanceAddictionSupportPage"

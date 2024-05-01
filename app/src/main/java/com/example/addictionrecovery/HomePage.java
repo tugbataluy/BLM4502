@@ -101,10 +101,18 @@ public class HomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
+                        Intent i = new Intent(HomePage.this, user_profile.class);
+                        startActivity(i);
                         break;
                     case R.id.neyi_amacliyoruz_option:
+                        Intent j = new Intent(HomePage.this, Purpose.class);
+                        startActivity(j);
                         break;
                     case R.id.ayarlar_option:
+                        break;
+                    case R.id.geri_bildirim_option:
+                        Intent intent = new Intent(HomePage.this, Feedback.class);
+                        startActivity(intent);
                         break;
                     case R.id.cikis_yap_option:
                         logout();

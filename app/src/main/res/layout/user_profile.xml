@@ -47,13 +47,12 @@
             android:layout_marginStart="70dp"
             android:layout_marginTop="380dp"
             android:src="@raw/profile_back" />
-
         <TextView
             android:id="@+id/fullname"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="85dp"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="395dp"
             android:gravity="center"
             android:shadowColor="#31363F"
             android:shadowDx="0"
@@ -62,8 +61,8 @@
             android:text="Ad Soyad"
             android:textColor="@color/alt_toolbar_icon_color"
             android:textSize="22sp" />
-
         <ImageView
+            android:id="@+id/button1"
             android:layout_width="72dp"
             android:layout_height="45dp"
             android:layout_alignLeft="@+id/fullname"
@@ -85,7 +84,7 @@
             android:id="@+id/email"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="85dp"
             android:text="E-posta"
             android:layout_below="@+id/profile_back"
@@ -98,6 +97,7 @@
             android:textSize="22sp"
             />
         <ImageView
+            android:id="@+id/button2"
             android:layout_width="72dp"
             android:layout_height="45dp"
             android:layout_alignLeft="@+id/email"
@@ -120,7 +120,7 @@
             android:id="@+id/sifre_edit"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="85dp"
             android:text="Şifre Yenile"
             android:layout_below="@+id/profile_back2"
@@ -133,6 +133,7 @@
             android:textSize="22sp"
             />
         <ImageView
+            android:id="@+id/button3"
             android:layout_width="72dp"
             android:layout_height="45dp"
             android:layout_alignLeft="@+id/email"
@@ -141,7 +142,6 @@
             android:layout_marginTop="22dp"
             android:clickable="true"
             android:src="@drawable/arrow_next" />
-
 
     </RelativeLayout>
 
