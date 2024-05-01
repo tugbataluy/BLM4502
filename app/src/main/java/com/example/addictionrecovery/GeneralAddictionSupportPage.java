@@ -90,22 +90,22 @@ public class GeneralAddictionSupportPage extends AppCompatActivity {
                 case R.id.home_icon:
                     Intent intent= new Intent(GeneralAddictionSupportPage.this,GeneralAddictionMainPage.class);
                     startActivity(intent);
-                    finish();
+
                     break;
                 case R.id.questions_icon:
                     Intent intent2= new Intent(GeneralAddictionSupportPage.this,GeneralAddictionQuestionsPage.class);
                     startActivity(intent2);
-                    finish();
+
                     break;
                 case R.id.videos_icon:
                     Intent intent3= new Intent(GeneralAddictionSupportPage.this,GeneralAddictionVideosPage.class);
                     startActivity(intent3);
-                    finish();
+
                     break;
                 case R.id.help_icon:
                     Intent intent4 = new Intent(GeneralAddictionSupportPage.this,GeneralAddictionSupportPage.class);
                     startActivity(intent4);
-                    finish();
+
                     break;
                 default:
                     System.out.println("Any nav selected");

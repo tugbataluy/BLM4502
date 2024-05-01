@@ -12,10 +12,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/substance_addiction_main_page_layout">
-            
+            <ImageView
+                android:id="@+id/substance_image_first"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_centerHorizontal="true"
+                android:src="@raw/subs1"/>
+            <ImageView
+                android:id="@+id/back_to_mainmenu"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/back_arrow_red"
+                android:layout_alignTop="@id/substance_image_first"
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="15dp"/>
 
         </RelativeLayout>
 

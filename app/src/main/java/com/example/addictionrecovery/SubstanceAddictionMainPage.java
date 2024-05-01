@@ -23,7 +23,7 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
     FirebaseAuth auth;
     RelativeLayout relativeLayout;
 
-    ImageView navIcon;
+    ImageView navIcon,backIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
 
     @Override
@@ -37,7 +37,7 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
-
+        goToMainPage();
 
     }
 
@@ -47,6 +47,16 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
         tb.setTitle("Madde Bağımlılığı");
     }
 
+    public void goToMainPage(){
+        backIcon=(ImageView) findViewById(R.id.back_to_mainmenu);
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(SubstanceAddictionMainPage.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
+    }
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
@@ -116,22 +126,22 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
                 case R.id.home_icon:
                     Intent intent= new Intent(SubstanceAddictionMainPage.this,SubstanceAddictionMainPage.class);
                     startActivity(intent);
-                    finish();
+
                     break;
                 case R.id.questions_icon:
                     Intent intent2= new Intent(SubstanceAddictionMainPage.this,SubstanceAddictionQuestionsPage.class);
                     startActivity(intent2);
-                    finish();
+
                     break;
                 case R.id.videos_icon:
                     Intent intent3= new Intent(SubstanceAddictionMainPage.this,SubstanceAddictionVideosPage.class);
                     startActivity(intent3);
-                    finish();
+
                     break;
                 case R.id.help_icon:
                     Intent intent4= new Intent(SubstanceAddictionMainPage.this,SubstanceAddictionSupportPage.class);
                     startActivity(intent4);
-                    finish();
+
                     break;
                 default:
                     System.out.println("Any nav selected");

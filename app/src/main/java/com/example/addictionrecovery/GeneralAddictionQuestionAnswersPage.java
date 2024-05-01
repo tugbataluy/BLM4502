@@ -88,22 +88,22 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
                 case R.id.home_icon:
                     Intent intent= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionMainPage.class);
                     startActivity(intent);
-                    finish();
+
                     break;
                 case R.id.questions_icon:
                     Intent intent2= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
                     startActivity(intent2);
-                    finish();
+
                     break;
                 case R.id.videos_icon:
                     Intent intent3= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionVideosPage.class);
                     startActivity(intent3);
-                    finish();
+
                     break;
                 case R.id.help_icon:
                     Intent intent4 = new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionSupportPage.class);
                     startActivity(intent4);
-                    finish();
+
                     break;
                 default:
                     System.out.println("Any nav selected");

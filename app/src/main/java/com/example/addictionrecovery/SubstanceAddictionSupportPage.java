@@ -114,22 +114,22 @@ public class SubstanceAddictionSupportPage extends AppCompatActivity {
                 case R.id.home_icon:
                     Intent intent= new Intent(SubstanceAddictionSupportPage.this,SubstanceAddictionMainPage.class);
                     startActivity(intent);
-                    finish();
+
                     break;
                 case R.id.questions_icon:
                     Intent intent2= new Intent(SubstanceAddictionSupportPage.this,SubstanceAddictionQuestionsPage.class);
                     startActivity(intent2);
-                    finish();
+
                     break;
                 case R.id.videos_icon:
                     Intent intent3= new Intent(SubstanceAddictionSupportPage.this,SubstanceAddictionVideosPage.class);
                     startActivity(intent3);
-                    finish();
+
                     break;
                 case R.id.help_icon:
                     Intent intent4= new Intent(SubstanceAddictionSupportPage.this,SubstanceAddictionSupportPage.class);
                     startActivity(intent4);
-                    finish();
+
                     break;
                 default:
                     System.out.println("Any nav selected");
