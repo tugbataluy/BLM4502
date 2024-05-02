@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +29,9 @@ public class SubstanceAddictionSupportPage extends AppCompatActivity {
 
     ImageView navIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
+
+    ListView listView;
+    String [] ngos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +45,21 @@ public class SubstanceAddictionSupportPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
+        showSupportList();
     }
 
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);
         tb.setTitle("Madde Bağımlılığı");
+    }
+
+    public void showSupportList(){
+        ngos= getResources().getStringArray(R.array.addiction_support_organizations);
+
+
+        listView=(ListView) findViewById(R.id.ngo_list_view);
+        ArrayAdapter<String> listAdapter= new ArrayAdapter<String>(SubstanceAddictionSupportPage.this,R.layout.substance_addiction_support_list_item,ngos);
+        listView.setAdapter(listAdapter);
     }
 
     public void drawerInitialization(){
