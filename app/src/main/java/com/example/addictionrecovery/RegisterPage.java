@@ -136,10 +136,7 @@ public class RegisterPage extends AppCompatActivity {
                                 // If sign in success, display a message to the user.
                                 Toast.makeText(RegisterPage.this, "Account created.",
                                         Toast.LENGTH_SHORT).show();
-                                Log.e("RegisterPage", "Kullanıcı kaydı başarılı: " );
-                                Intent intent = new Intent(RegisterPage.this, LoginPage.class);
-                                startActivity(intent);
-                                finish();
+                                mAuth.signOut();
                             }
                             else {
                                 // If sign in fails, display a message to the user.
