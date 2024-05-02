@@ -77,4 +77,22 @@
     <string name="purpose_text">Bağımlılık, birçok insanın karşılaştığı ciddi bir sorundur. Farklı türleri, yaşam kalitesini olumsuz etkiler. Destek ve motivasyon, bağımlılıktan kurtulmak ve sağlıklı yaşam için önemlidir.Bu mücadelede destek olmak için bir uygulama geliştirdik. Amacımız, bağımlılıkla mücadele eden herkese rehberlik etmek ve motivasyon sağlamak. Uygulamamız, kullanıcılara bilgi ve destek sunarak sağlıklı bir yaşam sürmelerine yardımcı olmayı hedefliyor. Herkesin bağımlılıktan arınmış bir hayat yaşamasına katkıda bulunmak için buradayız.</string>
 
 
+    <!-- Strings used for substance addiction main page -->
+    <string name="what_is_subs_ad_title">Madde Bağımlılığı Nedir?</string>
+    <string name="what_is_subs_ad_content">Vücudun işlevlerini olumsuz yönde etkileyen maddelerin kullanılması, bundan dolayı zarar görüldüğü hâlde bu maddelerin kullanımının bırakılamamasıdır.</string>
+    <string name="subs_add_types">Uyuşturucu Maddeye Bağımlılık Çeşitleri Nelerdir?</string>
+    <string name="subs_add_types_conent">
+        \u2022 Psikolojik Bağımlılık:\n
+        \nKişi maddeyle kendisini özdeşleştirerek, madde olmadan kendisini iyi hissedemeyeceğini, olaylarla başa çıkamayacağını düşünür.\n
+        \n\u2022 Fizyolojik Bağımlılık:
+        \n\n Maddeye zamanla alışan bünye, kullanılmadığı zamanlarda normal işlevlerini yerine getiremez hale gelir.
+    </string>
+    <string name="subs_add_treatment">Tedavi ve Öneriler Nelerdir?</string>
+    <string name="subs_add_treatmet_context"> Bireylerin kendini kontrol etme bozukluğu temelinde kontrol sorunu yaşadıkları alanların; duygusal hayatları, özgüvenleri, insan ilişkileri ve kendilik konusunda yaşadıkları belirsizliğin 4 temel nokta olarak öne çıktığı söylenebilmektedir. </string>
+    <string-array name="subs_add_tests">
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+    </string-array>
+
 </resources>
