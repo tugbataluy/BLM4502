@@ -80,6 +80,7 @@ public class Feedback extends AppCompatActivity {
                                 Log.w("addToDatabase", "Error adding document", e);
                             }
                         });
+                showSuccessDialog();
             }
             else if(feedback_text.getText().toString().isEmpty() && rating==0){emptyErrorDialog();}
             else if(rating==0){emptyRatingDialog();}
@@ -168,7 +169,6 @@ public class Feedback extends AppCompatActivity {
             public void onClick(View v) {
 
                 getToDocument(mAuth.getUid());
-                showSuccessDialog();
                 star1.setImageResource(R.drawable.feedback_circle);
                 star2.setImageResource(R.drawable.feedback_circle);
                 star3.setImageResource(R.drawable.feedback_circle);
