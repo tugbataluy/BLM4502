@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -127,7 +128,7 @@ public class RegisterPage extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 return;
             }
-            mAuth.createUserWithEmailAndPassword(email, password)
+           /* mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -149,7 +150,35 @@ public class RegisterPage extends AppCompatActivity {
                                 Log.e("RegisterPage", "Kullanıcı kaydı başarısız oldu: " );
                             }
                         }
+                    });*/
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.GONE);
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user != null) {
+                                    user.sendEmailVerification();
+                                    addToDatabase(user.getUid());
+                                    // If sign in success, display a message to the user.
+                                    Toast.makeText(RegisterPage.this, "Account created. Verification email sent.",
+                                            Toast.LENGTH_SHORT).show();
+                                    mAuth.signOut();
+                                    Log.e("RegisterPage", "Kullanıcı kaydı başarılı: " );
+                                    Intent intent = new Intent(RegisterPage.this, LoginPage.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(RegisterPage.this, "Authentication failed. Email is used" ,
+                                        Toast.LENGTH_SHORT).show();
+                                Log.e("RegisterPage", "Kullanıcı kaydı başarısız oldu: " );
+                            }
+                        }
                     });
+
         }
     }
     public class SetOnClickListenerRegister1 implements View.OnClickListener{

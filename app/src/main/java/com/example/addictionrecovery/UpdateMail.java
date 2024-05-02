@@ -109,7 +109,7 @@ public class UpdateMail extends AppCompatActivity {
 
     private void showSuccessDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateMail.this);
-        builder.setMessage("Email başarılı olarak güncellendi.");
+        builder.setMessage("Email başarılı olarak güncellendi. Değişiklik yapmak için tekrar giriş yapınız.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
