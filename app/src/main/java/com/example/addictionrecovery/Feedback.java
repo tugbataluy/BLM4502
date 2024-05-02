@@ -85,6 +85,7 @@ public class Feedback extends AppCompatActivity {
             else if(feedback_text.getText().toString().isEmpty() && rating==0){emptyErrorDialog();}
             else if(rating==0){emptyRatingDialog();}
             else if(feedback_text.getText().toString().isEmpty() ){emptyCommentDialog();}
+            rating=0;
     }
 
     @Override
