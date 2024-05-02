@@ -89,22 +89,22 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
                 case R.id.home_icon:
                     Intent intent= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionMainPage.class);
                     startActivity(intent);
-                    finish();
+
                     break;
                 case R.id.questions_icon:
                     Intent intent2= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionQuestionsPage.class);
                     startActivity(intent2);
-                    finish();
+
                     break;
                 case R.id.videos_icon:
                     Intent intent3= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionVideosPage.class);
                     startActivity(intent3);
-                    finish();
+
                     break;
                 case R.id.help_icon:
                     Intent intent4= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionSupportPage.class);
                     startActivity(intent4);
-                    finish();
+
                     break;
                 default:
                     System.out.println("Any nav selected");
@@ -157,10 +157,16 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
+                        Intent intent= new Intent( GeneralAddictionQuestionsPage.this,user_profile.class);
+                        startActivity(intent);
                         break;
                     case R.id.neyi_amacliyoruz_option:
+                        Intent intent2= new Intent( GeneralAddictionQuestionsPage.this,Purpose.class);
+                        startActivity(intent2);
                         break;
-                    case R.id.ayarlar_option:
+                    case R.id.geri_bildirim_option:
+                        Intent intent3 = new Intent(GeneralAddictionQuestionsPage.this, Feedback.class);
+                        startActivity(intent3);
                         break;
                     case R.id.cikis_yap_option:
                         logout();

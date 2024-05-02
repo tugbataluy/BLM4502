@@ -48,4 +48,20 @@
 
     </style>
 
+    <!--- Substance Addiction Styles -->
+    <style name="subs_main_title">
+       <item name="android:textColor">@color/subs_addiction_homepage_txt_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="subs_main_contents">
+        <item name="android:textColor">@color/subs_addiction_homepage_txt_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="subs_warning_text">
+        <item name="android:textColor">@color/subs_addiction_homepage_txt_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
