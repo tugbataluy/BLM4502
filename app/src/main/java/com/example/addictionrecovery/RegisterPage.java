@@ -136,7 +136,10 @@ public class RegisterPage extends AppCompatActivity {
                                 // If sign in success, display a message to the user.
                                 Toast.makeText(RegisterPage.this, "Account created.",
                                         Toast.LENGTH_SHORT).show();
-                                mAuth.signOut();
+                                Log.e("RegisterPage", "Kullanıcı kaydı başarılı: " );
+                                Intent intent= new Intent(getApplicationContext(),LoginPage.class);
+                                startActivity(intent);
+                                finish();
                             }
                             else {
                                 // If sign in fails, display a message to the user.
@@ -146,7 +149,6 @@ public class RegisterPage extends AppCompatActivity {
                             }
                         }
                     });
-
         }
     }
     public class SetOnClickListenerRegister1 implements View.OnClickListener{
