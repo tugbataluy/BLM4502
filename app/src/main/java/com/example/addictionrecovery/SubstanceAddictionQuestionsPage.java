@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +30,10 @@ public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
 
     ImageView navIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
+
+    String [] questions,answers;
+
+    GridView questionsGrid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +42,7 @@ public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
 
 
-
+        setQuestionsGrid();
         toolBarArrangement();
         drawerInitialization();
         relativeLayoutClickerEnable();
@@ -44,6 +51,30 @@ public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
 
     }
 
+    public void setQuestionsGrid(){
+        questionsGrid= (GridView) findViewById(R.id.substance_addiction_questions_grid);
+        questions= getResources().getStringArray(R.array.subs_addiction_questions);
+        answers=getResources().getStringArray(R.array.subs_addiction_question_answers);
+
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.subs_addiction_question_grid,questions);
+        questionsGrid.setAdapter(arrayAdapter);
+        questionsGrid.setOnItemClickListener(new QuestionGridListener());
+
+
+    }
+
+    public class  QuestionGridListener implements  AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent( SubstanceAddictionQuestionsPage.this,SubstanceAddictionQuestionAnswersPage.class);
+            Bundle extras = new Bundle();
+            extras.putString("QUESTION",questions[position]);
+            extras.putString("ANSWER",answers[position]);
+            intent.putExtras(extras);
+            startActivity(intent);
+        }
+    }
 
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);

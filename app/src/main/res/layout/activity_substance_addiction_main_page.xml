@@ -205,6 +205,6 @@
     </RelativeLayout>
     <include
         layout="@layout/nav_view"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
