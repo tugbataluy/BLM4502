@@ -64,22 +64,26 @@ public class Feedback extends AppCompatActivity {
         feedback.put("Comment", feedback_text.getText().toString());
         feedback.put("Score", rating);
         feedback.put("OwnerId", uid);
-
-        // Add a new document with a generated ID
-        db.collection("users").document(uid)
-                .set(feedback)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("addToDatabase", "DocumentSnapshot added" );
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("addToDatabase", "Error adding document", e);
-                    }
-                });
+            if(!feedback_text.getText().toString().isEmpty() && rating!=0) {
+                // Add a new document with a generated ID
+                db.collection("users").document(uid)
+                        .set(feedback)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("addToDatabase", "DocumentSnapshot added");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("addToDatabase", "Error adding document", e);
+                            }
+                        });
+            }
+            else if(feedback_text.getText().toString().isEmpty() && rating==0){emptyErrorDialog();}
+            else if(rating==0){emptyRatingDialog();}
+            else if(feedback_text.getText().toString().isEmpty() ){emptyCommentDialog();}
     }
 
     @Override
@@ -164,23 +168,12 @@ public class Feedback extends AppCompatActivity {
             public void onClick(View v) {
 
                 getToDocument(mAuth.getUid());
-
-                // AlertDialog oluştur
-                AlertDialog.Builder builder = new AlertDialog.Builder(Feedback.this);
-                builder.setMessage("Yorum ve puanlamanız gönderildi.");
-
-                // "OK" butonu
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // AlertDialog kapat
-                        dialog.dismiss();
-                    }
-                });
-
-                // AlertDialog'u göster
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                showSuccessDialog();
+                star1.setImageResource(R.drawable.feedback_circle);
+                star2.setImageResource(R.drawable.feedback_circle);
+                star3.setImageResource(R.drawable.feedback_circle);
+                star4.setImageResource(R.drawable.feedback_circle);
+                star5.setImageResource(R.drawable.feedback_circle);
             }
         });
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -231,5 +224,61 @@ public class Feedback extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void emptyRatingDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Feedback.this);
+        builder.setMessage("Lütfen puanlama yapınız.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void emptyCommentDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Feedback.this);
+        builder.setMessage("Lütfen yorumu boş bırakmayınız.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void showSuccessDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Feedback.this);
+        builder.setMessage("Yorum ve puanlamanız gönderildi.");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void emptyErrorDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Feedback.this);
+        builder.setMessage("Lütfen puanlamayı ve yorumu boş bırakmayınız.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

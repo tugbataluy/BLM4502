@@ -48,6 +48,7 @@ public class UpdatePassword extends AppCompatActivity {
             });
         } else {
             Log.w("UpdatePassword", "Invalid password or user is not signed in.");
+            emptyErrorDialog();
         }
     }
 
@@ -103,6 +104,21 @@ public class UpdatePassword extends AppCompatActivity {
     private void showErrorDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePassword.this);
         builder.setMessage("Şifre güncellenirken bir hata oluştu.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void emptyErrorDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePassword.this);
+        builder.setMessage("Minimum 6 karakterli bir şifre giriniz.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

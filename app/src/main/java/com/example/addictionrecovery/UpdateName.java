@@ -35,23 +35,26 @@ public class UpdateName extends AppCompatActivity {
         Map<String, Object> update_user = new HashMap<>();
         update_user.put("Name", updateName.getText().toString()); // Yorum
 
-        // Belgeyi güncelle veya oluştur
-        db.collection("users").document(uid)
-                .update(update_user) // Belgeyi güncelle veya oluştur
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("UpdateName", "Name updated successfully." );
-                        showSuccessDialog();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("UpdateName", "Failed to update name.", e);
-                        showErrorDialog();
-                    }
-                });
+        if(!updateName.getText().toString().isEmpty()) {
+            // Belgeyi güncelle veya oluştur
+            db.collection("users").document(uid)
+                    .update(update_user) // Belgeyi güncelle veya oluştur
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("UpdateName", "Name updated successfully.");
+                            showSuccessDialog();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("UpdateName", "Failed to update name.", e);
+                            showErrorDialog();
+                        }
+                    });
+        }
+        else{emptyErrorDialog();}
     }
 
     @Override
@@ -101,6 +104,20 @@ public class UpdateName extends AppCompatActivity {
     private void showErrorDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateName.this);
         builder.setMessage("Ad soyad güncellenirken bir hata oluştu.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void emptyErrorDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateName.this);
+        builder.setMessage("Lütfen ad soyad giriniz.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

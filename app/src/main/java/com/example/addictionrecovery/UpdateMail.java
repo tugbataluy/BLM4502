@@ -35,40 +35,47 @@ public class UpdateMail extends AppCompatActivity {
     FirebaseUser user;
     FirebaseFirestore db ;
 
-    public void updateEmail(String newEmail,String uid) {
+    public void updateEmail(String newEmail) {
+        if(!newEmail.isEmpty()){
+            if (user != null) {
+                user.verifyBeforeUpdateEmail(newEmail)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                //sendVerificationEmail(newEmail);
+                                Log.d("UpdateEmail", "Email updated successfully.");
+                                showSuccessDialog();
+                            } else {
+                                Log.w("UpdateEmail", "Failed to update email.", task.getException());
+                                showErrorDialog();
+                            }
+                        });
+            } else {
+                Log.w("UpdateEmail", "User is null.");
+            }
+        }
+        else {emptyErrorDialog();}
+    }
+    public void addToDatabaseNewEmail(String uid) {
         Map<String, Object> update_user = new HashMap<>();
         update_user.put("Email", updateMail.getText().toString());
 
-        if (user != null) {
-            user.verifyBeforeUpdateEmail(newEmail)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            //sendVerificationEmail(newEmail);
-                            Log.d("UpdateEmail", "Email updated successfully.");
-                            showSuccessDialog();
-                        } else {
-                            Log.w("UpdateEmail", "Failed to update email.", task.getException());
-                            showErrorDialog();
-                        }
-                    });
-        } else {
-            Log.w("UpdateEmail", "User is null.");
-        }
+            if(user.isEmailVerified() && !updateMail.getText().toString().isEmpty()){
+                db.collection("users").document(uid)
+                        .update(update_user) // Belgeyi güncelle veya oluştur
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("addToDatabase", "Email updated successfully.");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("addToDatabase", "Failed to update email.", e);
+                            }
+                        });
 
-        db.collection("users").document(uid)
-                .update(update_user) // Belgeyi güncelle veya oluştur
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("addToDatabase", "Email updated successfully.");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("addToDatabase", "Failed to update email.", e);
-                    }
-                });
+            }
     }
 
     @Override
@@ -93,7 +100,8 @@ public class UpdateMail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 newEmail = updateMail.getText().toString();
-                updateEmail(newEmail,mAuth.getUid());
+                updateEmail(newEmail);
+                addToDatabaseNewEmail(mAuth.getUid());
                 updateMail.setText("");
             }
         });
@@ -109,7 +117,7 @@ public class UpdateMail extends AppCompatActivity {
 
     private void showSuccessDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateMail.this);
-        builder.setMessage("Email başarılı olarak güncellendi. Değişiklik yapmak için tekrar giriş yapınız.");
+        builder.setMessage("Kimlik doğrulaması gönderildi. Mail adresinizi kontrol ediniz ve tekrar giriş yapınız.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -125,6 +133,20 @@ public class UpdateMail extends AppCompatActivity {
     private void showErrorDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdateMail.this);
         builder.setMessage("Email güncellenirken bir hata oluştu. Tekrar giriş yapın.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void emptyErrorDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdateMail.this);
+        builder.setMessage("Lütfen email adresiniz giriniz.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

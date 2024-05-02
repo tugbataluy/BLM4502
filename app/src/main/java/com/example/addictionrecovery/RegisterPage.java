@@ -35,7 +35,6 @@ public class RegisterPage extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     FirebaseFirestore db ;
-    CollectionReference colRef;
 
     // Kullanıcı bilgilerini database'e gönderme fonksiyonu
     public void addToDatabase(String uid) {
@@ -84,7 +83,6 @@ public class RegisterPage extends AppCompatActivity {
         goBackToLogin.setOnClickListener( new SetOnClickListenerRegister1());
 
         db = FirebaseFirestore.getInstance();
-        colRef = db.collection("users");
     }
 
     public class SetOnClickListenerRegister implements View.OnClickListener{
@@ -128,7 +126,7 @@ public class RegisterPage extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 return;
             }
-           /* mAuth.createUserWithEmailAndPassword(email, password)
+            mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -146,33 +144,6 @@ public class RegisterPage extends AppCompatActivity {
                             else {
                                 // If sign in fails, display a message to the user.
                                 Toast.makeText(RegisterPage.this, "Authentication failed.Email is used" ,
-                                        Toast.LENGTH_SHORT).show();
-                                Log.e("RegisterPage", "Kullanıcı kaydı başarısız oldu: " );
-                            }
-                        }
-                    });*/
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressBar.setVisibility(View.GONE);
-                            if (task.isSuccessful()) {
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                if (user != null) {
-                                    user.sendEmailVerification();
-                                    addToDatabase(user.getUid());
-                                    // If sign in success, display a message to the user.
-                                    Toast.makeText(RegisterPage.this, "Account created. Verification email sent.",
-                                            Toast.LENGTH_SHORT).show();
-                                    mAuth.signOut();
-                                    Log.e("RegisterPage", "Kullanıcı kaydı başarılı: " );
-                                    Intent intent = new Intent(RegisterPage.this, LoginPage.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(RegisterPage.this, "Authentication failed. Email is used" ,
                                         Toast.LENGTH_SHORT).show();
                                 Log.e("RegisterPage", "Kullanıcı kaydı başarısız oldu: " );
                             }
