@@ -161,22 +161,22 @@ public class SubstanceAddictionQuestionAnswersPage extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.home_icon:
-                    Intent intent= new Intent(SubstanceAddictionQuestionAnswersPage.this,GeneralAddictionMainPage.class);
+                    Intent intent= new Intent(SubstanceAddictionQuestionAnswersPage.this,SubstanceAddictionMainPage.class);
                     startActivity(intent);
 
                     break;
                 case R.id.questions_icon:
-                    Intent intent2= new Intent(SubstanceAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
+                    Intent intent2= new Intent(SubstanceAddictionQuestionAnswersPage.this,SubstanceAddictionQuestionsPage.class);
                     startActivity(intent2);
 
                     break;
                 case R.id.videos_icon:
-                    Intent intent3= new Intent(SubstanceAddictionQuestionAnswersPage.this,GeneralAddictionVideosPage.class);
+                    Intent intent3= new Intent(SubstanceAddictionQuestionAnswersPage.this,SubstanceAddictionVideosPage.class);
                     startActivity(intent3);
 
                     break;
                 case R.id.help_icon:
-                    Intent intent4 = new Intent(SubstanceAddictionQuestionAnswersPage.this,GeneralAddictionSupportPage.class);
+                    Intent intent4 = new Intent(SubstanceAddictionQuestionAnswersPage.this,SubstanceAddictionSupportPage.class);
                     startActivity(intent4);
 
                     break;

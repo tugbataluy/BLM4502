@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +29,9 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
 
     ImageView navIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
+    String [] titles, ids, descriptions;
+    GridView gridView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +43,42 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
-
+        setGridView();
     }
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);
         tb.setTitle("Madde Bağımlılığı");
     }
 
+
+    public void setGridView(){
+        titles= getResources().getStringArray(R.array.substance_addiction_video_titles);
+
+        ids=getResources().getStringArray(R.array.substance_addiction_video_ids);
+        descriptions=getResources().getStringArray(R.array.substance_addiction_video_descriptions);
+        gridView=(GridView) findViewById(R.id.video_list);
+        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.subs_video_list_item,titles);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener( new SubstanceAddictionVideosPage.VideoClickListener());
+
+
+    }
+    public class VideoClickListener implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent( SubstanceAddictionVideosPage.this,SubstanceAddictionShowVideos.class);
+            Bundle extras = new Bundle();
+
+            extras.putInt("VIDEO_POS",position);
+            extras.putStringArray("VIDEO_LIST",titles);
+            extras.putStringArray("VIDEO_IDS",ids);
+            extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+            intent.putExtras(extras);
+            startActivity(intent);
+            finish();
+        }
+    }
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);

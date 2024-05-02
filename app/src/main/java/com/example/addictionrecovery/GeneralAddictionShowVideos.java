@@ -123,7 +123,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
             }
         }
 
-        ArrayAdapter adapter= new ArrayAdapter<>(GeneralAddictionShowVideos.this,R.layout.general_addiction_recommended_videos_grid,secilenBasliklar);
+        ArrayAdapter adapter= new ArrayAdapter<>(GeneralAddictionShowVideos.this,R.layout.substance_addiction_recommended_videos_grid,secilenBasliklar);
         recommendedGrid.setAdapter(adapter);
         recommendedGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
