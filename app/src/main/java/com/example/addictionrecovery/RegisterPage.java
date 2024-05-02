@@ -160,7 +160,6 @@ public class RegisterPage extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user != null) {
                                     user.sendEmailVerification();
-                                    
                                     addToDatabase(user.getUid());
                                     // If sign in success, display a message to the user.
                                     Toast.makeText(RegisterPage.this, "Account created. Verification email sent.",

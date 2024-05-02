@@ -1,10 +1,12 @@
 package com.example.addictionrecovery;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -342,6 +344,25 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
         }
 
     }
+    private void showLogoutConfirmationDialog() {
+        // AlertDialog oluştur
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Çıkış yapmak istediğinize emin misiniz?");
+        builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                logout();
+            }
+        });
+        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // İptal durumu, bir şey yapmaya gerek yok
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
@@ -378,7 +399,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
                         startActivity(intent3);
                         break;
                     case R.id.cikis_yap_option:
-                        logout();
+                        showLogoutConfirmationDialog();
                         break;
                     default:
                         return true;
