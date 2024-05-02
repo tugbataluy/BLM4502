@@ -89,10 +89,18 @@
     </string>
     <string name="subs_add_treatment">Tedavi ve Öneriler Nelerdir?</string>
     <string name="subs_add_treatmet_context"> Bireylerin kendini kontrol etme bozukluğu temelinde kontrol sorunu yaşadıkları alanların; duygusal hayatları, özgüvenleri, insan ilişkileri ve kendilik konusunda yaşadıkları belirsizliğin 4 temel nokta olarak öne çıktığı söylenebilmektedir. </string>
+    <string-array name="subs_diagnose_conditions">
+        <item>Tolerans gelişmesi (kullanılan maddenin etkisinin azalmasıyla, kullanılan miktarın arttırılması).</item>
+        <item>Fiziksel, ruhsal, sosyal, kişisel sorunlar oluşmasına rağmen madde kullanımının bırakılamaması.</item>
+        <item>Madde kullanımı sebebiyle, sosyalliğin, kariyer emeklerinin, kişisel uğraşların azalması.</item>
+    </string-array>
+
     <string-array name="subs_add_tests">
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
     </string-array>
+
+
 
 </resources>

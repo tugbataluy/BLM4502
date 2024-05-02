@@ -64,4 +64,10 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="subs_addiction_test_grid_style">
+        <item name="android:textColor">@color/subs_addiction_test_text_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+
+    </style>
 </resources>

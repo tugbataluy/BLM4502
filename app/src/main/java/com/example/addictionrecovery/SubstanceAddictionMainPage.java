@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -28,12 +30,36 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
     ImageView navIcon,backIcon;
     TextView homeIcon,questionIcon,videoIcon, helpIcon;
 
+    GridView gridView1,gridView2;
+    String [] symptoms, testTitles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_substance_addiction_main_page);
         relativeLayout=(RelativeLayout) findViewById(R.id.substance_addiction_main_page_layout);
         auth=FirebaseAuth.getInstance();
+
+        gridView1=(GridView) findViewById(R.id.subs_grid1);
+        symptoms=getResources().getStringArray(R.array.subs_diagnose_conditions);
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.subs_grid_item,symptoms);
+        gridView1.setAdapter(arrayAdapter);
+
+        gridView2=(GridView) findViewById(R.id.subs_grid2);
+        testTitles= getResources().getStringArray(R.array.subs_add_tests);
+        ArrayAdapter<String>arrayAdapter2= new ArrayAdapter<>(this,R.layout.subs_addiction_test_grid,testTitles);
+        gridView2.setAdapter(arrayAdapter2);
+
+        gridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Tıklanan öğenin sırasını bastır
+                System.out.println("Tıklanan öğenin sırası: " + position);
+            }
+        });
+
+
+
 
         toolBarArrangement();
         drawerInitialization();
