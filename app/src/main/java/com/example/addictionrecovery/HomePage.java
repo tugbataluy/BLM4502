@@ -63,6 +63,26 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
         finish(); // Bu aktiviteyi kapat
     }
+    private void showLogoutConfirmationDialog() {
+        // AlertDialog oluştur
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Çıkış yapmak istediğinize emin misiniz?");
+        builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                logout();
+            }
+        });
+        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // İptal durumu, bir şey yapmaya gerek yok
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
     // Drawer işlemleri
     public void drawerActions() {
