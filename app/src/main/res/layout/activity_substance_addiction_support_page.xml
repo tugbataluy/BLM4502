@@ -24,6 +24,7 @@
                 android:backgroundTint="@color/subs_addiction_content_text_bg"
                 android:padding="15dp"
                 android:text="@string/addiction_support_speech"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"

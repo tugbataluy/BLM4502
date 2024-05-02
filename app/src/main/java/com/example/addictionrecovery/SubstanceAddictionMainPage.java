@@ -179,7 +179,7 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.home_icon:
-                    Intent intent= new Intent(SubstanceAddictionMainPage.this,SubstanceAddictionMainPage.class);
+                    Intent intent= new Intent(SubstanceAddictionMainPage.this,HomePage.class);
                     startActivity(intent);
 
                     break;
