@@ -101,5 +101,65 @@
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
     </string-array>
 
+    <!-- Strings used for alcohol addiction main page -->
+
+    <string name="what_is_alcohol_addiction_title">"Alkol Bağımlılığı Nedir?"</string>
+    <string name="what_is_alcohol_addiction_text">"Dünya Sağlık Örgütüne göre, alkol bağımlılığı, alkolün yinelenen bir biçimde veya sürekli kullanımından kaynaklanan kullanım bozukluğu olarak tanımlanmaktadır."</string>
+    <string name="alcohol_addiction_diagnose_title">"En Yaygın Kullanılan Tanı Kriteri Nedir?"</string>
+    <string name="alcohol_addiction_diagnose_text">"Amerikan Psikiyatri Birliğinin belirlediği DSM- 5 tanı ölçütlerine göre alkol bağımlılığı; on iki aylık bir süre içinde, aşağıdakilerden en az ikisi ile kendini gösteren, günlük hayatında belirgin bir sıkıntıya ya da işlevsellikte düşmeye yol açan, sorunlu bir alkol kullanım örüntüsüdür."</string>
+    <string name="alcohol_addiction_effects_title">"Alkol Bağımlılığının Sağlık Üzerinde Etkileri"</string>
+    <string name="alcohol_addiction_effects_text">
+        \u2022Karaciğerde büyüme, yağlanma, sarılık, kanser ve siroz\n
+        \u2022Yüksek tansiyon\n
+        \u2022Kalpte büyüme ve ani kriz\n
+        \u2022Damar tıkanıkları\n
+        \u2022Beyin işlevlerinde bozulmalar\n
+        \u2022Dengede bozulma\n
+        \u2022Beceri isteyen uğraşları gerçekleştirmede zorlanma\n
+        \u2022Alkole bağlı bunama\n
+        \u2022Hafızada bozulma\n
+        \u2022Testosteron (erkeklik) hormonunun azalması\n
+        \u2022Östrojen (kadınlık) hormonunun yükselmesi\n
+        \u2022Vücutta vitamin dengesizliği\n
+        \u2022Susuzluk\n
+        \u2020Kilo problemi\n
+        \u2022Kas erimesi ve kaslarda zayıflık\n
+        \u2022Sinir sistemine zarar\n
+        \u2022Ellerde titreme\n
+        \u2022Bacaklarda karıncalanma ve uyuşma\n
+        \u2022Cinsel işlev bozukluğu
+    </string>
+
+    <string-array name="alcohol_addiction_symptoms">
+        <item>"Kullanımı kontrol etme kabiliyetinin bozulması."</item>
+        <item>"Alkol kullanımına diğer etkinliklere göre daha fazla öncelik verilmesi"</item>
+        <item>"Alkol kullanımının kesilmesi veya azaltılması sonrasında yoksunluk belirtilerinin görülmesi."</item>
+        <item>"Alkolün gitgide eski etkisini kaybetmesi (tolerans geliştirilmesi)"</item>
+        <item>"Alkol kullanmayı bırakmak ya da denetim altında tutmak için sürekli bir istek ya da sonuç vermeyen çabalar olması"</item>
+        <item>"İşte, okulda ya da evdeki konumunun gereği olan başlıca yükümlülüklerini yerine getirememe"</item>
+
+    </string-array>
+    
+    <string name="what_is_delirium_tremens_title">"Alkol Yoksunluğu Nedir?"</string>
+    <string name="what_is_delirium_tremens">"Alkol kullanım bozukluğu ile ilgili sıkça karşılaşılan durumlardan biri, alkol yoksunluğudur. Uzun süre yüksek miktarda alkol kullanımının bırakılmasından ya da azaltılmasından sonra kandaki alkol düzeyinin azalmaya başlamasından 6-8 saat sonra, genellikle ilk 24 saat içinde ortaya çıkmaktadır."</string>
+
+    <string-array name="symptoms_of_delirium_tremens">
+        <item>
+            1.Isı artışı (hipertermi)\n
+            2.Terleme ve titremede artış\n
+            3.Baş ağrısı\n
+            4.Kaygı, huzursuzluk\n
+            5.Algı bozuklukları (halisülasyonlar veya yanılsamalar)\n
+            6.Tasiyon yüksekliği (hipertansiyon)
+        </item>
+        <item>
+                7.Kalp ritminde değişim (aritmi)\n
+                8.Bulantı veya kusma\n
+                9.Uykusuzluk\n
+                10.Bunaltı (iç sıkıntısı)\n
+                11.Sara (epilepsi) nöbetleri\n
+                12.Dikkat bozukluğu\n
+        </item>
+    </string-array>
 
 </resources>
