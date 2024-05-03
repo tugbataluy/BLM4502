@@ -13,62 +13,85 @@
         android:theme="@style/Theme.AddictionRecovery"
         tools:targetApi="31">
         <activity
-            android:name=".drawer_menu"
+            android:name=".AlcoholAddictionSupportPage"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlcoholAddictionVideosPage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlcoholAddictionShowVideos"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlcoholAddictionQuestionAnswersPage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlcoholAddictionQuestionsPage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlcoholAddictionMainPage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".drawer_menu"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Feedback"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user_profile"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UpdateName"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UpdateMail"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UpdatePassword"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Purpose"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionSupportPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionShowVideos"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionVideosPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionQuestionAnswersPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionQuestionsPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SubstanceAddictionMainPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionSupportPage"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionShowVideos"
             android:exported="false"
