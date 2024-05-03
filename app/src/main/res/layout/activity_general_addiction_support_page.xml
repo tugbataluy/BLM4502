@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/support_text"
             android:layout_marginTop="75dp"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/warning_bg"
             android:padding="15dp"
@@ -41,7 +41,7 @@
 
             <ListView
                 android:id="@+id/ngo_list_view"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="700dp"
                 android:dividerHeight="5dp"
                 android:divider="@color/app_pages_bg"

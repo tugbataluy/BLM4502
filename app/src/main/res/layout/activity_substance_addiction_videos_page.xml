@@ -9,15 +9,15 @@
     android:orientation="vertical"
     >
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/substance_addiction_videos_page_layout">
             <GridView
                 android:id="@+id/video_list"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="1200dp"
                 android:layout_marginTop="90dp"
 

@@ -35,7 +35,7 @@
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                 android:layout_marginTop="120dp"
                 android:textSize="16sp"
-                android:textColor="#75A47F"
+                android:textColor="#135D66"
                 android:layout_marginBottom="100dp"
                 />
 

@@ -32,7 +32,7 @@
                 android:layout_marginLeft="15dp"/>
             <TextView
                 android:id="@+id/what_is_subs_addiciton_title"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/what_is_subs_ad_title"
@@ -45,7 +45,7 @@
                 android:gravity="center"/>
             <TextView
                 android:id="@+id/what_is_subs_add_content"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/what_is_subs_addiciton_title"
                 android:text="@string/what_is_subs_ad_content"
@@ -59,7 +59,7 @@
                 />
             <TextView
                 android:id="@+id/what_is_subs_add_type"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="@string/subs_add_types"
                 android:layout_alignTop="@id/what_is_subs_add_content"
@@ -72,7 +72,7 @@
                 android:textAppearance="@style/subs_main_title"/>
             <TextView
                 android:id="@+id/subs_add_type_content"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="@string/subs_add_types_conent"
                 android:background="@drawable/general_addiction_text"
@@ -87,7 +87,7 @@
                 android:textAppearance="@style/subs_main_contents"/>
             <TextView
                 android:id="@+id/what_is_subs_treatment_title"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/subs_add_type_content"
                 android:layout_marginTop="235dp"
@@ -101,7 +101,7 @@
                 />
             <TextView
                 android:id="@+id/what_is_subs_treatment_context"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/what_is_subs_treatment_title"
                 android:text="@string/subs_add_treatmet_context"
@@ -136,9 +136,10 @@
                 android:layout_centerHorizontal="true"
                 />
             <GridView
+                android:layout_centerHorizontal="true"
                 android:layout_alignTop="@id/symptoms_title"
                 android:id="@+id/subs_grid1"
-                android:layout_width="wrap_content"
+                android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
                 android:numColumns="3"
@@ -149,10 +150,11 @@
                 />
 
             <ImageView
+                android:layout_centerHorizontal="true"
                 android:id="@+id/subs_test_title"
                 android:layout_alignTop="@id/subs_grid1"
                 android:layout_marginTop="150dp"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:src="@raw/subs_test"
                 android:paddingLeft="25dp"
@@ -161,7 +163,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_alignTop="@id/subs_test_title"
                 android:id="@+id/warning_subs"
-                android:layout_width="350dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/warning_bg"
                 android:backgroundTint="@color/subs_addiction_content_text_bg"
@@ -172,9 +174,10 @@
                 android:drawableEnd="@raw/subs_warning"
                 />
             <GridView
+                android:layout_centerHorizontal="true"
                 android:id="@+id/subs_grid2"
                 android:layout_alignTop="@id/warning_subs"
-                android:layout_width="wrap_content"
+                android:layout_width="325dp"
                 android:layout_height="250dp"
                 android:numColumns="3"
                 android:verticalSpacing="5dp"

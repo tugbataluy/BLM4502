@@ -10,11 +10,11 @@
     android:orientation="vertical">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/general_addiction_layout"
         >
@@ -24,7 +24,7 @@
             android:layout_width="72dp"
             android:layout_height="54dp"
             android:layout_alignStart="@id/first_pic"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="-75dp"
             android:layout_marginTop="140dp"
             android:src="@drawable/back_arrow_red"
             android:clickable="true"
@@ -38,7 +38,7 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="120dp"/>
         <TextView
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
@@ -50,7 +50,7 @@
             android:background="@drawable/general_addiction_title"/>
         <TextView
             android:id="@+id/content1"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
@@ -61,13 +61,13 @@
             android:textSize="14sp"
             android:background="@drawable/general_addiction_text"/>
         <ImageView
-            android:layout_width="300dp"
+            android:layout_width="350dp"
             android:layout_height="300dp"
             android:layout_marginTop="415dp"
             android:layout_centerHorizontal="true"
             android:src="@raw/dongupng"/>
         <TextView
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:layout_marginTop="740dp"
@@ -78,7 +78,7 @@
             android:gravity="center"
             android:background="@drawable/general_addiction_title"/>
         <TextView
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="775dp"
             android:layout_centerHorizontal="true"
@@ -89,7 +89,7 @@
             android:textAppearance="@style/general_addiction_content_style1"
             />
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="150dp"
             android:src="@raw/banner"
             android:layout_centerHorizontal="true"
@@ -107,7 +107,7 @@
 
         <GridView
             android:id="@+id/gridView"
-            android:layout_width="wrap_content"
+            android:layout_width="325dp"
             android:layout_height="600dp"
             android:numColumns="3"
             android:verticalSpacing="5dp"
@@ -115,6 +115,7 @@
             android:stretchMode="columnWidth"
             android:gravity="center"
             android:layout_marginTop="1160dp"
+            android:layout_centerHorizontal="true"
 
             />
 
@@ -127,7 +128,7 @@
             android:padding="5dp"/>
         <TextView
             android:id="@+id/warning"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1500dp"
             android:background="@drawable/warning_bg"
@@ -141,14 +142,15 @@
         <GridView
             android:layout_alignTop="@id/warning"
             android:id="@+id/gridView3"
-            android:layout_width="wrap_content"
+            android:layout_width="325dp"
             android:layout_height="250dp"
             android:numColumns="3"
-            android:verticalSpacing="5dp"
-            android:horizontalSpacing="2dp"
+            android:verticalSpacing="7dp"
+            android:horizontalSpacing="3dp"
             android:stretchMode="columnWidth"
             android:gravity="center"
-            android:layout_marginTop="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="275dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginBottom="0dp"/>
