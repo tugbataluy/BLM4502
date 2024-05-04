@@ -309,7 +309,7 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
                         break;
                     case R.id.questions_tab:
                         System.out.println("questions");
-                        Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionQuestionsPage.class);
+                        Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionMainPage.class);
                         startActivity(intent2);
                         break;
                     case R.id.videos_tab:
@@ -417,6 +417,16 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, SubstanceAddictionVideosPage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
     }
 
 }

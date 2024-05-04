@@ -153,7 +153,7 @@ public class SubstanceAddictionQuestionAnswersPage extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(SubstanceAddictionQuestionAnswersPage.this,HomePage.class);
+                        Intent intent= new Intent(SubstanceAddictionQuestionAnswersPage.this,SubstanceAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:
@@ -191,5 +191,15 @@ public class SubstanceAddictionQuestionAnswersPage extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, SubstanceAddictionQuestionsPage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
     }
 }

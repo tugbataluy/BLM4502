@@ -1,5 +1,6 @@
 package com.example.addictionrecovery;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AlertDialog;
@@ -83,6 +84,16 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
+
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
 
@@ -232,5 +243,11 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
 
 }

@@ -162,7 +162,7 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(SubstanceAddictionVideosPage.this,HomePage.class);
+                        Intent intent= new Intent(SubstanceAddictionVideosPage.this,SubstanceAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:
@@ -199,5 +199,14 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, SubstanceAddictionMainPage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
     }
 }

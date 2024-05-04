@@ -213,4 +213,13 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, HomePage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
+    }
 }

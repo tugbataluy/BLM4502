@@ -80,7 +80,7 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(GeneralAddictionQuestionsPage.this,HomePage.class);
+                        Intent intent= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:
@@ -215,6 +215,15 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
         });
     }
 
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, GeneralAddictionMainPage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
+    }
 
 
 }

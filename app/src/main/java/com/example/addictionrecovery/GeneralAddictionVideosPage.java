@@ -242,4 +242,14 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
             }
         });
     }
+
+    public void onBackPressed() {
+        // Yeni aktiviteye geçiş yapmak için Intent oluştur
+        super.onBackPressed();
+        Intent intent = new Intent(this, GeneralAddictionMainPage.class);
+        // Yeni aktiviteyi başlat
+        startActivity(intent);
+        // Mevcut aktiviteyi sonlandır
+        finish();
+    }
 }
