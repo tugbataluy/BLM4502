@@ -2,7 +2,9 @@
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="80dp"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
     android:background="@drawable/warning_bg"
     android:backgroundTint="#9AD0C2"
     android:drawableStart="@drawable/videos_sub"

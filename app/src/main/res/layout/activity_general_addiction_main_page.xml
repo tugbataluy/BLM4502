@@ -12,7 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+       >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -175,8 +175,8 @@
             android:layout_alignTop="@id/warning"
             android:id="@+id/gridView3"
             android:layout_width="match_parent"
-            android:layout_marginRight="25dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_height="270dp"
             android:numColumns="3"
             android:verticalSpacing="7dp"
@@ -184,10 +184,10 @@
             android:stretchMode="columnWidth"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="250dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="40dp"/>
     </RelativeLayout>
     </ScrollView>
     <RelativeLayout
