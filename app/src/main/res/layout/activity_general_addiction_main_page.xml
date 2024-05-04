@@ -38,7 +38,11 @@
             android:layout_centerHorizontal="true"
             android:paddingTop="120dp"/>
         <TextView
-            android:layout_width="300dp"
+            android:id="@+id/what_is_addiction_title"
+            android:layout_alignTop="@id/first_pic"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="8dp"
@@ -49,28 +53,39 @@
             android:textSize="16sp"
             android:background="@drawable/general_addiction_title"/>
         <TextView
+            android:layout_alignTop="@id/what_is_addiction_title"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:id="@+id/content1"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="15dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="310dp"
+            android:layout_marginTop="35dp"
             android:text="@string/general_addiction_content1"
             android:textAppearance="@style/general_addiction_content_style1"
             android:textSize="14sp"
             android:background="@drawable/general_addiction_text"/>
         <ImageView
-            android:layout_width="350dp"
+            android:id="@+id/dongu_view"
+            android:layout_alignTop="@id/content1"
+            android:layout_width="match_parent"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
             android:layout_height="300dp"
-            android:layout_marginTop="415dp"
+            android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"
             android:src="@raw/dongupng"/>
         <TextView
-            android:layout_width="300dp"
+            android:layout_alignTop="@id/dongu_view"
+            android:id="@+id/how_does_addiction_occurs_title"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:layout_marginTop="740dp"
+            android:layout_marginTop="320dp"
             android:layout_centerHorizontal="true"
             android:text="@string/general_addiction_title2"
             android:textSize="16sp"
@@ -78,23 +93,31 @@
             android:gravity="center"
             android:background="@drawable/general_addiction_title"/>
         <TextView
-            android:layout_width="300dp"
+            android:layout_alignTop="@id/how_does_addiction_occurs_title"
+            android:id="@+id/how_does_addiction_occurs_text"
+            android:layout_width="match_parent"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="775dp"
+            android:layout_marginTop="35dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="15dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/general_addiction_content2"
             android:background="@drawable/general_addiction_text"
             android:textAppearance="@style/general_addiction_content_style1"
             />
         <ImageView
-            android:layout_width="300dp"
+            android:id="@+id/img_add"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_height="150dp"
             android:src="@raw/banner"
             android:layout_centerHorizontal="true"
-            android:layout_alignTop="@id/belirti"
-            android:layout_marginTop="-140dp"
+            android:layout_alignTop="@id/how_does_addiction_occurs_text"
+            android:layout_marginTop="225dp"
             android:paddingBottom="15dp"/>
         <ImageView
             android:id="@+id/belirti"
@@ -102,35 +125,44 @@
             android:layout_height="wrap_content"
             android:src="@raw/subtitle1_ga"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="1130dp"
+            android:layout_alignTop="@id/img_add"
+            android:layout_marginTop="150dp"
             />
 
         <GridView
+            android:layout_alignTop="@id/belirti"
             android:id="@+id/gridView"
-            android:layout_width="325dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
             android:layout_height="600dp"
             android:numColumns="3"
             android:verticalSpacing="5dp"
             android:horizontalSpacing="3dp"
             android:stretchMode="columnWidth"
             android:gravity="center"
-            android:layout_marginTop="1160dp"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
 
             />
 
         <ImageView
+            android:id="@+id/tests_title"
+            android:layout_alignTop="@id/gridView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1465dp"
+            android:layout_marginTop="300dp"
             android:src="@raw/ilginc_ga"
             android:layout_centerHorizontal="true"
             android:padding="5dp"/>
         <TextView
+            android:layout_alignTop="@id/tests_title"
             android:id="@+id/warning"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1500dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/warning_bg"
             android:text="@string/warning_ga"
             android:textAppearance="@style/general_addiction_content_style1"
@@ -138,22 +170,24 @@
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:padding="15dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="25dp"/>
         <GridView
             android:layout_alignTop="@id/warning"
             android:id="@+id/gridView3"
-            android:layout_width="325dp"
-            android:layout_height="250dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_height="270dp"
             android:numColumns="3"
             android:verticalSpacing="7dp"
             android:horizontalSpacing="3dp"
             android:stretchMode="columnWidth"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="275dp"
+            android:layout_marginTop="200dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="20dp"/>
     </RelativeLayout>
     </ScrollView>
     <RelativeLayout
@@ -166,7 +200,9 @@
             />
         <include layout="@layout/bottom_nav"
             android:id="@+id/bottom_temp"
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
     <include

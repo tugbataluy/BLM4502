@@ -3,9 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/bottom_nav_id"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
-
+    android:minHeight="?attr/actionBarSize"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:background="@color/toolbar_background">
 
     <TextView
@@ -18,11 +20,12 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:text="@string/alt_toolbar_anasayfa"
+        android:paddingRight="7.5dp"
         android:textColor="@color/alt_toolbar_icon_color"
         android:textSize="11sp" />
 
     <ImageView
-        android:layout_width="55dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
 
         android:rotation="90"
@@ -38,6 +41,7 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:text="@string/bottom_sorular"
+        android:paddingRight="7.5dp"
         android:textColor="@color/alt_toolbar_icon_color"
         android:textSize="11sp"
 
@@ -45,8 +49,8 @@
 
     <ImageView
 
-        android:layout_width="55dp"
-        android:layout_height="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:rotation="90"
         android:src="@drawable/line"
 
@@ -59,14 +63,15 @@
         android:drawableTop="@drawable/videos"
         android:gravity="center"
         android:paddingTop="10dp"
+        android:paddingRight="7.5dp"
         android:text="@string/bottom_videolar"
         android:textColor="@color/alt_toolbar_icon_color"
         android:textSize="11sp" />
 
     <ImageView
 
-        android:layout_width="55dp"
-        android:layout_height="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
 
         android:rotation="90"
         android:src="@drawable/line"
@@ -78,7 +83,7 @@
         android:layout_width="100dp"
         android:layout_marginLeft="-60dp"
         android:layout_height="wrap_content"
-        android:paddingRight="65dp"
+        android:paddingRight="62.5dp"
         android:drawableTop="@drawable/destek"
         android:gravity="left"
         android:paddingTop="10dp"
