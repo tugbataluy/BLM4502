@@ -1,6 +1,7 @@
 package com.example.addictionrecovery;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AlertDialog;
@@ -85,17 +86,25 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         relativeLayoutClickerEnable();
         navBottomArrangements();
 
+        backButtonActivity();
 
-        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+
+    }
+
+    public void backButtonActivity(){
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
+                // Yeni aktiviteye geçmek için Intent oluştur
+                Intent intent = new Intent(GeneralAddictionMainPage.this, HomePage.class);
+                // Yeni aktiviteyi başlat
                 startActivity(intent);
-
+                // Mevcut aktiviteyi sonlandır
+                finish();
             }
         });
     }
-
 
 
     public void backButtonInitialization (){
@@ -243,11 +252,6 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 
 
 }

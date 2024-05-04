@@ -1,5 +1,7 @@
 package com.example.addictionrecovery;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +47,23 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
         relativeLayoutClickerEnable();
         navBottomArrangements();
         setGridView();
+        backButtonActivity();
+    }
+
+
+    public void backButtonActivity(){
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Yeni aktiviteye geçmek için Intent oluştur
+                Intent intent = new Intent(SubstanceAddictionVideosPage.this, SubstanceAddictionMainPage.class);
+                // Yeni aktiviteyi başlat
+                startActivity(intent);
+                // Mevcut aktiviteyi sonlandır
+                finish();
+            }
+        });
     }
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);
@@ -200,13 +219,5 @@ public class SubstanceAddictionVideosPage extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed() {
-        // Yeni aktiviteye geçiş yapmak için Intent oluştur
-        super.onBackPressed();
-        Intent intent = new Intent(this, SubstanceAddictionMainPage.class);
-        // Yeni aktiviteyi başlat
-        startActivity(intent);
-        // Mevcut aktiviteyi sonlandır
-        finish();
-    }
+
 }
