@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -24,9 +25,10 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
     NavigationView navigationView;
 
     ImageView navIcon,backArrow;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon, questionTitle,questionAnswer;
+    TextView  questionTitle,questionAnswer;
     RelativeLayout relativeLayout;
 
+    BottomNavigationView bottomNavigationView;
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,48 +72,40 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
     }
 
     public void navBottomArrangements(){
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
+                switch (itemId){
+                    case R.id.home_tab:
+                        System.out.println("home");
+                        Intent intent= new Intent(GeneralAddictionQuestionAnswersPage.this,HomePage.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.questions_tab:
+                        System.out.println("questions");
+                        Intent intent2= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.videos_tab:
+                        System.out.println("videos");
+                        Intent intent3= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionVideosPage.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.support_tab:
+                        System.out.println("support");
+                        Intent intent4= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionSupportPage.class);
+                        startActivity(intent4);
+                        break;
+                    default:
 
-        homeIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        questionIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        videoIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
-        helpIcon.setOnClickListener(new GeneralAddictionQuestionAnswersPage.BottomBarListener());
+                        break;
+                }
 
-
-    }
-    public class BottomBarListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.home_icon:
-                    Intent intent= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionMainPage.class);
-                    startActivity(intent);
-
-                    break;
-                case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-                case R.id.videos_icon:
-                    Intent intent3= new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionVideosPage.class);
-                    startActivity(intent3);
-
-                    break;
-                case R.id.help_icon:
-                    Intent intent4 = new Intent(GeneralAddictionQuestionAnswersPage.this,GeneralAddictionSupportPage.class);
-                    startActivity(intent4);
-
-                    break;
-                default:
-                    System.out.println("Any nav selected");
-                    break;
+                return false;
             }
-        }
+        });
     }
     private void showLogoutConfirmationDialog() {
         // AlertDialog oluştur

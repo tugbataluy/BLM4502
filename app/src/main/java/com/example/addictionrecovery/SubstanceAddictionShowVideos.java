@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -46,7 +47,9 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
     ImageView navIcon,backIcon;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon, titleView, descriptionView;
+    TextView  titleView, descriptionView;
+
+    BottomNavigationView bottomNavigationView;
     YouTubePlayerView youTubePlayerView;
     FrameLayout fullscreenViewContainer;
 
@@ -293,50 +296,40 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
         }
     }
     public void navBottomArrangements(){
-        bottom= (Toolbar) findViewById(R.id.bottom_temp);
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
+                switch (itemId){
+                    case R.id.home_tab:
+                        System.out.println("home");
+                        Intent intent= new Intent(SubstanceAddictionShowVideos.this,HomePage.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.questions_tab:
+                        System.out.println("questions");
+                        Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionQuestionsPage.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.videos_tab:
+                        System.out.println("videos");
+                        Intent intent3= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionVideosPage.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.support_tab:
+                        System.out.println("support");
+                        Intent intent4= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionSupportPage.class);
+                        startActivity(intent4);
+                        break;
+                    default:
 
-        homeIcon.setOnClickListener(new SubstanceAddictionShowVideos.BottomBarListener());
-        questionIcon.setOnClickListener(new SubstanceAddictionShowVideos.BottomBarListener());
-        videoIcon.setOnClickListener(new SubstanceAddictionShowVideos.BottomBarListener());
-        helpIcon.setOnClickListener(new SubstanceAddictionShowVideos.BottomBarListener());
+                        break;
+                }
 
-
-    }
-    public class BottomBarListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.home_icon:
-                    Intent intent= new Intent(SubstanceAddictionShowVideos.this, SubstanceAddictionMainPage.class);
-                    startActivity(intent);
-
-                    break;
-                case R.id.questions_icon:
-                    Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-                case R.id.videos_icon:
-                    Intent intent3= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionVideosPage.class);
-                    startActivity(intent3);
-
-                    break;
-                case R.id.help_icon:
-                    Intent intent4= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionSupportPage.class);
-                    startActivity(intent4);
-
-                    break;
-                default:
-                    System.out.println("Any nav selected");
-                    break;
+                return false;
             }
-        }
-
+        });
     }
 
     private void showLogoutConfirmationDialog() {

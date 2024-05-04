@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -32,9 +33,10 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
     ImageView navIcon;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon;
+
     GridView questionsGrid;
 
+    BottomNavigationView bottomNavigationView;
     String [] questions,answers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,49 +72,40 @@ public class GeneralAddictionQuestionsPage extends AppCompatActivity {
 
 
     public void navBottomArrangements(){
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
+                switch (itemId){
+                    case R.id.home_tab:
+                        System.out.println("home");
+                        Intent intent= new Intent(GeneralAddictionQuestionsPage.this,HomePage.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.questions_tab:
+                        System.out.println("questions");
+                        Intent intent2= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionQuestionsPage.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.videos_tab:
+                        System.out.println("videos");
+                        Intent intent3= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionVideosPage.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.support_tab:
+                        System.out.println("support");
+                        Intent intent4= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionSupportPage.class);
+                        startActivity(intent4);
+                        break;
+                    default:
 
-        homeIcon.setOnClickListener(new GeneralAddictionQuestionsPage.BottomBarListener());
-        questionIcon.setOnClickListener(new GeneralAddictionQuestionsPage.BottomBarListener());
-        videoIcon.setOnClickListener(new GeneralAddictionQuestionsPage.BottomBarListener());
-        helpIcon.setOnClickListener(new GeneralAddictionQuestionsPage.BottomBarListener());
+                        break;
+                }
 
-
-    }
-
-    public class BottomBarListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.home_icon:
-                    Intent intent= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionMainPage.class);
-                    startActivity(intent);
-
-                    break;
-                case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-                case R.id.videos_icon:
-                    Intent intent3= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionVideosPage.class);
-                    startActivity(intent3);
-
-                    break;
-                case R.id.help_icon:
-                    Intent intent4= new Intent(GeneralAddictionQuestionsPage.this,GeneralAddictionSupportPage.class);
-                    startActivity(intent4);
-
-                    break;
-                default:
-                    System.out.println("Any nav selected");
-                    break;
+                return false;
             }
-        }
+        });
     }
 
     public class QuestionGridListener implements AdapterView.OnItemClickListener{

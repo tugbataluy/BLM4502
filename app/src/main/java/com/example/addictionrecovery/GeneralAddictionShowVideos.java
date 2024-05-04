@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -49,10 +50,11 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
     ImageView navIcon,backIcon;
-    TextView homeIcon,questionIcon,videoIcon, helpIcon, titleView, descriptionView;
+    TextView  titleView, descriptionView;
     YouTubePlayerView youTubePlayerView;
     FrameLayout fullscreenViewContainer;
 
+    BottomNavigationView bottomNavigationView;
 
     GridView recommendedGrid;
     YouTubePlayer youTubePlayer;
@@ -299,18 +301,40 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
     }
 
     public void navBottomArrangements(){
-        bottom= (Toolbar) findViewById(R.id.bottom_temp);
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
+                switch (itemId){
+                    case R.id.home_tab:
+                        System.out.println("home");
+                        Intent intent= new Intent(GeneralAddictionShowVideos.this,HomePage.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.questions_tab:
+                        System.out.println("questions");
+                        Intent intent2= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionQuestionsPage.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.videos_tab:
+                        System.out.println("videos");
+                        Intent intent3= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionVideosPage.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.support_tab:
+                        System.out.println("support");
+                        Intent intent4= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionSupportPage.class);
+                        startActivity(intent4);
+                        break;
+                    default:
 
-        homeIcon.setOnClickListener(new GeneralAddictionShowVideos.BottomBarListener());
-        questionIcon.setOnClickListener(new GeneralAddictionShowVideos.BottomBarListener());
-        videoIcon.setOnClickListener(new GeneralAddictionShowVideos.BottomBarListener());
-        helpIcon.setOnClickListener(new GeneralAddictionShowVideos.BottomBarListener());
+                        break;
+                }
 
-
+                return false;
+            }
+        });
     }
     public class BottomBarListener implements View.OnClickListener{
 

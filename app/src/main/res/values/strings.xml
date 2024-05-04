@@ -142,6 +142,10 @@
     
     <string name="what_is_delirium_tremens_title">"Alkol Yoksunluğu Nedir?"</string>
     <string name="what_is_delirium_tremens">"Alkol kullanım bozukluğu ile ilgili sıkça karşılaşılan durumlardan biri, alkol yoksunluğudur. Uzun süre yüksek miktarda alkol kullanımının bırakılmasından ya da azaltılmasından sonra kandaki alkol düzeyinin azalmaya başlamasından 6-8 saat sonra, genellikle ilk 24 saat içinde ortaya çıkmaktadır."</string>
+    <string name="anasayfa">Anasayfa</string>
+    <string name="sorular">Sorular</string>
+    <string name="videolar">Videolar</string>
+    <string name="destek">Destek</string>
 
     <string-array name="symptoms_of_delirium_tremens">
         <item>

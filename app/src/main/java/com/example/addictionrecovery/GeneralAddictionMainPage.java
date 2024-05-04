@@ -20,7 +20,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Arrays;
@@ -34,7 +34,8 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     FirebaseAuth auth;
     NavigationView navigationView;
     ImageView navIcon,backIcon;
-    TextView homeIcon,questionIcon,videoIcon,helpIcon;
+    //TextView homeIcon,questionIcon,videoIcon,helpIcon;
+    BottomNavigationView bottomNavigationView;
     Toolbar tb;
     GridView symptomsView;
     GridView symptomsView2;
@@ -85,6 +86,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
     }
 
 
+
     public void backButtonInitialization (){
         backIcon=(ImageView)findViewById(R.id.back_to_mainpage_icon);
         backIcon.setOnClickListener( new View.OnClickListener(){
@@ -96,52 +98,46 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
+
+
     public void navBottomArrangements(){
-        homeIcon=(TextView)findViewById(R.id.home_icon);
-        questionIcon=(TextView) findViewById(R.id.questions_icon);
-        videoIcon=(TextView) findViewById(R.id.videos_icon);
-        helpIcon=(TextView) findViewById(R.id.help_icon);
+        bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
+                switch (itemId){
+                    case R.id.home_tab:
+                        System.out.println("home");
+                        Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.questions_tab:
+                        System.out.println("questions");
+                        Intent intent2= new Intent(GeneralAddictionMainPage.this,GeneralAddictionQuestionsPage.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.videos_tab:
+                        System.out.println("videos");
+                        Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
+                        startActivity(intent3);
+                        break;
+                    case R.id.support_tab:
+                        System.out.println("support");
+                        Intent intent4= new Intent(GeneralAddictionMainPage.this,GeneralAddictionSupportPage.class);
+                        startActivity(intent4);
+                        break;
+                    default:
 
-        homeIcon.setOnClickListener(new BottomBarListener());
-        questionIcon.setOnClickListener(new BottomBarListener());
-        videoIcon.setOnClickListener(new BottomBarListener());
-        helpIcon.setOnClickListener(new BottomBarListener());
+                        break;
+                }
 
-
-    }
-
-    public class BottomBarListener implements View.OnClickListener{
-
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-               case R.id.home_icon:
-                   Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
-                   startActivity(intent);
-
-                   break;
-               case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionMainPage.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-               case R.id.videos_icon:
-                   Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
-                   startActivity(intent3);
-
-                   break;
-               case R.id.help_icon:
-                   //pass
-                   Intent intent4= new Intent(GeneralAddictionMainPage.this,GeneralAddictionSupportPage.class);
-                   startActivity(intent4);
-
-                   break;
-               default:
-                    System.out.println("Any nav selected");
-                   break;
+                return false;
             }
-        }
+        });
     }
+
+
 
     public void setToolbarTitle(){
         tb=(Toolbar) findViewById(R.id.title_template);
