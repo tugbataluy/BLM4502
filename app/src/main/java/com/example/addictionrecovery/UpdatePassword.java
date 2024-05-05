@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +27,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UpdatePassword extends AppCompatActivity {
-    TextView title;
     EditText updatePassword;
+    EditText repeatPassword;
     ImageView back_button;
     Button update_button;
     FirebaseAuth mAuth;
@@ -35,13 +37,15 @@ public class UpdatePassword extends AppCompatActivity {
 
     public void updatePassword() {
         String newPassword = updatePassword.getText().toString();
+        String repPassword = repeatPassword.getText().toString();
 
-        if (user != null && newPassword.length() >= 6) { // Minimum şifre uzunluğu 6 karakter olmalıdır
+       if (user != null &&  newPassword.length() >= 6 && repPassword.length() >= 6  && newPassword.equals(repPassword)) { // Minimum şifre uzunluğu 6 karakter olmalıdır
             user.updatePassword(newPassword).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful()  ) {
                     Log.d("UpdatePassword", "Password updated successfully.");
                     showSuccessDialog();
-                } else {
+                }
+                else {
                     Log.w("UpdatePassword", "Failed to update password.", task.getException());
                     showErrorDialog();
                 }
@@ -55,26 +59,23 @@ public class UpdatePassword extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_profile_update);
+        setContentView(R.layout.user_profile_password_update);
 
         mAuth= FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user = mAuth.getCurrentUser();
 
-        title=findViewById(R.id.title);
-        updatePassword=findViewById(R.id.updateName);
+        updatePassword=findViewById(R.id.updatePassword);
+        repeatPassword=findViewById(R.id.repeatPassword);
         update_button=findViewById(R.id.update_button);
         back_button=findViewById(R.id.back_icon);
-
-        updatePassword.setHint("Şifre giriniz..");
-        updatePassword.setTextAppearance(R.style.feedback_style);
-        title.setText("Şifre Yenileme");
 
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updatePassword();
                 updatePassword.setText("");
+                repeatPassword.setText("");
             }
         });
 
@@ -118,7 +119,7 @@ public class UpdatePassword extends AppCompatActivity {
 
     private void emptyErrorDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePassword.this);
-        builder.setMessage("Minimum 6 karakterli bir şifre giriniz.");
+        builder.setMessage("Minimum 6 karakterli bir şifre giriniz ve şifrelerin aynı olduğundan emin olunuz.");
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

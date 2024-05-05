@@ -2,6 +2,7 @@ package com.example.addictionrecovery;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -93,7 +94,8 @@ public class UpdateMail extends AppCompatActivity {
         back_button=findViewById(R.id.back_icon);
 
         updateMail.setHint("Email giriniz..");
-        updateMail.setTextAppearance(R.style.feedback_style);
+        updateMail.setHintTextColor(Color.parseColor("#BBAB8C"));
+        updateMail.setTextColor(Color.parseColor("#9B4444"));
         title.setText("Email Güncelleme");
 
         update_button.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +103,7 @@ public class UpdateMail extends AppCompatActivity {
             public void onClick(View v) {
                 newEmail = updateMail.getText().toString();
                 updateEmail(newEmail);
-                addToDatabaseNewEmail(mAuth.getUid());
+                if(mAuth.getCurrentUser().isEmailVerified()){addToDatabaseNewEmail(mAuth.getCurrentUser().getUid());}
                 updateMail.setText("");
             }
         });

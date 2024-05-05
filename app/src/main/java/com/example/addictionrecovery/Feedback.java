@@ -39,8 +39,9 @@ public class Feedback extends AppCompatActivity {
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (documentSnapshot.exists()) {
                         String username = documentSnapshot.getString("Name"); // Firestore'dan alınan kullanıcı adı
+                        String email=documentSnapshot.getString("Email");
                         // addToDatabase metodunu çağır
-                        addToDatabase(username, uid);
+                        addToDatabase(username,email, uid);
                         feedback_text.setText("");
 
                     } else {
@@ -55,12 +56,12 @@ public class Feedback extends AppCompatActivity {
                 }
             });}
 
-    public void addToDatabase(String username,String uid) {
+    public void addToDatabase(String username,String email,String uid) {
         // Create a new user with a first and last name
         Map<String, Object> feedback = new HashMap<String, Object>();
 
         feedback.put("Name", username); // Kullanıcı adı
-        feedback.put("Email", mAuth.getCurrentUser().getEmail()); // Kullanıcı e-posta adresi
+        feedback.put("Email", email); // Kullanıcı e-posta adresi
         feedback.put("Comment", feedback_text.getText().toString());
         feedback.put("Score", rating);
         feedback.put("OwnerId", uid);
