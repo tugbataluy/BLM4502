@@ -175,7 +175,9 @@ public class HomePage extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.tech_addiction_btn:
-                    //pass
+                    Intent intent3=new Intent(HomePage.this, TechnologyAddictionMainPage.class);
+                    startActivity(intent3);
+                    finish();
                     break;
                 case R.id.alcohol_addiction_btn:
                     //pass

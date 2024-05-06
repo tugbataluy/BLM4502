@@ -25,6 +25,14 @@
     <color name="subs_addiction_test_text_color">#66726A</color>
     <color name="subs_addiction_questions_title_color">#AFC7B6</color>
 
+    <color name="tech_addiction_content_title_bg">#C9A7EB</color>
+    <color name="tech_addiction_content_text_bg">#EDE4FF</color>
+    <color name="tech_addiction_homepage_txt_color">#57375D</color>
+    <color name="tech_addiction_grid_bg_color">#DBC4F0</color>
+    <color name="tech_addiction_grid_text_color">#916DB3</color>
+
+
+
 
 
 </resources>

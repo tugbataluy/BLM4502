@@ -166,4 +166,42 @@
         </item>
     </string-array>
 
+
+    <string name="what_is_tech_ad_title">"Teknoloji Bağımlılığı Nedir? "</string>
+    <string name="tech_main_contents">\nTeknoloji bağımlılığı elektronik cihazların kontrolsüz bir şekilde kullanılmasını ifade eder. Bunun yanı sıra internetin de bilinçsiz bir şekilde saatleri aşan kullanım süresi bağımlılık seviyesinde görülür.</string>
+    <string name="tech_add_types" >Teknoloji Bağımlılığı Çeşitleri Nelerdir?</string>
+    <string name="tech_add_types_content" >
+        \n\u2022Internet Bağımlılığı:
+        \n\nBireylerin çevrimiçi ortamlarda aşırı zaman geçirmesi ve internete erişim sağlayan cihazlara aşırı derecede bağımlı olması durumunu ifade eder.
+        \n\n\u2022Oyun Bağımlılığı:
+        \n\nÖzellikle video oyunlarına aşırı derecede bağımlı olma durumunu ifade eder. Kişinin gerçek yaşam aktivitelerini ihmal etmesine, sürekli olarak oyun oynamaya odaklanmasına neden olabilir.
+        \n\n\u2022Akıllı Telefon Bağımlılığı:
+        \n\nKişilerin sürekli olarak telefonlarını kontrol etme, sosyal medya ve mesajlaşma uygulamalarını sürekli olarak kullanma, ekran süresini kontrol edememe gibi davranışları içerir. Bu tür bağımlılık, gerçek dünya etkileşimlerini azaltabilir ve dikkat dağınıklığına neden olabilir.
+        \n\n\u2022Sosyal Medya Bağımlılığı:
+        \n\nBireylerin sosyal medya platformlarında sürekli olarak zaman geçirmesi, beğeni ve yorumlara aşırı derecede önem vermesi ve çevrimiçi kimliklerinin oluşmasına bağımlı hale gelmesi durumudur. Bu tür bağımlılık, özsaygıyı etkileyebilir ve gerçek dünya ilişkilerini olumsuz etkileyebilir.
+    </string>
+    <string name="tech_add_harms">Teknolojinin Zararları Nelerdir?</string>
+    <string name="tech_add_harms_content" >
+        \n\u2022Zihinsel Becerilerde bozukluklar meydana getirebilir.
+        \n\n\u2022Dikkat dağınıklığı ve konsantrasyon eksikliğine sebebiyet verebilmektedir.
+        \n\n\u2022Çok fazla oyun oynayan çocuklar gerçek hayatta arkadaşlıklar kullanırken zorlanabilir.
+        \n\n\u2022Çocuklar görüp etkilendikleri şeyler sonucunda öfke ve korku duyguları yoğun bir şekilde hissedebilir. Bunun sonucunda tek başına kalamama, uyuyamama ve kabuslar görme gibi durumlar ortaya çıkabilir.
+        \n\n\u2022Sosyal mecralardan zorbalığa uğranılabilir.
+        \n\n\u2022Teknoloji beraberinde görme problemlerini getirebilir.
+    </string>
+    <string-array name="tech_diagnose_conditions">
+        <item>Günlük hayattaki düzenin bozulmasıyla beraber uykusuzluk.</item>
+        <item>Dikkat eksikliğinin ileri bir düzeyde olması.</item>
+        <item>Sosyal hayattaki ilişkilerin zayıflaması ve arkadaşlıkların bozulması.</item>
+        <item>Teknolojik aletlerden uzak kalamamak ve refleks olarak sürekli bakmak istemek.</item>
+        <item>Günün büyük bir çoğunluğunda telefondan uzak kalamama ve kalındığında da yoğun stres altında hissetmek.</item>
+        <item>Gerçek hayatın ve sorumlulukların stresinden uzaklaşmak istemek.</item>
+    </string-array>
+    <string-array name="tech_add_tests">
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+    </string-array>
+
+
 </resources>

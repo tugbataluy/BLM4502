@@ -69,6 +69,29 @@
         <item name="android:textColor">@color/subs_addiction_test_text_color</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
-
     </style>
+
+    <!--- Technology Addiction Styles -->
+    <style name="tech_main_title">
+        <item name="android:textColor">@color/tech_addiction_homepage_txt_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="tech_main_contents">
+        <item name="android:textColor">@color/tech_addiction_homepage_txt_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="tech_warning_text">
+        <item name="android:textColor">@color/tech_addiction_homepage_txt_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="tech_addiction_test_grid_style">
+        <item name="android:textColor">@color/tech_addiction_grid_text_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
 </resources>
