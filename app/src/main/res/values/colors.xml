@@ -31,6 +31,13 @@
     <color name="tech_addiction_grid_bg_color">#DBC4F0</color>
     <color name="tech_addiction_grid_text_color">#916DB3</color>
 
+    <color name="alcohol_addiction_title_bg">#B47B84</color>
+    <color name="alcohol_addiction_title_color">#A0153E</color>
+    <color name="alcohol_addiction_content_bg">#CAA6A6</color>
+    <color name="alcohol_addiction_content_color">#5D0E41</color>
+    <color name="alcohol_addiction_test_grid_bg">#FFB8B8</color>
+    <color name="alcohol_addiction_test_content_color">#AF2655</color>
+
 
 
 

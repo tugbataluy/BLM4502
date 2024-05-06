@@ -45,7 +45,7 @@ import kotlin.jvm.functions.Function0;
 
 public class GeneralAddictionShowVideos extends AppCompatActivity {
 
-    Toolbar tb, bottom;
+    Toolbar tb;
     NavigationView navigationView;
 
     FirebaseAuth auth;
@@ -256,7 +256,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.GONE);
         tb.setVisibility(View.GONE);
         navigationView.setVisibility(View.GONE);
-        bottom.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.GONE);
         titleView.setVisibility(View.GONE);
         recommendedGrid.setVisibility(View.GONE);
         descriptionView.setVisibility(View.GONE);
@@ -267,7 +267,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.VISIBLE);
         tb.setVisibility(View.VISIBLE);
         navigationView.setVisibility(View.INVISIBLE);
-        bottom.setVisibility(View.VISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
         titleView.setVisibility(View.VISIBLE);
         recommendedGrid.setVisibility(View.VISIBLE);
         descriptionView.setVisibility(View.VISIBLE);
@@ -356,38 +356,7 @@ public class GeneralAddictionShowVideos extends AppCompatActivity {
             }
         });
     }
-    public class BottomBarListener implements View.OnClickListener{
 
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.home_icon:
-                    Intent intent= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionMainPage.class);
-                    startActivity(intent);
-
-                    break;
-                case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-                case R.id.videos_icon:
-                    Intent intent3= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionVideosPage.class);
-                    startActivity(intent3);
-
-                    break;
-                case R.id.help_icon:
-                    Intent intent4= new Intent(GeneralAddictionShowVideos.this,GeneralAddictionSupportPage.class);
-                    startActivity(intent4);
-
-                    break;
-                default:
-                    System.out.println("Any nav selected");
-                    break;
-            }
-        }
-
-    }
     private void showLogoutConfirmationDialog() {
         // AlertDialog oluştur
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

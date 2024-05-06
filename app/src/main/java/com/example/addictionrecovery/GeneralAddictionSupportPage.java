@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneralAddictionSupportPage extends AppCompatActivity {
-    Toolbar tb, bottom;
+    Toolbar tb;
     NavigationView navigationView;
 
     FirebaseAuth auth;
