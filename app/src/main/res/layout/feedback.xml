@@ -65,7 +65,7 @@
             android:hint="Yorum Yaz.."
             android:textSize="15sp"
             android:textAlignment="center"
-            android:textAppearance="@style/feedback_style"/>
+            android:textColor="@color/alt_toolbar_icon_color"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
