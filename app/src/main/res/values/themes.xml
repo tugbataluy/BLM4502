@@ -93,5 +93,30 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-
+    <!--- Alcohol Addiction-->
+    <style name="alcohol_addiction_titles_style">
+        <item name="android:textColor">@color/alcohol_addiction_title_color</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="alcohol_addiction_content_style">
+        <item name="android:textColor">@color/alcohol_addiction_content_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="alcohol_addiction_grid_style">
+        <item name="android:textColor">@color/app_pages_bg</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="alcohol_addiction_warning_style">
+        <item name="android:textColor">@color/alcohol_addiction_warning_txt_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="alcohol_addiction_test_grid_style">
+        <item name="android:textColor">@color/alcohol_addiction_test_content_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>
