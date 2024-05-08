@@ -44,10 +44,27 @@ public class AlcoholAddictionQuestionAnswersPage extends AppCompatActivity {
         relativeLayoutClickerEnable();
         backButtonActivity();
 
-        //setContents
-        //goBack
+        setContents();
+        goBack();
     }
+    public void setContents(){
+        Bundle extras= getIntent().getExtras();
+        questionTitle=(TextView)findViewById(R.id.question_title);
+        questionAnswer=(TextView)findViewById(R.id.answer_view);
+        questionTitle.setText(extras.getString("QUESTION"));
+        questionAnswer.setText(extras.getString("ANSWER"));
 
+    }
+    public void goBack(){
+        backArrow=(ImageView) findViewById(R.id.back_arrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(AlcoholAddictionQuestionAnswersPage.this,AlcoholAddictionQuestionsPage.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();

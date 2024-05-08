@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,6 +31,8 @@ public class AlcoholAddictionSupportPage extends AppCompatActivity {
 
     ImageView navIcon;
     BottomNavigationView bottomNavigationView;
+    ListView listView;
+    String [] ngos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +46,17 @@ public class AlcoholAddictionSupportPage extends AppCompatActivity {
         navBottomArrangements();
         drawerInitialization();
         relativeLayoutClickerEnable();
+        showSupportList();
     }
 
+    public void showSupportList(){
+        ngos= getResources().getStringArray(R.array.addiction_support_organizations);
+
+
+        listView=(ListView) findViewById(R.id.ngo_list_view);
+        ArrayAdapter<String> listAdapter= new ArrayAdapter<String>(AlcoholAddictionSupportPage.this,R.layout.alcohol_addiction_support_list,ngos);
+        listView.setAdapter(listAdapter);
+    }
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {

@@ -147,23 +147,31 @@
     <string name="videolar">Videolar</string>
     <string name="destek">Destek</string>
 
-    <string-array name="symptoms_of_delirium_tremens">
-        <item>
+    <string name="symptoms_of_delirium_tremens">
+
             1.Isı artışı (hipertermi)\n
             2.Terleme ve titremede artış\n
             3.Baş ağrısı\n
             4.Kaygı, huzursuzluk\n
             5.Algı bozuklukları (halisülasyonlar veya yanılsamalar)\n
             6.Tasiyon yüksekliği (hipertansiyon)
-        </item>
-        <item>
+
+
+    </string>
+    <string name="symptoms_of_delirium_tremens2">
+
                 7.Kalp ritminde değişim (aritmi)\n
                 8.Bulantı veya kusma\n
                 9.Uykusuzluk\n
                 10.Bunaltı (iç sıkıntısı)\n
                 11.Sara (epilepsi) nöbetleri\n
                 12.Dikkat bozukluğu\n
-        </item>
+
+    </string>
+    <string-array name="alcohol_addiction_tests">
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
     </string-array>
 
 

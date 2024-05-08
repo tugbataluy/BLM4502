@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -28,6 +31,8 @@ public class AlcoholAddictionMainPage extends AppCompatActivity {
     ImageView navIcon,backIcon;
     BottomNavigationView bottomNavigationView;
     Toolbar tb;
+    String [] addiction_symptoms,test_titles;
+    GridView gridView1,gridView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +46,32 @@ public class AlcoholAddictionMainPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         backButtonInitialization();
+
+        setAddiction_symptoms();
+        setTest_titles();
     }
 
 
+    public void setTest_titles(){
+        gridView2=(GridView) findViewById(R.id.alcohol_addiction_test_grid);
+        test_titles=getResources().getStringArray(R.array.alcohol_addiction_tests);
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(AlcoholAddictionMainPage.this,R.layout.alcohol_addiction_test_grid,test_titles);
+        gridView2.setAdapter(arrayAdapter);
+        gridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println("postion "+position);
+            }
+        });
+    }
+    public void setAddiction_symptoms(){
+        gridView1=(GridView) findViewById(R.id.alcohol_addiction_symptoms_grid);
+        addiction_symptoms=getResources().getStringArray(R.array.alcohol_addiction_symptoms);
+        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<>(AlcoholAddictionMainPage.this,R.layout.alcohol_addiction_item_grid,addiction_symptoms);
+        gridView1.setAdapter(arrayAdapter);
+
+
+    }
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {

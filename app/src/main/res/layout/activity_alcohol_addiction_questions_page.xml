@@ -16,6 +16,36 @@
             android:layout_height="wrap_content"
             android:id="@+id/alcohol_addiction_questions_page_relative_layout">
 
+            <TextView
+                android:id="@+id/alcohol_addiction_question_info"
+                android:layout_marginTop="75dp"
+                android:layout_width="match_parent"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/warning_bg"
+                android:backgroundTint="@color/alcohol_addicton_bg"
+                android:padding="15dp"
+                android:text="@string/question_page_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"/>
+            <GridView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/alcohol_addiction_questions_grid"
+                android:layout_alignTop="@id/alcohol_addiction_question_info"
+                android:layout_marginTop="100dp"
+                android:layout_width="325dp"
+                android:layout_height="600dp"
+                android:numColumns="3"
+                android:verticalSpacing="5dp"
+                android:horizontalSpacing="2dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
         </RelativeLayout>
     </ScrollView>
     <RelativeLayout

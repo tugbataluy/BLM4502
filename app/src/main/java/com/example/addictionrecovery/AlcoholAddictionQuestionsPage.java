@@ -12,6 +12,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -46,6 +48,7 @@ public class AlcoholAddictionQuestionsPage extends AppCompatActivity {
         navBottomArrangements();
         relativeLayoutClickerEnable();
         drawerInitialization();
+        setQuestionsGrid();
 
     }
 
@@ -62,6 +65,30 @@ public class AlcoholAddictionQuestionsPage extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    public void setQuestionsGrid(){
+        questionsGrid= (GridView) findViewById(R.id.alcohol_addiction_questions_grid);
+        questions= getResources().getStringArray(R.array.alcohol_addiction_questions);
+        answers=getResources().getStringArray(R.array.alcohol_addiction_question_answers);
+
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.alcohol_addiction_question_grid,questions);
+        questionsGrid.setAdapter(arrayAdapter);
+        questionsGrid.setOnItemClickListener(new AlcoholAddictionQuestionsPage.QuestionGridListener());
+
+
+    }
+
+    public class  QuestionGridListener implements  AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent( AlcoholAddictionQuestionsPage.this,AlcoholAddictionQuestionAnswersPage.class);
+            Bundle extras = new Bundle();
+            extras.putString("QUESTION",questions[position]);
+            extras.putString("ANSWER",answers[position]);
+            intent.putExtras(extras);
+            startActivity(intent);
+        }
     }
 
 
