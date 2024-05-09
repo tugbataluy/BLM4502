@@ -30,6 +30,8 @@
     <color name="tech_addiction_homepage_txt_color">#57375D</color>
     <color name="tech_addiction_grid_bg_color">#DBC4F0</color>
     <color name="tech_addiction_grid_text_color">#916DB3</color>
+    <color name="tech_addiction_question_answer_color">#57375D</color>
+    <color name="tech_addiction_question_title_color">#66726A</color>
 
 
 
