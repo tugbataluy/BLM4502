@@ -2,6 +2,8 @@ package com.example.addictionrecovery;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -171,11 +173,12 @@ public class Feedback extends AppCompatActivity {
             public void onClick(View v) {
 
                 getToDocument(mAuth.getUid());
-                star1.setImageResource(R.drawable.feedback_circle);
-                star2.setImageResource(R.drawable.feedback_circle);
-                star3.setImageResource(R.drawable.feedback_circle);
-                star4.setImageResource(R.drawable.feedback_circle);
-                star5.setImageResource(R.drawable.feedback_circle);
+
+                star1.setImageResource(R.mipmap.emptystar);
+                star2.setImageResource(R.mipmap.emptystar);
+                star3.setImageResource(R.mipmap.emptystar);
+                star4.setImageResource(R.mipmap.emptystar);
+                star5.setImageResource(R.mipmap.emptystar);
             }
         });
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -190,38 +193,38 @@ public class Feedback extends AppCompatActivity {
     // Yıldızları güncelleyen metot
     private void updateStars() {
         // Tüm yıldızları varsayılan (boş) durumda ayarlama
-        star1.setImageResource(R.drawable.feedback_circle);
-        star2.setImageResource(R.drawable.feedback_circle);
-        star3.setImageResource(R.drawable.feedback_circle);
-        star4.setImageResource(R.drawable.feedback_circle);
-        star5.setImageResource(R.drawable.feedback_circle);
+        star1.setImageResource(R.mipmap.emptystar);
+        star2.setImageResource(R.mipmap.emptystar);
+        star3.setImageResource(R.mipmap.emptystar);
+        star4.setImageResource(R.mipmap.emptystar);
+        star5.setImageResource(R.mipmap.emptystar);
 
         // Tıklanan yıldıza göre dolu yıldızları ayarlama
         switch (rating) {
             case 1:
-                star1.setImageResource(R.drawable.feedback_circle_filled);
+                star1.setImageResource(R.mipmap.fillstar);
                 break;
             case 2:
-                star1.setImageResource(R.drawable.feedback_circle_filled);
-                star2.setImageResource(R.drawable.feedback_circle_filled);
+                star1.setImageResource(R.mipmap.fillstar);
+                star2.setImageResource(R.mipmap.fillstar);
                 break;
             case 3:
-                star1.setImageResource(R.drawable.feedback_circle_filled);
-                star2.setImageResource(R.drawable.feedback_circle_filled);
-                star3.setImageResource(R.drawable.feedback_circle_filled);
+                star1.setImageResource(R.mipmap.fillstar);
+                star2.setImageResource(R.mipmap.fillstar);
+                star3.setImageResource(R.mipmap.fillstar);
                 break;
             case 4:
-                star1.setImageResource(R.drawable.feedback_circle_filled);
-                star2.setImageResource(R.drawable.feedback_circle_filled);
-                star3.setImageResource(R.drawable.feedback_circle_filled);
-                star4.setImageResource(R.drawable.feedback_circle_filled);
+                star1.setImageResource(R.mipmap.fillstar);
+                star2.setImageResource(R.mipmap.fillstar);
+                star3.setImageResource(R.mipmap.fillstar);
+                star4.setImageResource(R.mipmap.fillstar);
                 break;
             case 5:
-                star1.setImageResource(R.drawable.feedback_circle_filled);
-                star2.setImageResource(R.drawable.feedback_circle_filled);
-                star3.setImageResource(R.drawable.feedback_circle_filled);
-                star4.setImageResource(R.drawable.feedback_circle_filled);
-                star5.setImageResource(R.drawable.feedback_circle_filled);
+                star1.setImageResource(R.mipmap.fillstar);
+                star2.setImageResource(R.mipmap.fillstar);
+                star3.setImageResource(R.mipmap.fillstar);
+                star4.setImageResource(R.mipmap.fillstar);
+                star5.setImageResource(R.mipmap.fillstar);
                 break;
             default:
                 break;
