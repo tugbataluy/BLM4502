@@ -30,37 +30,37 @@ public class drawer_menu extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       //setContentView(R.layout.drawer_header);
+        //setContentView(R.layout.drawer_header);
 
-            user_name=findViewById(R.id.user_name);
-            db = FirebaseFirestore.getInstance();
-            auth= FirebaseAuth.getInstance();
-            user= auth.getCurrentUser();
-            docRef = db.collection("users").document(user.getUid());
+        user_name=findViewById(R.id.user_name);
+        db = FirebaseFirestore.getInstance();
+        auth= FirebaseAuth.getInstance();
+        user= auth.getCurrentUser();
+        docRef = db.collection("users").document(user.getUid());
 
 
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            String name = document.getString("Name");
-                            if (name != null) {
-                                // TextView'e atama işlemi
-                                Log.d("drawer_menu", "Name alanı not null.");
-                                user_name.setText(name);
-                            } else {
-                                Log.d("drawer_menu", "Name alanı null.");
-                            }
-
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String name = document.getString("Name");
+                        if (name != null) {
+                            // TextView'e atama işlemi
+                            Log.d("drawer_menu", "Name alanı not null.");
+                            user_name.setText(name);
                         } else {
-                            Log.d("drawer_menu", "Doküman bulunamadı");
+                            Log.d("drawer_menu", "Name alanı null.");
                         }
+
                     } else {
-                        Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
+                        Log.d("drawer_menu", "Doküman bulunamadı");
                     }
+                } else {
+                    Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
                 }
-            });
+            }
+        });
     }
 }

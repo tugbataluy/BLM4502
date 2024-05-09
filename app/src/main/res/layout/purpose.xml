@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:background="#FBF3D5">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -15,8 +18,7 @@
             android:background="@color/toolbar_background"
             android:gravity="center"
             android:text="Neyi Amaçlıyoruz?"
-            android:textColor="#FBF3D5"
-            />
+            android:textColor="#FBF3D5" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,7 +33,6 @@
                 android:layout_marginTop="140dp"
                 android:clickable="true"
                 android:src="@drawable/back_arrow_red" />
-
             <ImageView
                 android:id="@+id/purpose"
                 android:layout_width="180dp"
@@ -49,9 +50,8 @@
             android:text="@string/purpose_text"
             android:layout_below="@+id/image_top"
             android:textSize="18sp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
 
     </RelativeLayout>
-
+    </ScrollView>
 </LinearLayout>

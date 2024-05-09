@@ -3,6 +3,7 @@ package com.example.addictionrecovery;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +19,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TechnologyAddictionMainPage extends AppCompatActivity {
     RelativeLayout relativeLayout;
@@ -80,6 +88,43 @@ public class TechnologyAddictionMainPage extends AppCompatActivity {
         });
     }
 
+    public void getUserName(){
+        TextView user_name;
+        FirebaseFirestore db;
+        DocumentReference docRef  ;
+        FirebaseUser user;
+
+        user_name=findViewById(R.id.user_name);
+        db = FirebaseFirestore.getInstance();
+        auth= FirebaseAuth.getInstance();
+        user= auth.getCurrentUser();
+        docRef = db.collection("users").document(user.getUid());
+
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String name = document.getString("Name");
+                        if (name != null) {
+                            // TextView'e atama işlemi
+                            Log.d("drawer_menu", "Name alanı not null.");
+                            user_name.setText(name);
+                        } else {
+                            Log.d("drawer_menu", "Name alanı null.");
+                        }
+
+                    } else {
+                        Log.d("drawer_menu", "Doküman bulunamadı");
+                    }
+                } else {
+                    Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
+                }
+            }
+        });
+    }
+
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
@@ -91,7 +136,9 @@ public class TechnologyAddictionMainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(navigationView.getVisibility()==View.INVISIBLE){
+                    getUserName();
                     navigationView.setVisibility(View.VISIBLE);
+
                 }
                 else{
                     navigationView.setVisibility(View.INVISIBLE);
