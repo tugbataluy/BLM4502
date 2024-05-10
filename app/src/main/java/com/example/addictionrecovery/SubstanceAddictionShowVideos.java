@@ -309,7 +309,7 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
                         break;
                     case R.id.questions_tab:
                         System.out.println("questions");
-                        Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionMainPage.class);
+                        Intent intent2= new Intent(SubstanceAddictionShowVideos.this,SubstanceAddictionQuestionsPage.class);
                         startActivity(intent2);
                         break;
                     case R.id.videos_tab:
