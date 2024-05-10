@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,10 @@ import android.widget.TextView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
 
@@ -51,6 +56,7 @@ public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
         relativeLayoutClickerEnable();
         navBottomArrangements();
         backButtonActivity();
+        getUserName(userName -> setUserName(userName));
 
     }
 
@@ -99,6 +105,42 @@ public class SubstanceAddictionQuestionsPage extends AppCompatActivity {
         tb.setTitle("Madde Bağımlılığı");
     }
 
+    public void getUserName(final TechnologyAddictionMainPage.OnUserNameFetchedListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        DocumentReference docRef = db.collection("users").document(user.getUid());
+
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document != null && document.exists()) {
+                    String name = document.getString("Name");
+                    if (name != null) {
+                        Log.d("drawer_menu", "Name alanı not null.");
+                        // İsim başarıyla alındı, dinleyiciye iletilir.
+                        listener.onUserNameFetched(name);
+                    } else {
+                        Log.d("drawer_menu", "Name alanı null.");
+                        listener.onUserNameFetched(null);
+                    }
+                } else {
+                    Log.d("drawer_menu", "Doküman bulunamadı");
+                    listener.onUserNameFetched(null);
+                }
+            } else {
+                Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
+                listener.onUserNameFetched(null);
+            }
+        });
+    }
+
+    public void setUserName(String userName) {
+        if (userName != null) {
+            TextView user_name = findViewById(R.id.user_name);
+            user_name.setText(userName);
+        }
+    }
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
