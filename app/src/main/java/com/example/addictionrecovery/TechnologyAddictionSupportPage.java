@@ -54,6 +54,7 @@ public class TechnologyAddictionSupportPage extends AppCompatActivity {
         drawerInitialization();
         navBottomArrangements();
         relativeLayoutClickerEnable();
+        getUserName(userName -> setUserName(userName));
     }
 
     public void toolBarArrangement(){
@@ -69,41 +70,41 @@ public class TechnologyAddictionSupportPage extends AppCompatActivity {
         listView.setAdapter(listAdapter);
     }
 
-    public void getUserName(){
-        TextView user_name;
-        FirebaseFirestore db;
-        DocumentReference docRef  ;
-        FirebaseUser user;
+    public void getUserName(final TechnologyAddictionMainPage.OnUserNameFetchedListener listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        DocumentReference docRef = db.collection("users").document(user.getUid());
 
-        user_name=findViewById(R.id.user_name);
-        db = FirebaseFirestore.getInstance();
-        auth= FirebaseAuth.getInstance();
-        user= auth.getCurrentUser();
-        docRef = db.collection("users").document(user.getUid());
-
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        String name = document.getString("Name");
-                        if (name != null) {
-                            // TextView'e atama işlemi
-                            Log.d("drawer_menu", "Name alanı not null.");
-                            user_name.setText(name);
-                        } else {
-                            Log.d("drawer_menu", "Name alanı null.");
-                        }
-
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document != null && document.exists()) {
+                    String name = document.getString("Name");
+                    if (name != null) {
+                        Log.d("drawer_menu", "Name alanı not null.");
+                        // İsim başarıyla alındı, dinleyiciye iletilir.
+                        listener.onUserNameFetched(name);
                     } else {
-                        Log.d("drawer_menu", "Doküman bulunamadı");
+                        Log.d("drawer_menu", "Name alanı null.");
+                        listener.onUserNameFetched(null);
                     }
                 } else {
-                    Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
+                    Log.d("drawer_menu", "Doküman bulunamadı");
+                    listener.onUserNameFetched(null);
                 }
+            } else {
+                Log.d("drawer_menu", "Belge alınamadı: ", task.getException());
+                listener.onUserNameFetched(null);
             }
         });
+    }
+
+    public void setUserName(String userName) {
+        if (userName != null) {
+            TextView user_name = findViewById(R.id.user_name);
+            user_name.setText(userName);
+        }
     }
 
     public void drawerInitialization(){
@@ -116,7 +117,6 @@ public class TechnologyAddictionSupportPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(navigationView.getVisibility()==View.INVISIBLE){
-                    getUserName();
                     navigationView.setVisibility(View.VISIBLE);
                 }
                 else{
