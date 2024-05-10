@@ -180,7 +180,9 @@ public class HomePage extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.alcohol_addiction_btn:
-                    //pass
+                    Intent intent4=new Intent(HomePage.this, AlcoholAddictionMainPage.class);
+                    startActivity(intent4);
+                    finish();
                     break;
                 default:
                     System.out.println("Nothing Clicked");

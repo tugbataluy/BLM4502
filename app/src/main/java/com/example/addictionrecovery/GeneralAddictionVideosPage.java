@@ -1,5 +1,7 @@
 package com.example.addictionrecovery;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,8 +51,24 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
         relativeLayoutClickerEnable();
         navBottomArrangements();
         setGridView();
+        backButtonActivity();
     }
 
+
+    public void backButtonActivity(){
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Yeni aktiviteye geçmek için Intent oluştur
+                Intent intent = new Intent(GeneralAddictionVideosPage.this, GeneralAddictionMainPage.class);
+                // Yeni aktiviteyi başlat
+                startActivity(intent);
+                // Mevcut aktiviteyi sonlandır
+                finish();
+            }
+        });
+    }
 
     public void setGridView(){
         titles= getResources().getStringArray(R.array.general_addiction_video_titles);
@@ -123,37 +141,7 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
         });
     }
 
-    public class BottomBarListener implements View.OnClickListener{
 
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.home_icon:
-                    Intent intent= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionMainPage.class);
-                    startActivity(intent);
-
-                    break;
-                case R.id.questions_icon:
-                    Intent intent2= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionQuestionsPage.class);
-                    startActivity(intent2);
-
-                    break;
-                case R.id.videos_icon:
-                    Intent intent3= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionVideosPage.class);
-                    startActivity(intent3);
-
-                    break;
-                case R.id.help_icon:
-                    Intent intent4= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionSupportPage.class);
-                    startActivity(intent4);
-
-                    break;
-                default:
-                    System.out.println("Any nav selected");
-                    break;
-            }
-        }
-    }
 
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
@@ -243,13 +231,5 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
         });
     }
 
-    public void onBackPressed() {
-        // Yeni aktiviteye geçiş yapmak için Intent oluştur
-        super.onBackPressed();
-        Intent intent = new Intent(this, GeneralAddictionMainPage.class);
-        // Yeni aktiviteyi başlat
-        startActivity(intent);
-        // Mevcut aktiviteyi sonlandır
-        finish();
-    }
+
 }

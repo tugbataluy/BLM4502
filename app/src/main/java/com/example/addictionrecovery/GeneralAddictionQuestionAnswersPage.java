@@ -1,5 +1,7 @@
 package com.example.addictionrecovery;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -69,6 +71,25 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         navBottomArrangements();
+
+        backButtonActivity();
+
+
+    }
+
+    public void backButtonActivity(){
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Yeni aktiviteye geçmek için Intent oluştur
+                Intent intent = new Intent(GeneralAddictionQuestionAnswersPage.this, GeneralAddictionQuestionsPage.class);
+                // Yeni aktiviteyi başlat
+                startActivity(intent);
+                // Mevcut aktiviteyi sonlandır
+                finish();
+            }
+        });
     }
 
     public void navBottomArrangements(){
@@ -195,15 +216,7 @@ public class GeneralAddictionQuestionAnswersPage extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed() {
-        // Yeni aktiviteye geçiş yapmak için Intent oluştur
-        super.onBackPressed();
-        Intent intent = new Intent(this, GeneralAddictionQuestionsPage.class);
-        // Yeni aktiviteyi başlat
-        startActivity(intent);
-        // Mevcut aktiviteyi sonlandır
-        finish();
-    }
+
 
 
 
