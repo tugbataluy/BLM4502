@@ -22,7 +22,7 @@
                 android:text="LOREM IPSUM"
                 android:layout_marginTop="75dp"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/tech_addiction_question_title_color"
+                android:textColor="#640D6B"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:padding="15dp" />
