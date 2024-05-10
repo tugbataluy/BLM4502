@@ -189,7 +189,7 @@
                 android:text="@string/warning_ga"
                 android:gravity="left"
                 android:padding="10dp"
-                android:drawableEnd="@raw/tech_warning"/>
+                android:drawableEnd="@raw/tech_warningg"/>
 
             <GridView
                 android:id="@+id/tech_grid2"
