@@ -14,6 +14,14 @@
         tools:targetApi="31"
         android:enableOnBackInvokedCallback="true">
         <activity
+            android:name=".TechnologyAddictionTest2Page"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TechnologyAddictionTestPage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".TechnologyAddictionSupportPage"
             android:exported="false"
             android:screenOrientation="portrait"/>
