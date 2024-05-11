@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="alcohol_addiction_video_titles">
+    <string-array name="alcohol_addiction_video_titles">
         <item>Alkol bağımlılığı nedir, nasıl başlar? Kişi alkol bağımlısı olduğunu fark edebilir mi?</item>
         <item>"Psikoterapi Aynası 9. Bölüm Alkol Bağımlılığı"</item>
         <item>"Everything Alcohol Does To Your Body"</item>
@@ -16,8 +16,9 @@
         <item>"Alkol Bağımlılığını Anlamak : Kimler Alkolik Olarak Kabul Edilir? | Dr. Ümit Yazman"</item>
         <item>"Alkol Almayı Bıraktığınızda Vücudunuza Neler Olur?"</item>
         <item>"Alkol bağımlılarında yoksunluk hissi nasıl geçer?"</item>
-    </string>
-    <string name="alcohol_addiction_video_ids">
+    </string-array>
+    <string-array name="alcohol_addiction_video_ids">
+
         <item>"ZOpjhCfZIBs"</item>
         <item>"s6jSPUluM0Q"</item>
         <item>"Zi6c0By_44w"</item>
@@ -33,11 +34,10 @@
         <item>"28os3ZtSr-c"</item>
         <item>"gkWByWY3Gdk"</item>
         <item>"XtjZyXibsdM"</item>
-    </string>
-    <string name="alcohol_addiction_video_descriptions">
-        <item>Programın bu kesitinde "Alkol bağımlılığı nedir, nasıl başlar? Kişi alkol bağımlısı olduğunu fark edebilir mi?" konusu ele alınıyor.
-</item>
-        <item>Alkol Bağımlılığını her yönüyle Üsküdar Üniversitesi NPİSTANBUL Beyin Hastanesi'nden Uzm. Kln. Psk. Ahmet YILMAZ ve Uzm. Dr. Özlem KIZILKURT anlattı.</item>
+    </string-array>
+    <string-array name="alcohol_addiction_video_descriptions">
+        <item>Programın bu kesitinde "Alkol bağımlılığı nedir, nasıl başlar? Kişi alkol bağımlısı olduğunu fark edebilir mi?" konusu ele alınıyor. </item>
+        <item>"Alkol Bağımlılığını her yönüyle Üsküdar Üniversitesi NPİSTANBUL Beyin Hastanesi'nden Uzm. Kln. Psk. Ahmet YILMAZ ve Uzm. Dr. Özlem KIZILKURT anlattı."</item>
         <item>Alkolün insan vücudu üzerine etkilerini illüstrasyonlarla görelim.</item>
         <item>Delirium Tremens hakkında bilgilendirici bir videoyla sizlerleyiz.</item>
         <item>Merhaba! Bu videomda sizlere alkolizm belirtileri, tedavisi, alkolizm ve şema terapi ilişkisi gibi konulardan bahsederek, kendiniz ya da bir yakınınıza uygulayabileceğiniz Kesi alkol bağımlılığı testiyle ilgili bilgi verdim.</item>
@@ -47,10 +47,12 @@
         <item>Alkol Bağımlılığı tedavisi nasıl yapılır? Alkol Bağımlılığından kurtulmak mümkün mü? Alkol Bağımlısı olduğunuzu nasıl anlarsınız?</item>
         <item>Yeşilay Cemiyeti resmi kanalından alkol bağımlılğı ve stres ilişkisini dinleyelim.</item>
         <item>Bağımsız Yaşam Derneği resmi kanalından alkol bağımlılığna dair etkileyici bir kısa film.</item>
-        <item>Psikiyatri Uzmanı Dr. Sedat İrgil, bu haftaki canlı yayında "Alkol ve Alkol Bağımlılığı" hakkında uzman bilgilerini paylaşıp. Kendisine iletilen soruları cevaplamaktadır.
-</item>
-        <item>Alkolik kime denir ? Alkol bağımlılığının tedavisi var mıdır ? Psikiyatrist Ümit Yazman'dan dinle... </item>
+        <item>Psikiyatri Uzmanı Dr. Sedat İrgil, bu haftaki canlı yayında "Alkol ve Alkol Bağımlılığı" hakkında uzman bilgilerini paylaşıp. Kendisine iletilen soruları cevaplamaktadır.</item>
+        <item>"Alkolik kime denir ? Alkol bağımlılığının tedavisi var mıdır ? Psikiyatrist Ümit Yazman'dan dinle..." </item>
         <item>İçkiyi bıraktığınızda vücudunuzun geçirdiği değişiklikleri inceleyen bugünkü yeni videomuzda öğrenin. </item>
         <item>Alkol bağımlılığı kliniğimizde en çok tedavi ettiğimiz bağımlılıkların başında geliyor, sigara bağımlılığı ile birlikte. Çünkü biorezonans metodu sigara tedavisinde de olduğu gibi maddenin ters frekansını vererek nötrleştirme potansiyeline sahip bir metot.</item>
-    </string>
+    </string-array>
+
+
+
 </resources>
