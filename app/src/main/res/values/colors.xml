@@ -33,6 +33,8 @@
     <color name="tech_addiction_question_answer_color">#57375D</color>
     <color name="tech_addiction_question_title_color">#66726A</color>
     <color name="tech_addiction_video_bg_color">#BC7FCD</color>
+    <color name="tech_addiction_test_option_color">#AD88C6</color>#BEADFA
+    <color name="tech_addiction_test_button_color">#BEADFA</color>
 
     <color name="alcohol_addiction_title_bg">#B47B84</color>
     <color name="alcohol_addiction_title_color">#A0153E</color>

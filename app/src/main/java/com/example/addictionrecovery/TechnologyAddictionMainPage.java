@@ -60,8 +60,15 @@ public class TechnologyAddictionMainPage extends AppCompatActivity {
         gridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Tıklanan öğenin sırasını bastır
-                System.out.println("Tıklanan öğenin sırası: " + position);
+                // Sadece ilk öğeye tıklandığında işlem yap
+                if (position == 0) {
+                    Intent intent = new Intent(TechnologyAddictionMainPage.this, TechnologyAddictionTestPage.class);
+                    startActivity(intent);
+                }
+                if (position == 1) {
+                    Intent intent = new Intent(TechnologyAddictionMainPage.this, TechnologyAddictionTest2Page.class);
+                    startActivity(intent);
+                }
             }
         });
 
