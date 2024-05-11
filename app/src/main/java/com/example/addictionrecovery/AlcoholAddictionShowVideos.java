@@ -13,6 +13,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +28,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.FullscreenListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 
 public class AlcoholAddictionShowVideos extends AppCompatActivity {
 
@@ -33,13 +49,25 @@ public class AlcoholAddictionShowVideos extends AppCompatActivity {
     FirebaseAuth auth;
     RelativeLayout relativeLayout;
 
-    ImageView navIcon;
+    ImageView navIcon,backIcon;
+    TextView  titleView, descriptionView;
+    YouTubePlayerView youTubePlayerView;
+    FrameLayout fullscreenViewContainer;
+
+
+    GridView recommendedGrid;
+    YouTubePlayer youTubePlayer;
     BottomNavigationView bottomNavigationView;
+
+    String [] videoTitles, videoIds,descriptions;
+
+    int skippingPos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alcohol_addiction_show_videos);
         relativeLayout=(RelativeLayout) findViewById(R.id.alcohol_addiction_show_videos_relative_layout);
+
 
 
         backButtonActivity();
@@ -48,6 +76,10 @@ public class AlcoholAddictionShowVideos extends AppCompatActivity {
         drawerInitialization();
         relativeLayoutClickerEnable();
         getUserName(userName -> setUserName(userName));
+        videoArrangements();
+        getExtrasFromIntent();
+        setRecommendedVideos();
+        backToVideoList();
     }
 
     public void backButtonActivity(){
@@ -65,6 +97,178 @@ public class AlcoholAddictionShowVideos extends AppCompatActivity {
         });
     }
 
+    public void getExtrasFromIntent(){
+        Bundle extras= getIntent().getExtras();
+
+        skippingPos=extras.getInt("VIDEO_POS");
+        videoTitles=extras.getStringArray("VIDEO_LIST");
+        videoIds=extras.getStringArray("VIDEO_IDS");
+        descriptions=extras.getStringArray("VIDEO_DESCRIPTIONS");
+
+        titleView=(TextView) findViewById(R.id.video_title_view);
+        titleView.setText(videoTitles[skippingPos]);
+
+        descriptionView=(TextView) findViewById(R.id.short_description);
+        descriptionView.setText(descriptions[skippingPos]);
+
+    }
+
+    public void setRecommendedVideos(){
+
+
+        recommendedGrid=(GridView)findViewById(R.id.recommended_grid);
+
+        List<Integer> secilenIndeksler = new ArrayList<>();
+        List<String> secilenBasliklar= new ArrayList<>();
+        Random random = new Random();
+
+        while (secilenIndeksler.size() < 3) {
+            int rastgeleIndex = random.nextInt(videoIds.length);
+            if (rastgeleIndex != skippingPos && !secilenIndeksler.contains(rastgeleIndex)) {
+                secilenIndeksler.add(rastgeleIndex);
+                secilenBasliklar.add(videoTitles[rastgeleIndex]);
+            }
+        }
+
+        ArrayAdapter adapter= new ArrayAdapter<>(AlcoholAddictionShowVideos.this,R.layout.alcohol_addiction_recommended_videos_grid,secilenBasliklar);
+        recommendedGrid.setAdapter(adapter);
+        recommendedGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+
+                    case 0:
+                        //System.out.println("1");
+                        recommendedVideoStarter(secilenIndeksler.get(0));
+                        break;
+                    case 1:
+                        //System.out.println("2");
+                        recommendedVideoStarter(secilenIndeksler.get(1));
+                        break;
+                    case 2:
+                        //System.out.println("3");
+                        recommendedVideoStarter(secilenIndeksler.get(2));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        // Seçilen indeksleri yazdırma
+        System.out.println("Seçilen indeksler:");
+        for (int indeks : secilenIndeksler) {
+            System.out.println(indeks);
+        }
+
+    }
+    public void recommendedVideoStarter(int position){
+        Intent intent = new Intent( AlcoholAddictionShowVideos.this,AlcoholAddictionShowVideos.class);
+        Bundle extras = new Bundle();
+        extras.putInt("VIDEO_POS", position);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
+    }
+    public void videoArrangements(){
+        final boolean[] isFullscreen = {false};
+
+        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_video_player);
+        fullscreenViewContainer =(FrameLayout) findViewById(R.id.full_screen_view_container) ;
+
+        IFramePlayerOptions iFramePlayerOptions= new IFramePlayerOptions.Builder().controls(1).fullscreen(1).build();
+        youTubePlayerView.setEnableAutomaticInitialization(false);
+        youTubePlayerView.initialize(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                AlcoholAddictionShowVideos.this.youTubePlayer = youTubePlayer;
+                youTubePlayer.cueVideo(videoIds[skippingPos], 0f);
+
+
+            }
+        }, iFramePlayerOptions);
+        youTubePlayerView.addFullscreenListener(new FullscreenListener() {
+
+            @Override
+            public void onEnterFullscreen(@NonNull View fullscreenview, @NonNull Function0<Unit> exitFullscreen) {
+                isFullscreen[0] = true;
+
+                // the video will continue playing in fullscreenView
+
+
+                fullscreenViewContainer.setVisibility(View.VISIBLE);
+
+                toggleInvisible();
+                fullscreenViewContainer.addView(fullscreenview);
+                //fullscreenViewContainer.setRotation(90);
+                GeneralAddictionShowVideos.ViewUtils.rotateAndScaleView(fullscreenViewContainer,AlcoholAddictionShowVideos.this);
+
+
+
+
+            }
+            @Override
+            public void onExitFullscreen() {
+                isFullscreen[0] = false;
+
+                System.out.println("ciktim");
+                // the video will continue playing in the player
+                youTubePlayerView.setVisibility(View.VISIBLE);
+                fullscreenViewContainer.setVisibility(View.GONE);
+                fullscreenViewContainer.removeAllViews();
+                //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+                toggleVisible();
+
+            }
+
+
+
+
+        });
+
+
+        getLifecycle().addObserver(youTubePlayerView);
+
+
+
+    }
+    public void  toggleInvisible(){
+        youTubePlayerView.setVisibility(View.GONE);
+        tb.setVisibility(View.GONE);
+        navigationView.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.GONE);
+        titleView.setVisibility(View.GONE);
+        recommendedGrid.setVisibility(View.GONE);
+        descriptionView.setVisibility(View.GONE);
+        backIcon.setVisibility(View.GONE);
+    }
+
+    public void toggleVisible(){
+        youTubePlayerView.setVisibility(View.VISIBLE);
+        tb.setVisibility(View.VISIBLE);
+        navigationView.setVisibility(View.INVISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+        titleView.setVisibility(View.VISIBLE);
+        recommendedGrid.setVisibility(View.VISIBLE);
+        descriptionView.setVisibility(View.VISIBLE);
+        backIcon.setVisibility(View.VISIBLE);
+    }
+
+    public void backToVideoList(){
+        backIcon=(ImageView)findViewById(R.id.back_to_video_list_btn);
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AlcoholAddictionShowVideos.this,AlcoholAddictionVideosPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
     public void toolBarArrangement(){
         tb=(Toolbar) findViewById(R.id.toolbar);
         tb.setTitle("Alkol Bağımlılığı");

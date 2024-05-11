@@ -47,7 +47,7 @@ import kotlin.jvm.functions.Function0;
 
 public class SubstanceAddictionShowVideos extends AppCompatActivity {
 
-    Toolbar tb, bottom;
+    Toolbar tb;
     NavigationView navigationView;
 
     FirebaseAuth auth;
@@ -78,7 +78,7 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
         fullscreenViewContainer =(FrameLayout) findViewById(R.id.full_screen_view_container) ;
         auth=FirebaseAuth.getInstance();
 
-        toolBarArrangement();
+
         getExtrasFromIntent();
         videoArrangements();
         toolBarArrangement();
@@ -257,7 +257,7 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.GONE);
         tb.setVisibility(View.GONE);
         navigationView.setVisibility(View.GONE);
-        bottom.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.GONE);
         titleView.setVisibility(View.GONE);
         recommendedGrid.setVisibility(View.GONE);
         descriptionView.setVisibility(View.GONE);
@@ -268,7 +268,7 @@ public class SubstanceAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.VISIBLE);
         tb.setVisibility(View.VISIBLE);
         navigationView.setVisibility(View.INVISIBLE);
-        bottom.setVisibility(View.VISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
         titleView.setVisibility(View.VISIBLE);
         recommendedGrid.setVisibility(View.VISIBLE);
         descriptionView.setVisibility(View.VISIBLE);

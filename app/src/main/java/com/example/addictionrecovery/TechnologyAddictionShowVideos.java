@@ -49,7 +49,7 @@ public class TechnologyAddictionShowVideos extends AppCompatActivity {
     RelativeLayout relativeLayout;
     FrameLayout fullscreenViewContainer;
     FirebaseAuth auth;
-    Toolbar tb, bottom;
+    Toolbar tb;
     TextView  titleView, descriptionView;
     GridView recommendedGrid;
     YouTubePlayerView youTubePlayerView;
@@ -211,7 +211,7 @@ public class TechnologyAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.GONE);
         tb.setVisibility(View.GONE);
         navigationView.setVisibility(View.GONE);
-        bottom.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.GONE);
         titleView.setVisibility(View.GONE);
         recommendedGrid.setVisibility(View.GONE);
         descriptionView.setVisibility(View.GONE);
@@ -222,7 +222,7 @@ public class TechnologyAddictionShowVideos extends AppCompatActivity {
         youTubePlayerView.setVisibility(View.VISIBLE);
         tb.setVisibility(View.VISIBLE);
         navigationView.setVisibility(View.INVISIBLE);
-        bottom.setVisibility(View.VISIBLE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
         titleView.setVisibility(View.VISIBLE);
         recommendedGrid.setVisibility(View.VISIBLE);
         descriptionView.setVisibility(View.VISIBLE);

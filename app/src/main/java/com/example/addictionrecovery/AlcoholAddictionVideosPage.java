@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +37,8 @@ public class AlcoholAddictionVideosPage extends AppCompatActivity {
 
     ImageView navIcon;
     BottomNavigationView bottomNavigationView;
+    String [] titles, ids, descriptions;
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +53,37 @@ public class AlcoholAddictionVideosPage extends AppCompatActivity {
         navBottomArrangements();
         relativeLayoutClickerEnable();
         getUserName(userName -> setUserName(userName));
+        setGridView();
     }
 
+    public void setGridView(){
+        titles= getResources().getStringArray(R.array.alcohol_addiction_video_titles);
+
+        ids=getResources().getStringArray(R.array.alcohol_addiction_video_ids);
+        descriptions=getResources().getStringArray(R.array.alcohol_addiction_video_descriptions);
+        gridView=(GridView) findViewById(R.id.video_list);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.alcohol_addiction_list_item,titles);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener( new AlcoholAddictionVideosPage.VideoClickListener());
+
+
+    }
+    public class VideoClickListener implements AdapterView.OnItemClickListener{
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent intent = new Intent( AlcoholAddictionVideosPage.this,AlcoholAddictionShowVideos.class);
+            Bundle extras = new Bundle();
+
+            extras.putInt("VIDEO_POS",position);
+            extras.putStringArray("VIDEO_LIST",titles);
+            extras.putStringArray("VIDEO_IDS",ids);
+            extras.putStringArray("VIDEO_DESCRIPTIONS",descriptions);
+            intent.putExtras(extras);
+            startActivity(intent);
+            finish();
+        }
+    }
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
