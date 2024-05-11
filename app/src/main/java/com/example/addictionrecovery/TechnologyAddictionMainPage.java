@@ -69,6 +69,10 @@ public class TechnologyAddictionMainPage extends AppCompatActivity {
                     Intent intent = new Intent(TechnologyAddictionMainPage.this, TechnologyAddictionTest2Page.class);
                     startActivity(intent);
                 }
+                if (position == 2) {
+                    Intent intent = new Intent(TechnologyAddictionMainPage.this, TechnologyAddictionTest3Page.class);
+                    startActivity(intent);
+                }
             }
         });
 
