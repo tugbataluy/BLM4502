@@ -26,6 +26,10 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".TechnologyAddictionTest3Page"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".TechnologyAddictionTest2Page"
             android:exported="false"
             android:screenOrientation="portrait" />
