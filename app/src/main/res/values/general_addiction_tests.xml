@@ -103,6 +103,8 @@
         <item>Katılmıyorum</item>
     </string-array>
     <!--TEST2 SON-->
+
+    <!--TEST3 BAŞLANGIÇ-->
     <string name="ga_test3_question1">Bir faaliyeti bırakmaya karar verdiğiniz halde ona geri döndüğünüz oluyor mu?</string>
     <string-array name="ga_test3_question1_options">
         <item>Evet</item>
@@ -158,5 +160,5 @@
         <item>Evet</item>
         <item>Hayır</item>
     </string-array>
-
+    <!--TEST3 SON-->
 </resources>

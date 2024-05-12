@@ -3,9 +3,9 @@ package com.example.addictionrecovery;
 import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,107 +13,176 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.appcompat.widget.Toolbar;
-
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.Arrays;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class GeneralAddictionMainPage extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-
+public class GeneralAddictionTest1Page extends AppCompatActivity {
     RelativeLayout relativeLayout;
 
     FirebaseAuth auth;
     NavigationView navigationView;
-    ImageView navIcon,backIcon;
-    //TextView homeIcon,questionIcon,videoIcon,helpIcon;
+    ImageView navIcon;
     BottomNavigationView bottomNavigationView;
     Toolbar tb;
-    GridView symptomsView;
-    GridView symptomsView2;
 
-    GridView testView;
-
-    String[] symptoms;
-
-
-    String[] testTitles;
+    public List<QuizModel> questionList;
+    TextView tvQuestion, tvQuestionNo;
+    RadioGroup radioGroup;
+    RadioButton rb1, rb2, rb3, rb4;
+    Button btnNext;
+    int totalQuestions, qCounter = 0, score = 0;
+    QuizModel currentQuestion;
+    String[] answers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_general_addiction_main_page);
-        auth = FirebaseAuth.getInstance();
-        relativeLayout=(RelativeLayout)findViewById(R.id.general_addiction_layout);
-        symptoms=getResources().getStringArray(R.array.general_symptoms);
-
-        testTitles=getResources().getStringArray(R.array.general_addiction_test_titles);
-
-        // Semptomlar
-        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,R.layout.grid_item,symptoms);
-        symptomsView=(GridView)findViewById(R.id.gridView);
-        symptomsView.setAdapter(arrayAdapter);
+        setContentView(R.layout.activity_general_addiction_test1_page);
+        relativeLayout=(RelativeLayout) findViewById(R.id.general_addiction_test1_layout);
+        auth=FirebaseAuth.getInstance();
 
 
-        //Testler
+        drawerInitialization();
+        setToolbarTitle();
+        backButtonActivity();
+        navBottomArrangements();
+        getUserName(userName -> setUserName(userName));
+        relativeLayoutClickerEnable();
 
-        testView=(GridView)findViewById(R.id.gridView3);
-        ArrayAdapter<String> arrayAdapter3 = new ArrayAdapter<>(this,R.layout.test_grid,testTitles);
-        testView.setAdapter(arrayAdapter3);
+        questionList = new ArrayList<>();
+        tvQuestion = findViewById(R.id.questionTitle);
+        tvQuestionNo = findViewById(R.id.questionNum);
 
-        //Testlere tıklama yeteneği verme
-        testView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        radioGroup = findViewById(R.id.radioGroup);
+        rb1 = findViewById(R.id.rb1);
+        rb2 = findViewById(R.id.rb2);
+        rb3 = findViewById(R.id.rb3);
+        rb4 = findViewById(R.id.rb4);
+        btnNext = findViewById(R.id.btnNext);
+
+        addQuestions();
+        totalQuestions = questionList.size();
+        answers = new String[totalQuestions];
+        showNextQuestion();
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Tıklanan öğenin sırasını bastır
-                switch (position){
-                    case 0:
-                        Intent intent= new Intent(GeneralAddictionMainPage.this, GeneralAddictionTest1Page.class);
-                        startActivity(intent);
-                        finish();
-                       break;
-                    case 1:
-                        Intent intent2= new Intent(GeneralAddictionMainPage.this, GeneralAddictionTest2Page.class);
-                        startActivity(intent2);
-                        finish();
-                        break;
-                    case 2:
-                        Intent intent3= new Intent(GeneralAddictionMainPage.this, GeneralAddictionTest3Page.class);
-                        startActivity(intent3);
-                        finish();
-                        break;
-                    default:
-                        break;
+            public void onClick(View v) {
+                int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+
+                // Eğer bir seçenek seçilmediyse uyarı ver
+                if (selectedRadioButtonId == -1) {
+                    Toast.makeText(GeneralAddictionTest1Page.this, "Lütfen seçim yapınız", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                RadioButton selectedRadioButton = findViewById(selectedRadioButtonId);
+
+                // Seçilen seçeneği dize dizisine ekleyin
+                if (selectedRadioButton != null) {
+                    String selectedAnswer = selectedRadioButton.getText().toString();
+                    answers[qCounter - 1] = selectedAnswer; // Soru indeksi 0'dan başladığı için qCounter - 1
+
+                    // Skoru güncelle
+                    if (selectedRadioButton == rb1) {
+                        score += 0;
+                    } else if (selectedRadioButton == rb2) {
+                        score += 1;
+                    } else if (selectedRadioButton == rb3) {
+                        score += 2;
+                    } else if (selectedRadioButton == rb4) {
+                        score += 3;
+                    }
+                }
+                // Sonraki soruyu göster
+                showNextQuestion();
             }
         });
-
-
-        backButtonInitialization();
-        setToolbarTitle();
-        drawerInitialization();
-        relativeLayoutClickerEnable();
-        navBottomArrangements();
-
-        backButtonActivity();
-        getUserName(userName -> setUserName(userName));
-
-
     }
+
+    public void addQuestions(){
+        // Soru 1
+        String question1 = getResources().getString(R.string.ga_test1_question1);
+        String[] options1 = getResources().getStringArray(R.array.ga_test1_question1_options);
+        questionList.add(new QuizModel(question1, options1[0], options1[1], options1[2], options1[3]));
+
+        // Soru 2
+        String question2 = getResources().getString(R.string.ga_test1_question2);
+        String[] options2 = getResources().getStringArray(R.array.ga_test1_question2_options);
+        questionList.add(new QuizModel(question2, options2[0], options2[1], options2[2], options2[3]));
+
+        String question3 = getResources().getString(R.string.ga_test1_question3);
+        String[] options3 = getResources().getStringArray(R.array.ga_test1_question3_options);
+        questionList.add(new QuizModel(question3, options3[0], options3[1], options3[2], options3[3]));
+
+        String question4 = getResources().getString(R.string.ga_test1_question4);
+        String[] options4 = getResources().getStringArray(R.array.ga_test1_question4_options);
+        questionList.add(new QuizModel(question4, options4[0], options4[1], options4[2], options4[3]));
+
+        String question5 = getResources().getString(R.string.ga_test1_question5);
+        String[] options5 = getResources().getStringArray(R.array.ga_test1_question5_options);
+        questionList.add(new QuizModel(question5, options5[0], options5[1], options5[2], options5[3]));
+
+        String question6 = getResources().getString(R.string.ga_test1_question6);
+        String[] options6 = getResources().getStringArray(R.array.ga_test1_question6_options);
+        questionList.add(new QuizModel(question6, options6[0], options6[1], options6[2], options6[3]));
+
+        String question7 = getResources().getString(R.string.ga_test1_question7);
+        String[] options7 = getResources().getStringArray(R.array.ga_test1_question7_options);
+        questionList.add(new QuizModel(question7, options7[0], options7[1], options7[2], options7[3]));
+    }
+    public void showNextQuestion(){
+        radioGroup.clearCheck();
+
+        if(qCounter < totalQuestions){
+            currentQuestion = questionList.get(qCounter);
+            tvQuestion.setText(currentQuestion.getQuestion());
+            rb1.setText(currentQuestion.getOption1());
+            rb2.setText(currentQuestion.getOption2());
+            rb3.setText(currentQuestion.getOption3());
+            rb4.setText(currentQuestion.getOption4());
+
+            qCounter++;
+            tvQuestionNo.setText("Soru: "+qCounter+"/"+totalQuestions);
+
+            if(qCounter==totalQuestions){btnNext.setText("Bitir");}
+
+        } else {
+            Log.d("Score", "Total score: " + score);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Your Score");
+            builder.setMessage("Total score: " + score);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Dialog kapatıldığında yapılacak işlemler
+                    Intent intent=new Intent(GeneralAddictionTest1Page.this, GeneralAddictionMainPage.class);
+                    startActivity(intent);
+                    finish(); // Activity'i kapat
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            //finish();
+        }
+    }
+
+
 
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
@@ -121,7 +190,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             @Override
             public void handleOnBackPressed() {
                 // Yeni aktiviteye geçmek için Intent oluştur
-                Intent intent = new Intent(GeneralAddictionMainPage.this, HomePage.class);
+                Intent intent = new Intent(GeneralAddictionTest1Page.this, GeneralAddictionMainPage.class);
                 // Yeni aktiviteyi başlat
                 startActivity(intent);
                 // Mevcut aktiviteyi sonlandır
@@ -129,20 +198,6 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
-
-
-    public void backButtonInitialization (){
-        backIcon=(ImageView)findViewById(R.id.back_to_mainpage_icon);
-        backIcon.setOnClickListener( new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GeneralAddictionMainPage.this, HomePage.class);
-                startActivity(intent);
-            }
-        });
-    }
-
 
     public void navBottomArrangements(){
         bottomNavigationView=(BottomNavigationView) findViewById(R.id.bottom_nav_id);
@@ -153,22 +208,22 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(GeneralAddictionMainPage.this,HomePage.class);
+                        Intent intent= new Intent(GeneralAddictionTest1Page.this,GeneralAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:
                         System.out.println("questions");
-                        Intent intent2= new Intent(GeneralAddictionMainPage.this,GeneralAddictionQuestionsPage.class);
+                        Intent intent2= new Intent(GeneralAddictionTest1Page.this,GeneralAddictionQuestionsPage.class);
                         startActivity(intent2);
                         break;
                     case R.id.videos_tab:
                         System.out.println("videos");
-                        Intent intent3= new Intent(GeneralAddictionMainPage.this,GeneralAddictionVideosPage.class);
+                        Intent intent3= new Intent(GeneralAddictionTest1Page.this,GeneralAddictionVideosPage.class);
                         startActivity(intent3);
                         break;
                     case R.id.support_tab:
                         System.out.println("support");
-                        Intent intent4= new Intent(GeneralAddictionMainPage.this,GeneralAddictionSupportPage.class);
+                        Intent intent4= new Intent(GeneralAddictionTest1Page.this,GeneralAddictionSupportPage.class);
                         startActivity(intent4);
                         break;
                     default:
@@ -180,11 +235,8 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
-
-
-
     public void setToolbarTitle(){
-        tb=(Toolbar) findViewById(R.id.title_template);
+        tb=(Toolbar) findViewById(R.id.toolbar);
         tb.setTitle("Bağımlılık");
     }
     private void showLogoutConfirmationDialog() {
@@ -243,6 +295,7 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             user_name.setText(userName);
         }
     }
+
     public void drawerInitialization(){
         navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setVisibility(View.INVISIBLE);
@@ -266,16 +319,16 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
-                        Intent intent= new Intent(GeneralAddictionMainPage.this,user_profile.class);
+                        Intent intent= new Intent(GeneralAddictionTest1Page.this,user_profile.class);
                         startActivity(intent);
                         break;
 
                     case R.id.neyi_amacliyoruz_option:
-                        Intent intent1=new Intent (GeneralAddictionMainPage.this, Purpose.class);
+                        Intent intent1=new Intent (GeneralAddictionTest1Page.this, Purpose.class);
                         startActivity(intent1);
                         break;
                     case R.id.geri_bildirim_option:
-                        Intent intent3 = new Intent(GeneralAddictionMainPage.this, Feedback.class);
+                        Intent intent3 = new Intent(GeneralAddictionTest1Page.this, Feedback.class);
                         startActivity(intent3);
                         break;
 
@@ -293,16 +346,14 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
         });
 
     }
-
     public void logout(){
         auth.signOut();
 
         // Giriş sayfasına yönlendir
-        Intent intent = new Intent(GeneralAddictionMainPage.this, LoginPage.class);
+        Intent intent = new Intent(GeneralAddictionTest1Page.this, LoginPage.class);
         startActivity(intent);
         finish(); // Bu aktiviteyi kapat
     }
-
     public void relativeLayoutClickerEnable(){
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -313,6 +364,4 @@ public class GeneralAddictionMainPage extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -139,7 +139,7 @@
         <item>"İşte, okulda ya da evdeki konumunun gereği olan başlıca yükümlülüklerini yerine getirememe"</item>
 
     </string-array>
-    
+
     <string name="what_is_delirium_tremens_title">"Alkol Yoksunluğu Nedir?"</string>
     <string name="what_is_delirium_tremens">"Alkol kullanım bozukluğu ile ilgili sıkça karşılaşılan durumlardan biri, alkol yoksunluğudur. Uzun süre yüksek miktarda alkol kullanımının bırakılmasından ya da azaltılmasından sonra kandaki alkol düzeyinin azalmaya başlamasından 6-8 saat sonra, genellikle ilk 24 saat içinde ortaya çıkmaktadır."</string>
     <string name="anasayfa">Anasayfa</string>
@@ -177,8 +177,8 @@
 
     <string name="what_is_tech_ad_title">"Teknoloji Bağımlılığı Nedir? "</string>
     <string name="tech_main_contents">\nTeknoloji bağımlılığı elektronik cihazların kontrolsüz bir şekilde kullanılmasını ifade eder. Bunun yanı sıra internetin de bilinçsiz bir şekilde saatleri aşan kullanım süresi bağımlılık seviyesinde görülür.</string>
-    <string name="tech_add_types" >Teknoloji Bağımlılığı Çeşitleri Nelerdir?</string>
-    <string name="tech_add_types_content" >
+    <string name="tech_add_types">Teknoloji Bağımlılığı Çeşitleri Nelerdir?</string>
+    <string name="tech_add_types_content">
         \n\u2022Internet Bağımlılığı:
         \n\nBireylerin çevrimiçi ortamlarda aşırı zaman geçirmesi ve internete erişim sağlayan cihazlara aşırı derecede bağımlı olması durumunu ifade eder.
         \n\n\u2022Oyun Bağımlılığı:
@@ -189,7 +189,7 @@
         \n\nBireylerin sosyal medya platformlarında sürekli olarak zaman geçirmesi, beğeni ve yorumlara aşırı derecede önem vermesi ve çevrimiçi kimliklerinin oluşmasına bağımlı hale gelmesi durumudur. Bu tür bağımlılık, özsaygıyı etkileyebilir ve gerçek dünya ilişkilerini olumsuz etkileyebilir.
     </string>
     <string name="tech_add_harms">Teknolojinin Zararları Nelerdir?</string>
-    <string name="tech_add_harms_content" >
+    <string name="tech_add_harms_content">
         \n\u2022Zihinsel Becerilerde bozukluklar meydana getirebilir.
         \n\n\u2022Dikkat dağınıklığı ve konsantrasyon eksikliğine sebebiyet verebilmektedir.
         \n\n\u2022Çok fazla oyun oynayan çocuklar gerçek hayatta arkadaşlıklar kullanırken zorlanabilir.
