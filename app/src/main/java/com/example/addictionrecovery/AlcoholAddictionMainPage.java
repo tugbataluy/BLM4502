@@ -67,7 +67,19 @@ public class AlcoholAddictionMainPage extends AppCompatActivity {
         gridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("postion "+position);
+
+                if (position == 0) {
+                    Intent intent = new Intent(AlcoholAddictionMainPage.this, AlcoholAddictionTest1Page.class);
+                    startActivity(intent);
+                }
+                if (position == 1) {
+                    Intent intent = new Intent(AlcoholAddictionMainPage.this, AlcoholAddictionTest2Page.class);
+                    startActivity(intent);
+                }
+                if (position == 2) {
+                    Intent intent = new Intent(AlcoholAddictionMainPage.this, AlcoholAddictionTest3Page.class);
+                    startActivity(intent);
+                }
             }
         });
     }
