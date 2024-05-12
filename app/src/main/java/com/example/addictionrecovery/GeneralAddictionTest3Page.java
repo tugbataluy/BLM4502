@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,13 +49,17 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
     Button btnNext;
     int totalQuestions, qCounter = 0, score = 0;
     QuizModel currentQuestion;
-    String[] answers;
+    String[] answers, videoTitles, videoIds, videoDescriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_addiction_test3_page);
         relativeLayout=(RelativeLayout) findViewById(R.id.general_addiction_test3_layout);
         auth=FirebaseAuth.getInstance();
+
+        videoTitles=getResources().getStringArray(R.array.general_addiction_video_titles);
+        videoIds=getResources().getStringArray(R.array.general_addiction_video_ids);
+        videoDescriptions=getResources().getStringArray(R.array.general_addiction_video_descriptions);
 
         drawerInitialization();
         setToolbarTitle();
@@ -158,6 +163,18 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
         questionList.add(new QuizModel(question11, options11[0], options11[1]));
 
     }
+    void setFinalVideo(String [] videoTitles, String [] videoIds, String[] descriptionArrays, int skipPoint, Context source, Class destination){
+        Intent intent = new Intent( source,destination);
+        Bundle extras = new Bundle();
+
+        extras.putInt("VIDEO_POS",skipPoint);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptionArrays);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
+    }
 
     public void showNextQuestion(){
         radioGroup.clearCheck();
@@ -179,13 +196,28 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Your Score");
             builder.setMessage("Total score: " + score);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
                     Intent intent=new Intent(GeneralAddictionTest3Page.this, GeneralAddictionMainPage.class);
                     startActivity(intent);
                     finish(); // Activity'i kapat
+                }
+            });
+            builder.setPositiveButton("Önerilen Videoyu İzle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Önerilen videoya gitmek için bir Intent oluştur ve başlat
+                    if (score>6 && score <=11){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,10,GeneralAddictionTest3Page.this,GeneralAddictionShowVideos.class);
+                    }
+
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,2,GeneralAddictionTest3Page.this,GeneralAddictionShowVideos.class);
+                    }
+
+
                 }
             });
             AlertDialog dialog = builder.create();

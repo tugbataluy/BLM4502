@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,14 +49,16 @@ public class GeneralAddictionTest1Page extends AppCompatActivity {
     Button btnNext;
     int totalQuestions, qCounter = 0, score = 0;
     QuizModel currentQuestion;
-    String[] answers;
+    String[] answers, videoTitles, videoIds, videoDescriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_addiction_test1_page);
         relativeLayout=(RelativeLayout) findViewById(R.id.general_addiction_test1_layout);
         auth=FirebaseAuth.getInstance();
-
+        videoTitles=getResources().getStringArray(R.array.general_addiction_video_titles);
+        videoIds=getResources().getStringArray(R.array.general_addiction_video_ids);
+        videoDescriptions=getResources().getStringArray(R.array.general_addiction_video_descriptions);
 
         drawerInitialization();
         setToolbarTitle();
@@ -146,6 +149,19 @@ public class GeneralAddictionTest1Page extends AppCompatActivity {
         String[] options7 = getResources().getStringArray(R.array.ga_test1_question7_options);
         questionList.add(new QuizModel(question7, options7[0], options7[1], options7[2], options7[3]));
     }
+
+    void setFinalVideo(String [] videoTitles, String [] videoIds, String[] descriptionArrays, int skipPoint, Context source, Class destination){
+        Intent intent = new Intent( source,destination);
+        Bundle extras = new Bundle();
+
+        extras.putInt("VIDEO_POS",skipPoint);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptionArrays);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
+    }
     public void showNextQuestion(){
         radioGroup.clearCheck();
 
@@ -167,13 +183,31 @@ public class GeneralAddictionTest1Page extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Your Score");
             builder.setMessage("Total score: " + score);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
                     Intent intent=new Intent(GeneralAddictionTest1Page.this, GeneralAddictionMainPage.class);
                     startActivity(intent);
                     finish(); // Activity'i kapat
+                }
+            });
+
+            builder.setPositiveButton("Önerilen Videoyu İzle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Önerilen videoya gitmek için bir Intent oluştur ve başlat
+                    if (score>14 && score <=21){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,7,GeneralAddictionTest1Page.this,GeneralAddictionShowVideos.class);
+                    }
+                    else if (score>7 && score <=14){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,8,GeneralAddictionTest1Page.this,GeneralAddictionShowVideos.class);
+                    }
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,5,GeneralAddictionTest1Page.this,GeneralAddictionShowVideos.class);
+                    }
+
+
                 }
             });
             AlertDialog dialog = builder.create();
@@ -258,6 +292,8 @@ public class GeneralAddictionTest1Page extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
 
     public void getUserName(final TechnologyAddictionMainPage.OnUserNameFetchedListener listener) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

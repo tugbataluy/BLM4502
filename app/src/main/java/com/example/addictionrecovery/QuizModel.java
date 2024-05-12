@@ -46,6 +46,8 @@ public class QuizModel {
         this.option4 = option4;
     }
 
+
+
     public QuizModel(String question,String option1,String option2) {
         this.question = question;
         this.option1 = option1;
