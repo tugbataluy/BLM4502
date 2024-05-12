@@ -43,11 +43,9 @@
     <color name="alcohol_addiction_test_grid_bg">#FFB8B8</color>
     <color name="alcohol_addiction_test_content_color">#AF2655</color>
     <color name="alcohol_addiction_warning_txt_color">#B31312</color>
-
-
-
-
-
+    <color name="subs_add_question_color">#1A4D2E</color>
+    <color name="subs_add_options_color">#4F6F52</color>
+    <color name="subs_add_test_button_text_color">#135D66</color>
 
 
 </resources>

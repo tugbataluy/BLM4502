@@ -26,8 +26,8 @@
     <string name="question_page_content">Cevabını merak ettiğiniz sorunun kutucuğuna dokunarak cevaba ulaşabilirsiniz.</string>
     <string-array name="general_addiction_test_titles">
         <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
-        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için dokun.</item>
-        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için dokun.</item>
+        <item>Bağımlılığa Yatkın Davranışların Var Mı? Cevabı görmek için dokun. </item>
+        <item>Bağımlılık Belirtisi Gösteriyor Musun?  Cevabı görmek için dokun.</item>
 
     </string-array>
     <string name="title_activity_general_addiction_videos_page">GeneralAddictionVideosPage</string>
@@ -96,9 +96,9 @@
     </string-array>
 
     <string-array name="subs_add_tests">
-        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
-        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
-        <item>Bağımlı Olmaya Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Madde Bağımlılığına Ne Kadar Yatkınsın?  Cevabı görmek için testi çöz.</item>
+        <item>Davranışların Madde Bağımlılığıyla İlişkilendirilebilir Mi?\n.</item>
+        <item>DAST-10 Madde Bağımlılığı Testini Çözmek İster Misin? Test için dokun.</item>
     </string-array>
 
     <!-- Strings used for alcohol addiction main page -->

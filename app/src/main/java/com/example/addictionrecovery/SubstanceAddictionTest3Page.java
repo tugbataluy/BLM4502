@@ -32,7 +32,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneralAddictionTest3Page extends AppCompatActivity {
+public class SubstanceAddictionTest3Page extends AppCompatActivity {
+
     RelativeLayout relativeLayout;
 
     FirebaseAuth auth;
@@ -52,8 +53,8 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_general_addiction_test3_page);
-        relativeLayout=(RelativeLayout) findViewById(R.id.general_addiction_test3_layout);
+        setContentView(R.layout.activity_substance_addiction_test3_page);
+        relativeLayout=(RelativeLayout) findViewById(R.id.substance_addiction_test3_layout);
         auth=FirebaseAuth.getInstance();
 
         drawerInitialization();
@@ -85,7 +86,7 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
 
                 // Eğer bir seçenek seçilmediyse uyarı ver
                 if (selectedRadioButtonId == -1) {
-                    Toast.makeText(GeneralAddictionTest3Page.this, "Lütfen seçim yapınız", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SubstanceAddictionTest3Page.this, "Lütfen seçim yapınız", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -112,53 +113,49 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
 
     public void addQuestions(){
         // Soru 1
-        String question1 = getResources().getString(R.string.ga_test3_question1);
-        String[] options1 = getResources().getStringArray(R.array.ga_test3_question1_options);
+        String question1 = getResources().getString(R.string.subs_addiction_test3_question1);
+        String[] options1 = getResources().getStringArray(R.array.subs_addiction_test3_question1_options);
         questionList.add(new QuizModel(question1, options1[0], options1[1]));
 
         // Soru 2
-        String question2 = getResources().getString(R.string.ga_test3_question2);
-        String[] options2 = getResources().getStringArray(R.array.ga_test3_question2_options);
+        String question2 = getResources().getString(R.string.subs_addiction_test3_question2);
+        String[] options2 = getResources().getStringArray(R.array.subs_addiction_test3_question2_options);
         questionList.add(new QuizModel(question2, options2[0], options2[1]));
 
-        String question3 = getResources().getString(R.string.ga_test3_question3);
-        String[] options3 = getResources().getStringArray(R.array.ga_test2_question3_options);
+        String question3 = getResources().getString(R.string.subs_addiction_test3_question3);
+        String[] options3 = getResources().getStringArray(R.array.subs_addiction_test3_question3_options);
         questionList.add(new QuizModel(question3, options3[0], options3[1]));
 
-        String question4 = getResources().getString(R.string.ga_test3_question4);
-        String[] options4 = getResources().getStringArray(R.array.ga_test3_question4_options);
+        String question4 = getResources().getString(R.string.subs_addiction_test3_question4);
+        String[] options4 = getResources().getStringArray(R.array.subs_addiction_test3_question4_options);
         questionList.add(new QuizModel(question4, options4[0], options4[1]));
 
-        String question5 = getResources().getString(R.string.ga_test3_question5);
-        String[] options5 = getResources().getStringArray(R.array.ga_test3_question5_options);
+        String question5 = getResources().getString(R.string.subs_addiction_test3_question5);
+        String[] options5 = getResources().getStringArray(R.array.subs_addiction_test3_question5_options);
         questionList.add(new QuizModel(question5, options5[0], options5[1]));
 
-        String question6 = getResources().getString(R.string.ga_test3_question6);
-        String[] options6 = getResources().getStringArray(R.array.ga_test3_question6_options);
+        String question6 = getResources().getString(R.string.subs_addiction_test3_question6);
+        String[] options6 = getResources().getStringArray(R.array.subs_addiction_test3_question6_options);
         questionList.add(new QuizModel(question6, options6[0], options6[1]));
 
-        String question7 = getResources().getString(R.string.ga_test3_question7);
-        String[] options7 = getResources().getStringArray(R.array.ga_test3_question7_options);
+        String question7 = getResources().getString(R.string.subs_addiction_test3_question7);
+        String[] options7 = getResources().getStringArray(R.array.subs_addiction_test3_question7_options);
         questionList.add(new QuizModel(question7, options7[0], options7[1]));
 
-        String question8 = getResources().getString(R.string.ga_test3_question8);
-        String[] options8 = getResources().getStringArray(R.array.ga_test3_question8_options);
+        String question8 = getResources().getString(R.string.subs_addiction_test3_question8);
+        String[] options8 = getResources().getStringArray(R.array.subs_addiction_test3_question8_options);
         questionList.add(new QuizModel(question8, options8[0], options8[1]));
 
-        String question9 = getResources().getString(R.string.ga_test3_question9);
-        String[] options9 = getResources().getStringArray(R.array.ga_test3_question9_options);
+        String question9 = getResources().getString(R.string.subs_addiction_test3_question9);
+        String[] options9 = getResources().getStringArray(R.array.subs_addiction_test3_question9_options);
         questionList.add(new QuizModel(question9, options9[0], options9[1]));
 
-        String question10 = getResources().getString(R.string.ga_test3_question10);
-        String[] options10 = getResources().getStringArray(R.array.ga_test3_question10_options);
+        String question10 = getResources().getString(R.string.subs_addiction_test3_question10);
+        String[] options10 = getResources().getStringArray(R.array.subs_addiction_test3_question10_options);
         questionList.add(new QuizModel(question10, options10[0], options10[1]));
 
-        String question11 = getResources().getString(R.string.ga_test3_question11);
-        String[] options11 = getResources().getStringArray(R.array.ga_test3_question11_options);
-        questionList.add(new QuizModel(question11, options11[0], options11[1]));
 
     }
-
     public void showNextQuestion(){
         radioGroup.clearCheck();
 
@@ -183,7 +180,7 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
-                    Intent intent=new Intent(GeneralAddictionTest3Page.this, GeneralAddictionMainPage.class);
+                    Intent intent=new Intent(SubstanceAddictionTest3Page.this, SubstanceAddictionMainPage.class);
                     startActivity(intent);
                     finish(); // Activity'i kapat
                 }
@@ -193,13 +190,14 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
             //finish();
         }
     }
+
     public void backButtonActivity(){
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 // Yeni aktiviteye geçmek için Intent oluştur
-                Intent intent = new Intent(GeneralAddictionTest3Page.this, GeneralAddictionMainPage.class);
+                Intent intent = new Intent(SubstanceAddictionTest3Page.this, SubstanceAddictionMainPage.class);
                 // Yeni aktiviteyi başlat
                 startActivity(intent);
                 // Mevcut aktiviteyi sonlandır
@@ -217,22 +215,22 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(GeneralAddictionTest3Page.this,GeneralAddictionMainPage.class);
+                        Intent intent= new Intent(SubstanceAddictionTest3Page.this,SubstanceAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:
                         System.out.println("questions");
-                        Intent intent2= new Intent(GeneralAddictionTest3Page.this,GeneralAddictionQuestionsPage.class);
+                        Intent intent2= new Intent(SubstanceAddictionTest3Page.this,SubstanceAddictionQuestionsPage.class);
                         startActivity(intent2);
                         break;
                     case R.id.videos_tab:
                         System.out.println("videos");
-                        Intent intent3= new Intent(GeneralAddictionTest3Page.this,GeneralAddictionVideosPage.class);
+                        Intent intent3= new Intent(SubstanceAddictionTest3Page.this,SubstanceAddictionVideosPage.class);
                         startActivity(intent3);
                         break;
                     case R.id.support_tab:
                         System.out.println("support");
-                        Intent intent4= new Intent(GeneralAddictionTest3Page.this,GeneralAddictionSupportPage.class);
+                        Intent intent4= new Intent(SubstanceAddictionTest3Page.this,SubstanceAddictionSupportPage.class);
                         startActivity(intent4);
                         break;
                     default:
@@ -246,9 +244,8 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
     }
     public void setToolbarTitle(){
         tb=(Toolbar) findViewById(R.id.toolbar);
-        tb.setTitle("Bağımlılık");
+        tb.setTitle("Madde Bağımlılığı");
     }
-
     private void showLogoutConfirmationDialog() {
         // AlertDialog oluştur
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -328,16 +325,16 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.kullanici_profili_option:
-                        Intent intent= new Intent(GeneralAddictionTest3Page.this,user_profile.class);
+                        Intent intent= new Intent(SubstanceAddictionTest3Page.this,user_profile.class);
                         startActivity(intent);
                         break;
 
                     case R.id.neyi_amacliyoruz_option:
-                        Intent intent1=new Intent (GeneralAddictionTest3Page.this, Purpose.class);
+                        Intent intent1=new Intent (SubstanceAddictionTest3Page.this, Purpose.class);
                         startActivity(intent1);
                         break;
                     case R.id.geri_bildirim_option:
-                        Intent intent3 = new Intent(GeneralAddictionTest3Page.this, Feedback.class);
+                        Intent intent3 = new Intent(SubstanceAddictionTest3Page.this, Feedback.class);
                         startActivity(intent3);
                         break;
 
@@ -354,11 +351,12 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
             }
         });
 
-    } public void logout(){
+    }
+    public void logout(){
         auth.signOut();
 
         // Giriş sayfasına yönlendir
-        Intent intent = new Intent(GeneralAddictionTest3Page.this, LoginPage.class);
+        Intent intent = new Intent(SubstanceAddictionTest3Page.this, LoginPage.class);
         startActivity(intent);
         finish(); // Bu aktiviteyi kapat
     }
@@ -372,5 +370,4 @@ public class GeneralAddictionTest3Page extends AppCompatActivity {
             }
         });
     }
-
 }

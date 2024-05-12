@@ -62,7 +62,25 @@ public class SubstanceAddictionMainPage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Tıklanan öğenin sırasını bastır
-                System.out.println("Tıklanan öğenin sırası: " + position);
+                switch (position){
+                    case 0:
+                        Intent intent= new Intent(SubstanceAddictionMainPage.this, SubstanceAddictionTest1Page.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case 1:
+                        Intent intent2= new Intent(SubstanceAddictionMainPage.this, SubstanceAddictionTest2Page.class);
+                        startActivity(intent2);
+                        finish();
+                        break;
+                    case 2:
+                        Intent intent3= new Intent(SubstanceAddictionMainPage.this, SubstanceAddictionTest3Page.class);
+                        startActivity(intent3);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 

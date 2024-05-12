@@ -14,9 +14,20 @@
         android:theme="@style/Theme.AddictionRecovery"
         tools:targetApi="31">
         <activity
+            android:name=".SubstanceAddictionTest3Page"
+            android:exported="false" />
+        <activity
+            android:name=".SubstanceAddictionTest2Page"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SubstanceAddictionTest1Page"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".GeneralAddictionTest3Page"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".GeneralAddictionTest2Page"
             android:exported="false"
@@ -28,7 +39,7 @@
         <activity
             android:name=".TechnologyAddictionTest3Page"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TechnologyAddictionTest2Page"
             android:exported="false"
