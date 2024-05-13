@@ -119,7 +119,7 @@ public class GeneralAddictionVideosPage extends AppCompatActivity {
                 switch (itemId){
                     case R.id.home_tab:
                         System.out.println("home");
-                        Intent intent= new Intent(GeneralAddictionVideosPage.this,HomePage.class);
+                        Intent intent= new Intent(GeneralAddictionVideosPage.this,GeneralAddictionMainPage.class);
                         startActivity(intent);
                         break;
                     case R.id.questions_tab:

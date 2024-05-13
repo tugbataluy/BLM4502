@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,13 +50,18 @@ public class SubstanceAddictionTest3Page extends AppCompatActivity {
     Button btnNext;
     int totalQuestions, qCounter = 0, score = 0;
     QuizModel currentQuestion;
-    String[] answers;
+    String[] answers,videoTitles, videoIds, videoDescriptions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_substance_addiction_test3_page);
         relativeLayout=(RelativeLayout) findViewById(R.id.substance_addiction_test3_layout);
         auth=FirebaseAuth.getInstance();
+
+        videoTitles=getResources().getStringArray(R.array.substance_addiction_video_titles);
+        videoIds=getResources().getStringArray(R.array.substance_addiction_video_ids);
+        videoDescriptions=getResources().getStringArray(R.array.substance_addiction_video_descriptions);
+
 
         drawerInitialization();
         setToolbarTitle();
@@ -176,7 +182,7 @@ public class SubstanceAddictionTest3Page extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Your Score");
             builder.setMessage("Total score: " + score);
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
@@ -185,10 +191,37 @@ public class SubstanceAddictionTest3Page extends AppCompatActivity {
                     finish(); // Activity'i kapat
                 }
             });
+            builder.setPositiveButton("Önerilen Videoyu İzle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Dialog kapatıldığında yapılacak işlemler
+                    if (score>5 && score <=10){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,4,SubstanceAddictionTest3Page.this,SubstanceAddictionShowVideos.class);
+                    }
+
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,7,SubstanceAddictionTest3Page.this,SubstanceAddictionShowVideos.class);
+                    }
+
+                }
+            });
             AlertDialog dialog = builder.create();
             dialog.show();
             //finish();
         }
+    }
+
+    void setFinalVideo(String [] videoTitles, String [] videoIds, String[] descriptionArrays, int skipPoint, Context source, Class destination){
+        Intent intent = new Intent( source,destination);
+        Bundle extras = new Bundle();
+
+        extras.putInt("VIDEO_POS",skipPoint);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptionArrays);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
     }
 
     public void backButtonActivity(){
