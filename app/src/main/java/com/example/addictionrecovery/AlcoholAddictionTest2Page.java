@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class AlcoholAddictionTest2Page extends AppCompatActivity {
     Button btnNext;
     int totalQuestions, qCounter = 0, score = 0;
     QuizModel currentQuestion;
-    String[] answers;
+    String[] answers,videoTitles, videoIds, videoDescriptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,10 @@ public class AlcoholAddictionTest2Page extends AppCompatActivity {
         navBottomArrangements();
         getUserName(userName -> setUserName(userName));
         relativeLayoutClickerEnable();
+
+        videoTitles=getResources().getStringArray(R.array.alcohol_addiction_video_titles);
+        videoIds=getResources().getStringArray(R.array.alcohol_addiction_video_ids);
+        videoDescriptions=getResources().getStringArray(R.array.alcohol_addiction_video_descriptions);
 
         questionList = new ArrayList<>();
         tvQuestion = findViewById(R.id.questionTitle);
@@ -171,6 +176,21 @@ public class AlcoholAddictionTest2Page extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
                     finish(); // Activity'i kapat
+                }
+            });
+            builder.setPositiveButton("Önerilen Videoyu İzle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Dialog kapatıldığında yapılacak işlemler
+                    if (score>12 && score <=18){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,14,AlcoholAddictionTest2Page.this,AlcoholAddictionShowVideos.class);
+                    }
+                    else if (score>6 && score <=12){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,4,AlcoholAddictionTest2Page.this,AlcoholAddictionShowVideos.class);
+                    }
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,10,AlcoholAddictionTest2Page.this,AlcoholAddictionShowVideos.class);
+                    }
                 }
             });
             AlertDialog dialog = builder.create();
@@ -362,5 +382,18 @@ public class AlcoholAddictionTest2Page extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    void setFinalVideo(String [] videoTitles, String [] videoIds, String[] descriptionArrays, int skipPoint, Context source, Class destination){
+        Intent intent = new Intent( source,destination);
+        Bundle extras = new Bundle();
+
+        extras.putInt("VIDEO_POS",skipPoint);
+        extras.putStringArray("VIDEO_LIST",videoTitles);
+        extras.putStringArray("VIDEO_IDS",videoIds);
+        extras.putStringArray("VIDEO_DESCRIPTIONS",descriptionArrays);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
     }
 }

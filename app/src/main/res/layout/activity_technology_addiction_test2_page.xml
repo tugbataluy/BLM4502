@@ -56,11 +56,11 @@
     <Button
         android:id="@+id/btnNext"
         android:layout_width="140dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/radioGroup"
         android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ta_button_bg"
+        android:backgroundTint="@color/tech_addiction_test_button_color"
         android:text="Sonraki Soru "
         android:textColor="@color/tech_addiction_grid_text_color" />
 

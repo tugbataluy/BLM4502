@@ -15,7 +15,7 @@
         <RelativeLayout
             android:id="@+id/technology_addiction_main_page_layout"
             android:layout_width="match_parent"
-            android:layout_height="2900dp">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/tech_img1"
@@ -194,7 +194,7 @@
             <GridView
                 android:id="@+id/tech_grid2"
                 android:layout_width="320dp"
-                android:layout_height="140dp"
+                android:layout_height="270dp"
                 android:layout_below="@+id/warning_tech"
                 android:layout_marginTop="45dp"
                 android:layout_centerHorizontal="true"

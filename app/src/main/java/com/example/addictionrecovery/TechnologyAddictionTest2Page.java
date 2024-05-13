@@ -177,8 +177,15 @@ public class TechnologyAddictionTest2Page extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
-                    // setFinalVideo(videoTitles,videoIds,videoDescription, videopos, TechnologyAddictionTestPage.this, TechnologyAddictionShowVideos.class);
-
+                    if (score>12 && score <=18){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,12,TechnologyAddictionTest2Page.this,TechnologyAddictionShowVideos.class);
+                    }
+                    else if (score>6 && score <=12){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,4,TechnologyAddictionTest2Page.this,TechnologyAddictionShowVideos.class);
+                    }
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,7,TechnologyAddictionTest2Page.this,TechnologyAddictionShowVideos.class);
+                    }
                 }
             });
 
@@ -315,14 +322,10 @@ public class TechnologyAddictionTest2Page extends AppCompatActivity {
                         break;
                     default:
                         return true;
-
-
                 }
                 return  false;
-
             }
         });
-
     }
 
     public void navBottomArrangements(){
@@ -356,7 +359,6 @@ public class TechnologyAddictionTest2Page extends AppCompatActivity {
 
                         break;
                 }
-
                 return false;
             }
         });

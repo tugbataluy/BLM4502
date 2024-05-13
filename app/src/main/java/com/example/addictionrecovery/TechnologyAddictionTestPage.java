@@ -181,8 +181,15 @@ public class TechnologyAddictionTestPage extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // Dialog kapatıldığında yapılacak işlemler
-                    // setFinalVideo(videoTitles,videoIds,videoDescription, videopos, TechnologyAddictionTestPage.this, TechnologyAddictionShowVideos.class);
-
+                    if (score>12 && score <=18){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,11,TechnologyAddictionTestPage.this,TechnologyAddictionShowVideos.class);
+                    }
+                    else if (score>6 && score <=12){
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,1,TechnologyAddictionTestPage.this,TechnologyAddictionShowVideos.class);
+                    }
+                    else {
+                        setFinalVideo(videoTitles,videoIds,videoDescriptions,10,TechnologyAddictionTestPage.this,TechnologyAddictionShowVideos.class);
+                    }
                 }
             });
             AlertDialog dialog = builder.create();
@@ -318,14 +325,10 @@ public class TechnologyAddictionTestPage extends AppCompatActivity {
                         break;
                     default:
                         return true;
-
-
                 }
                 return  false;
-
             }
         });
-
     }
 
     public void navBottomArrangements(){
@@ -359,7 +362,6 @@ public class TechnologyAddictionTestPage extends AppCompatActivity {
 
                         break;
                 }
-
                 return false;
             }
         });
