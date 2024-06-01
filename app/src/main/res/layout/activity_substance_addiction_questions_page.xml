@@ -32,7 +32,7 @@
             <GridView
                 android:layout_centerHorizontal="true"
                 android:id="@+id/substance_addiction_questions_grid"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="175dp"
                 android:layout_width="325dp"
                 android:layout_height="600dp"
                 android:numColumns="3"

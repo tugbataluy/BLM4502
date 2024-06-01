@@ -66,7 +66,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:id="@+id/alcohol_addiction_diagnose_title"
                 android:text="@string/alcohol_addiction_diagnose_title"
                 android:background="@drawable/general_addiction_title"
@@ -143,7 +143,7 @@
                 android:layout_marginRight="25dp"
                 android:src="@raw/alcohol_symptoms"
                 android:layout_alignTop="@id/alcohol_addiction_effects_content"
-                android:layout_marginTop="415dp"
+                android:layout_marginTop="450dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/alcohol_addiction_symptoms"
                 />
@@ -245,7 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tremens_symptoms"
-                android:layout_marginTop="230dp"
+                android:layout_marginTop="250dp"
                 android:src="@raw/alcohol_tests"
                 android:layout_marginRight="25dp"
                 android:layout_marginLeft="25dp"
@@ -278,10 +278,10 @@
                 android:stretchMode="columnWidth"
                 android:gravity="center"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="175dp"
+                android:layout_marginTop="185dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:layout_marginBottom="40dp"/>
+                android:layout_marginBottom="60dp"/>
 
 
 

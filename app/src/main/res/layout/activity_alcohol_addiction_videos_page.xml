@@ -17,12 +17,14 @@
             android:id="@+id/alcohol_addiction_videos_page_relative_layout">
             <GridView
                 android:id="@+id/video_list"
-                android:layout_width="300dp"
-                android:layout_height="1200dp"
+                android:layout_width="325dp"
+                android:layout_height="1400dp"
                 android:layout_marginTop="90dp"
+                android:layout_marginRight="25dp"
+
 
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="25dp"
                 android:verticalSpacing="10dp"
                 android:numColumns="1"
                 android:layout_marginBottom="100dp"

@@ -8,23 +8,27 @@
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Ankara Üniversitesi Bağımlılıkla Mücadele Eğitim Platformu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AddictionRecovery"
         tools:targetApi="31">
         <activity
             android:name=".AlcoholAddictionTest3Page"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AlcoholAddictionTest2Page"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".AlcoholAddictionTest1Page"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SubstanceAddictionTest3Page"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".SubstanceAddictionTest2Page"
             android:exported="false"

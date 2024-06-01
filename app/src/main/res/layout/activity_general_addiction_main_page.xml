@@ -151,7 +151,7 @@
             android:layout_alignTop="@id/gridView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="325dp"
             android:src="@raw/ilginc_ga"
             android:layout_centerHorizontal="true"
             android:padding="5dp"/>
